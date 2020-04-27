@@ -1,0 +1,142 @@
+body {
+    overflow-x: hidden;
+}
+
+.heading {
+    background-color: #1307ba;
+    color: white;
+    width: 2500px;
+    height: 100px;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 30px 0 0 50px;
+}
+
+.campus-map img {
+    margin-left: auto;
+    padding-top: 30px;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+#main-menu-btn {
+    width: 130px;
+    height: 30px;
+    color: #572603;
+    background-color: #f5a627;
+    border: 2px solid #f5a627;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    float: right;
+    vertical-align: bottom;
+    margin-top: 100px;
+    margin-right: 30px;
+}
+
+.col-sm-2 {
+  height: 600px;
+  width: 176px;
+  z-index: 1;
+  left: 0;
+  background-image: linear-gradient(#1307ba 0%, #eb4034 100%);
+  overflow-x: hidden;
+  padding-top: 20px;  
+}
+
+.col-sm-10 {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidenav-cont {
+  width: 100%;
+  float: right;
+}
+
+.col-sm-2 button, .dropdown-btn{
+  padding: 10px;   
+  text-decoration: none;
+  font-size: 13px;
+  color: white;
+  opacity: 0.8;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.dropdown-btn {
+  padding: 10px;
+  text-decoration: none;
+  font-size: 14px;
+  color: white;
+  opacity: 0.8;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.active {
+  background-color: rgba(95, 38, 255, 0.4);
+  color: white;
+  border-top-left-radius: 40px;
+}
+
+.active::after {
+    font-weight: 900;
+    display: inline-block;
+    padding-right: 15px;
+    font-size: 180%;
+    color: #1307ba;
+}
+
+.dropdown-container {
+  display: none;
+  background-color: rgba(95, 38, 255, 0.4);
+  opacity: 0.7;
+  border-bottom-left-radius: 40px;
+}
+
+.dropdown-container button {
+  padding-left: 50px;    
+}
+
+.fa-caret-down {
+  float: right;
+  padding-right: 5px;
+}
+
+.col-sm-2 button:hover, .dropdown-btn:hover{
+  background-color: #3b2dfa;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  opacity: 1;
+}
+
+.active:hover{
+  background-color: rgba(53, 164, 255, 0.6);
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 0;
+  opacity: 1;
+}
+
+.dropdown-container button:hover{
+  background-color: rgba(53, 164, 255, 0.6);
+  border-radius: 0;
+  opacity: 1;
+    
+}
+
+.dropdown-container button:last-child:hover{
+  border-bottom-left-radius: 40px;
+}
