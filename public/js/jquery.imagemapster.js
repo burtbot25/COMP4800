@@ -6,7 +6,7 @@ Copyright 2011-2012 James Treworgy
 http://www.outsharked.com/imagemapster
 https://github.com/jamietre/ImageMapster
 
-A jquery plugin to enhance image maps.
+A jQuery plugin to enhance image maps.
 
 */
 
@@ -814,7 +814,7 @@ A jquery plugin to enhance image maps.
 	: function (factory) {
 	    typeof module != 'undefined'
 		? (module.exports = factory())
-		: (jquery.mapster_when = factory());
+		: (jQuery.mapster_when = factory());
 	}
 // Boilerplate for AMD, Node, and browser global
 );
@@ -823,7 +823,7 @@ A jquery plugin to enhance image maps.
 
 /*jslint laxbreak: true, evil: true, unparam: true */
 
-/*global jquery: true, Zepto: true */
+/*global jQuery: true, Zepto: true */
 
 
 (function ($) {
@@ -835,7 +835,7 @@ A jquery plugin to enhance image maps.
         } else if (typeof method === 'object' || !method) {
             return m.bind.apply(this, arguments);
         } else {
-            $.error('Method ' + method + ' does not exist on jquery.mapster');
+            $.error('Method ' + method + ' does not exist on jQuery.mapster');
         }
     };
 
@@ -1034,7 +1034,7 @@ A jquery plugin to enhance image maps.
             /**
              * Set the opacity of the element. This is an IE<8 specific function for handling VML.
              * When using VML we must override the "setOpacity" utility function (monkey patch ourselves).
-             * jquery does not deal with opacity correctly for VML elements. This deals with that.
+             * jQuery does not deal with opacity correctly for VML elements. This deals with that.
              * 
              * @param {Element} el The DOM element
              * @param {double} opacity A value between 0 and 1 inclusive.
@@ -1109,7 +1109,7 @@ A jquery plugin to enhance image maps.
             return result;
         },
         // Causes changes to the bound list based on the user action (select or deselect)
-        // area: the jquery area object
+        // area: the jQuery area object
         // returns the matching elements from the bound list for the first area passed (normally only one should be passed, but
         // a list can be passed
         setBoundListProperties: function (opts, target, selected) {
@@ -1149,7 +1149,7 @@ A jquery plugin to enhance image maps.
         /**
          * Queue a command to be run after the active async operation has finished
          * @param  {MapData}  map_data    The target MapData object
-         * @param  {jquery}   that        jquery object on which the command was invoked
+         * @param  {jQuery}   that        jQuery object on which the command was invoked
          * @param  {string}   command     the ImageMapster method name
          * @param  {object[]} args        arguments passed to the method
          * @return {bool}                 true if the command was queued, false if not (e.g. there was no need to)
@@ -1199,11 +1199,11 @@ A jquery plugin to enhance image maps.
         ap = Array.prototype;
 
 
-    // jquery's width() and height() are broken on IE9 in some situations. This tries everything. 
+    // jQuery's width() and height() are broken on IE9 in some situations. This tries everything. 
     $.each(["width","height"],function(i,e) {
         var capProp = e.substr(0,1).toUpperCase() + e.substr(1);
-        // when jqwidth parm is passed, it also checks the jquery width()/height() property
-        // the issue is that jquery width() can report a valid size before the image is loaded in some browsers
+        // when jqwidth parm is passed, it also checks the jQuery width()/height() property
+        // the issue is that jQUery width() can report a valid size before the image is loaded in some browsers
         // without it, we can read zero even when image is loaded in other browsers if its not visible
         // we must still check because stuff like adblock can temporarily block it
         // what a goddamn headache
@@ -1218,7 +1218,7 @@ A jquery plugin to enhance image maps.
      * The Method object encapsulates the process of testing an ImageMapster method to see if it's being
      * invoked on an image, or an area; then queues the command if the MapData is in an active state.
      * 
-     * @param {[jquery]}    that        The target of the invocation
+     * @param {[jQuery]}    that        The target of the invocation
      * @param {[function]}  func_map    The callback if the target is an imagemap
      * @param {[function]}  func_area   The callback if the target is an area
      * @param {[object]}    opt         Options: { key: a map key if passed explicitly
@@ -1392,12 +1392,12 @@ A jquery plugin to enhance image maps.
 
         // Most methods use the "Method" object which handles figuring out whether it's an image or area called and
         // parsing key parameters. The constructor wants:
-        // this, the jquery object
+        // this, the jQuery object
         // a function that is called when an image was passed (with a this context of the MapData)
         // a function that is called when an area was passed (with a this context of the AreaData)
-        // options: first = true means only the first member of a jquery object is handled
+        // options: first = true means only the first member of a jQuery object is handled
         //          key = the key parameters passed
-        //          defaultReturn: a value to return other than the jquery object (if its not chainable)
+        //          defaultReturn: a value to return other than the jQuery object (if its not chainable)
         //          args: the arguments
         // Returns a comma-separated list of user-selected areas. "staticState" areas are not considered selected for the purposes of this method.
         
@@ -1769,7 +1769,7 @@ A jquery plugin to enhance image maps.
                 }
 
                 // ensure it's a valid image
-                // jquery bug with Opera, results in full-url#usemap being returned from jquery's attr.
+                // jQuery bug with Opera, results in full-url#usemap being returned from jQuery's attr.
                 // So use raw getAttribute instead.
                 
                 usemap = this.getAttribute('usemap');
@@ -1842,7 +1842,7 @@ A jquery plugin to enhance image maps.
     $.mapster.impl.init();
     
     
-} (jquery));
+} (jQuery));
 /* graphics.js
    Graphics object handles all rendering.
 */
@@ -2286,7 +2286,7 @@ A jquery plugin to enhance image maps.
     });
 
 
-} (jquery));
+} (jQuery));
 /* mapimage.js
    the MapImage object, repesents an instance of a single bound imagemap
 */
@@ -2510,7 +2510,7 @@ A jquery plugin to enhance image maps.
 
         /**
          * Event handler for image onload
-         * @param  {object} e jquery event data
+         * @param  {object} e jQuery event data
          */
         
         imageLoaded: function(e) {
@@ -2528,7 +2528,7 @@ A jquery plugin to enhance image maps.
         
         /**
          * Event handler for onload error
-         * @param  {object} e jquery event data
+         * @param  {object} e jQuery event data
          */
         
         imageLoadError: function(e) {
@@ -2563,7 +2563,7 @@ A jquery plugin to enhance image maps.
             return status[index];
         }
     };
-    } (jquery));
+    } (jQuery));
 /* mapdata.js
    the MapData object, repesents an instance of a single bound imagemap
 */
@@ -2690,7 +2690,7 @@ A jquery plugin to enhance image maps.
      * Mousedown event. This is captured only to prevent browser from drawing an outline around an
      * area when it's clicked.
      *
-     * @param  {EventData} e jquery event data
+     * @param  {EventData} e jQuery event data
      */
     
     function mousedown(e) {
@@ -2704,7 +2704,7 @@ A jquery plugin to enhance image maps.
      * Mouseover event. Handle highlight rendering and client callback on mouseover
      * 
      * @param  {MapData} me The MapData context
-     * @param  {EventData} e jquery event data
+     * @param  {EventData} e jQuery event data
      * @return {[type]}   [description]
      */
     
@@ -2753,7 +2753,7 @@ A jquery plugin to enhance image maps.
      * Mouseout event.
      *
      * @param  {MapData} me The MapData context
-     * @param  {EventData} e jquery event data
+     * @param  {EventData} e jQuery event data
      * @return {[type]}   [description]
      */
     
@@ -2795,7 +2795,7 @@ A jquery plugin to enhance image maps.
      * Clear any active tooltip or highlight
      *
      * @param  {MapData} me The MapData context
-     * @param  {EventData} e jquery event data
+     * @param  {EventData} e jQuery event data
      * @return {[type]}   [description]
      */
     
@@ -2816,7 +2816,7 @@ A jquery plugin to enhance image maps.
      * Mouse click event handler
      *
      * @param  {MapData} me The MapData context
-     * @param  {EventData} e jquery event data
+     * @param  {EventData} e jQuery event data
      * @return {[type]}   [description]
      */
     
@@ -3329,7 +3329,7 @@ A jquery plugin to enhance image maps.
                 opts.mapKey = 'data-mapster-key';
             }
 
-            // the [attribute] selector is broken on old IE with jquery. hasVml() is a quick and dirty
+            // the [attribute] selector is broken on old IE with jQuery. hasVml() is a quick and dirty
             // way to test for that
             
             sel = m.hasVml() ? 'area' :
@@ -3489,7 +3489,7 @@ A jquery plugin to enhance image maps.
             g.clearHighlight();
         }
     };
-} (jquery));
+} (jQuery));
 /* areadata.js
    AreaData and MapArea protoypes
 */
@@ -3787,7 +3787,7 @@ A jquery plugin to enhance image maps.
             });
         }
     };
-} (jquery));
+} (jQuery));
 /* areacorners.js
    determine the best place to put a box of dimensions (width,height) given a circle, rect or poly
 */
@@ -3800,7 +3800,7 @@ A jquery plugin to enhance image maps.
      * Compute positions that will place a target with dimensions [width,height] outside 
      * but near the boundaries of the elements "elements". When an imagemap is passed, the 
      *
-     * @param  {Element|Element[]} elements An element or an array of elements (such as a jquery object)
+     * @param  {Element|Element[]} elements An element or an array of elements (such as a jQuery object)
      * @param  {Element} image The image to which area elements are bound, if this is an image map.
      * @param  {Element} container The contianer in which the target must be constrained (or document, if missing)
      * @param  {int} width The width of the target object
@@ -3937,7 +3937,7 @@ A jquery plugin to enhance image maps.
         }
         return nest;
     };
-} (jquery));
+} (jQuery));
 /* scale.js: resize and zoom functionality
    requires areacorners.js, when.js
 */
@@ -3969,7 +3969,7 @@ A jquery plugin to enhance image maps.
     // Scale a set of AREAs, return old data as an array of objects
     m.utils.scaleMap = function (image, imageRaw, scale) {
         
-        // stunningly, jquery width can return zero even as width does not, seems to happen only
+        // stunningly, jQuery width can return zero even as width does not, seems to happen only
         // with adBlock or maybe other plugins. These must interfere with onload events somehow.
 
 
@@ -4263,7 +4263,7 @@ A jquery plugin to enhance image maps.
 
     };
     */
-} (jquery));
+} (jQuery));
 /* tooltip.js - tooltip functionality
    requires areacorners.js
 */
@@ -4292,7 +4292,7 @@ A jquery plugin to enhance image maps.
     /**
      * Show a tooltip positioned near this area.
      * 
-     * @param {string|jquery} html A string of html or a jquery object containing the tooltip content.
+     * @param {string|jquery} html A string of html or a jQuery object containing the tooltip content.
      * @param {string|jquery} [template] The html template in which to wrap the content
      * @param {string|object} [css] CSS to apply to the outermost element of the tooltip 
      * @return {jquery} The tooltip that was created
@@ -4301,8 +4301,8 @@ A jquery plugin to enhance image maps.
     function createToolTip(html, template, css) {
         var tooltip;
 
-        // wrap the template in a jquery object, or clone the template if it's already one.
-        // This assumes that anything other than a string is a jquery object; if it's not jquery will
+        // wrap the template in a jQuery object, or clone the template if it's already one.
+        // This assumes that anything other than a string is a jQuery object; if it's not jQuery will
         // probably throw an error.
         
         if (template) {
@@ -4426,7 +4426,7 @@ A jquery plugin to enhance image maps.
     /**
      * Show a tooltip.
      *
-     * @param {string|jquery}   [tooltip]       A string of html or a jquery object containing the tooltip content.
+     * @param {string|jquery}   [tooltip]       A string of html or a jQuery object containing the tooltip content.
      * 
      * @param {string|jquery}   [target]        The target of the tooltip, to be used to determine positioning. If null,
      *                                          absolute position values must be passed with left and top.
@@ -4437,7 +4437,7 @@ A jquery plugin to enhance image maps.
      *
      *
      * 
-     * @param {object|string|jquery} [options]  options to apply when creating this tooltip - OR -
+     * @param {object|string|jQuery} [options]  options to apply when creating this tooltip - OR -
      *                                          The markup, or a jquery object, containing the data for the tooltip 
      *                                         
      *  @config {string}        [closeEvents]   A string with one or more comma-separated values that determine when the tooltip
@@ -4486,9 +4486,9 @@ A jquery plugin to enhance image maps.
     /**
      * Show a tooltip positioned near this area.
       *
-     * @param {string|jquery}   [content]       A string of html or a jquery object containing the tooltip content.
+     * @param {string|jquery}   [content]       A string of html or a jQuery object containing the tooltip content.
      
-     * @param {object|string|jquery} [options]  options to apply when creating this tooltip - OR -
+     * @param {object|string|jQuery} [options]  options to apply when creating this tooltip - OR -
      *                                          The markup, or a jquery object, containing the data for the tooltip 
      *  @config {string|jquery}   [container]     An element within which the tooltip must be bounded
      *  @config {bool}          [template]      a template to use instead of the default. If this property exists and is null,
@@ -4577,9 +4577,9 @@ A jquery plugin to enhance image maps.
 
     /**
      * Parse an object that could be a string, a jquery object, or an object with a "contents" property
-     * containing html or a jquery object.
+     * containing html or a jQuery object.
      * 
-     * @param  {object|string|jquery} options The parameter to parse
+     * @param  {object|string|jQuery} options The parameter to parse
      * @return {string|jquery} A string or jquery object
      */
     function getHtmlFromOptions(options) {
@@ -4610,8 +4610,8 @@ A jquery plugin to enhance image maps.
      * 
      * @param {object|string|jquery} [options] options to apply when creating this tooltip - OR -
      *                                         The markup, or a jquery object, containing the data for the tooltip 
-     *  @config {string|jquery} [content]   the inner content of the tooltip; the tooltip text or HTML
-     *  @config {Element|jquery} [container]   the inner content of the tooltip; the tooltip text or HTML
+     *  @config {string|jQuery} [content]   the inner content of the tooltip; the tooltip text or HTML
+     *  @config {Element|jQuery} [container]   the inner content of the tooltip; the tooltip text or HTML
      *  @config {bool}          [template]  a template to use instead of the default. If this property exists and is null,
      *                                      then no template will be used.
      *  @config {int}           [offsetx]   the horizontal amount to offset the tooltip.
@@ -4619,7 +4619,7 @@ A jquery plugin to enhance image maps.
      *  @config {string|object} [css]       CSS to apply to the outermost element of the tooltip 
      *  @config {string|object} [css] CSS to apply to the outermost element of the tooltip 
      *  @config {bool}          [fadeDuration] When non-zero, the duration in milliseconds of a fade-in effect for the tooltip.
-     * @return {jquery} The jquery object
+     * @return {jQuery} The jQuery object
      */
     
     m.impl.tooltip = function (key,options) {
@@ -4665,4 +4665,4 @@ A jquery plugin to enhance image maps.
         }
     )).go();
     };
-} (jquery));
+} (jQuery));

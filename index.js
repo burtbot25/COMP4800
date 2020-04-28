@@ -3,7 +3,7 @@ let app = express();
 let path = require('path');
 let bodyParser = require('body-parser');
 let db = require('./util/database');
-
+var $ = require( "jquery" );
 const expressHbs = require('express-handlebars');
 app.engine(
     'hbs',
