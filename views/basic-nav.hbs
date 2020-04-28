@@ -1,0 +1,84 @@
+<div class="heading">
+    Basic Navigation
+</div>
+<div class="campus-map">
+    <div class="col-sm-2">
+        <div class="sidenav">
+            <div class="sidenav-cont">
+                <button class="dropdown-btn">Timing
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>Student Housing to NE01</button>
+                    <button>Willingdon Avenue to Wayburne Drive</button>
+                    <button>CARI Building to Wayburne Drive</button>
+                </div>
+                <button class="dropdown-btn">Transit Information
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>Northbound Willingdon Ave @ Canada Way</button>
+                    <button>Southbound Willingdon Ave @ Canada Way</button>
+                    <button>Northbound Willingdon Ave @ Goard Way</button>
+                    <button>Southbound Willingdon Ave @ Goard Way</button>
+                    <button>Northbound Willingdon Ave @ Sanderson Way</button>
+                    <button>Southbound Willingdon Ave @ Sanderson Way</button>
+                    <button>Northbound Willingdon Ave @ Deer Lake Parkway</button>
+                    <button>Eastbound Canada Way @ Willingdon Ave</button>
+                    <button>Westbound Canada Way @ Willingdon Ave</button>
+                    <button>Eastbound Canada Way @ Beta Ave</button>
+                    <button>Westbound Canada Way @ Beta Ave</button>
+                </div>
+                <button class="dropdown-btn">Navigating Campus
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>Campus Square</button>
+                    <button>CARI Building</button>
+                    <button>Telus Theatre</button>
+                    <button>Student Housing</button>
+                    <button>Recreation Centre</button>
+                    <button>Trades Buildings</button>
+                    <button>Accessibility Routes</button>
+                </div>
+                <button class="dropdown-btn">Parking Information
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>Student Parking</button>
+                    <button>Employee Parking</button>
+                    <button>Visitor Parking</button>
+                    <button>Accessible Parking</button>
+                    <button>EV Charging</button>
+                    <button>Carshare Parking</button>
+                    <button>Pay Station</button>
+                    <button>Motorcycle Area</button>
+                    <button>Bike Repair</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <img src="/media/bcitmap.png" alt="BCIT Burnaby Campus Map">
+        <form action="/main_menu" method="GET">
+            <button type="submit" name="mainMenu" id="main-menu-btn">Main Menu</button>
+        </form>
+    </div>
+</div>
+
+<script>
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+        if (dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        } else {
+            dropdownContent.style.display = "block";
+        }
+    });
+}
+</script>

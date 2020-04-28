@@ -1,0 +1,60 @@
+<div class="heading">
+    Other Key Places
+</div>
+<div class="campus-map">
+    <div class="col-sm-2">
+        <div class="sidenav">
+            <div class="sidenav-cont">
+                <button class="dropdown-btn">Food &amp; Coffee
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>All-Day Breakfast & Lunch</button>
+                    <button>Austin Grill Express</button>
+                    <button>Booster Juice</button>
+                    <button>CARI Cafeteria</button>
+                    <button>Fuse Cafe</button>
+                    <button>Gateway Cafe</button>
+                    <button>Grill &amp; Co</button>
+                    <button>Market Kitchen</button>
+                    <button>Poké Pick</button>
+                    <button>Smokes Poutinerie</button>
+                    <button>The Rix Cafe</button>
+                    <button>Tim Hortons</button>
+                    <button>Triple O's</button>
+                </div>
+                <button class="dropdown-btn">Study Areas
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>Library &amp; ehPod</button>
+                    <button>Study Areas and Rooms</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <img src="/media/bcitmap.png" alt="BCIT Burnaby Campus Map">
+        <form action="/main_menu" method="GET">
+            <button type="submit" name="mainMenu" id="main-menu-btn">Main Menu</button>
+        </form>
+    </div>
+</div>
+
+<script>
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+var dropdown = document.getElementsByClassName("dropdown-btn");
+var i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+  this.classList.toggle("active");
+  var dropdownContent = this.nextElementSibling;
+  if (dropdownContent.style.display === "block") {
+  dropdownContent.style.display = "none";
+  } else {
+  dropdownContent.style.display = "block";
+  }
+  });
+}
+</script>

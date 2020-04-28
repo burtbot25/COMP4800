@@ -1,0 +1,251 @@
+<div class="heading">
+    Academic Buildings
+</div>
+<div class="campus-map">
+    <div class="col-sm-2">
+        <div class="sidenav">
+            <div class="sidenav-cont">
+                <button class="dropdown-btn" onclick="selectAllBusiness()">School of Business
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button id="NEBuildings" onclick="selectGroup()">NE BUILDINGS</button>
+                    <button id="SW09Building" onclick="selectSW()">SW09</button>
+                    <button id="SEBUILDINGS" onclick="selectSE()">SE16/06</button>
+                    <button id="NE01Building" onclick="selectNE01()">NE01</button>
+                </div>
+                <button class="dropdown-btn">School of Computing and Academic Studies
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>SW03</button>
+                    <button>SW05</button>
+                    <button>SW05</button>
+                    <button>NW01</button>
+                </div>
+                <button class="dropdown-btn">School of Construction and the Environment
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>SW03</button>
+                    <button>SW09</button>
+                    <button>NW06</button>
+                    <button>SE01</button>
+                    <button>NE01</button>
+                    <button>NE04</button>
+                    <button>NE06</button>
+                    <button>NE07</button>
+                    <button>NE08</button>
+                </div>
+                <button class="dropdown-btn">School of Energy
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>SW03</button>
+                    <button>SW09</button>
+                    <button>SW05</button>
+                    <button>NW06</button>
+                    <button>SE08</button>
+                    <button>NE03</button>
+                    <button>NE10</button>
+                    <button>NE12</button>
+                </div>
+                <button class="dropdown-btn">School of Health Sciences
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>SW03</button>
+                    <button>SE09</button>
+                    <button>SW05</button>
+                    <button>NW01</button>
+                </div>
+                <button class="dropdown-btn">School of Transportation
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button>SE06</button>
+                    <button>SE09</button>
+                    <button>SW05</button>
+                    <button>NW01</button>
+                    <button>NE16</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <img src="/media/bcitmap.png" usemap="#image-map">
+        <map name="image-map">
+            <area href="#" class="NE" full="ne09 building" id="NE09" building="NE09" target="" alt="" title="" href=""
+                coords="67,203,141,247" shape="rect">
+            <area href="#" class="NE" full="NE10 building" id="NE10" building="NE10" target="" alt="" title="" href=""
+                coords="163,192,166,235,180,238,206,238,226,233,228,190,193,191" shape="poly">
+            <area href="#" class="NE" full="NE12 building" id="NE12" building="NE12" target="" alt="" title="" href=""
+                coords="234,191,236,235,277,238,279,249,287,249,287,232,287,191" shape="poly">
+            <area target="" class="NE" full="NE01 Building" id="NE01" building="NE01" alt="NE01" title="NE01" href=""
+                coords="146,451,67,353" shape="rect">
+            <area target="" class="NE" full="NE04 Building" id="NE04" building="NE04" alt="NE04" title="NE04" href=""
+                coords="161,350,214,390" shape="rect">
+            <area target="" class="NE" full="NE02 Building" id="NE02" building="NE02" alt="NE02" title="NE02" href=""
+                coords="162,397,214,460" shape="rect">
+            <area target="" class="SE" full="SE16 Building" id="SE16" building="SE16" alt="" title="" href=""
+                coords="699,340,687,385,666,393,673,436,714,442,753,426,764,411,735,394,735,385,744,365,713,361,713,343"
+                shape="poly">
+            <area target="" class="SE" full="SE06 Building" id="SE06" building="SE06" alt="" title="" href=""
+                coords="490,406,458,326" shape="rect">
+            <area target="" class="SW" full="SW09 Building" id="SW09" building="SW09" alt="" title="" href=""
+                coords="705,485,760,589" shape="rect">
+        </map>
+        <form action="/main_menu" method="GET">
+            <button type="submit" name="mainMenu" id="main-menu-btn">Main Menu</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+
+    /* John's code for highlighting buildings */
+
+    //intial tooltip enabling for all the buildings 
+    /*
+     $('img').mapster();
+         $('area').bind('mouseover', function() {
+          $('img').mapster('tooltip',this,$(this).attr('full'));
+    
+        });
+    */
+
+    /* Sets what key to use when mapping for mapster*/
+    var basic_opts = {
+        mapKey: 'building'
+    };
+
+    /* starting values for mapster */
+    var initial_opts = $.extend({}, basic_opts,
+        {
+            staticbuilding: true,
+            fill: false,
+            stroke: true,
+            strokeWidth: 2,
+            strokeColor: 'ff0000'
+        });
+    /*
+$(document).ready(function(){
+    $('#NEBuildings').click(function() {
+        selectGroup(); 
+    });
+    $('#SW09Building').click(function() {
+        selectSW(); 
+    });
+    $('#SEBUILDINGS').click(function() {
+        selectSE(); 
+    });
+    $('#NE01Building').click(function() {
+        selectNE01(); 
+    });
+
+});*/
+
+    /* group selection functions */
+    function selectGroup() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'NE01,NE04,NE03,NE12,NE09,NE10', {
+                fill: true,
+                fillColor: '00ff00'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#NE01,#NE04,#NE03,#NE12,#NE09,#NE10').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
+
+        });
+
+    }
+
+    function selectNE01() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'NE01', {
+                fill: true,
+                fillColor: 'FF0000'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#NE01').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
+
+        });
+    }
+
+    function selectSE() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'SE06,SE16', {
+                fill: true,
+                fillColor: '800000'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#SE06,#SE16').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
+
+        });
+    }
+
+    function selectSW() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'SW09', {
+                fill: true,
+                fillColor: 'FFFF00'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#SW09').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
+
+        });
+    }
+
+    function selectAllBusiness() {
+        /*selects all business schools, disable for now*/
+        /*
+        $('img').mapster(initial_opts)
+            .mapster('set',true,'NE01,NE04,NE03,NE12,NE09,NE10,SW09,SE06,SE16', {
+                fill: true,
+                fillColor: 'FFFF00'
+            })
+            .mapster('snapshot')
+            //.mapster('rebind',basic_opts);
+            $('area').bind('mouseover', function() {
+              $('img').mapster('tooltip',this,$(this).attr('full'));
+    
+            });
+            */
+    }
+
+    /* end group selection functions */
+</script>
