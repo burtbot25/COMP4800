@@ -14,6 +14,7 @@
                     <button id="SEBUILDINGS" onclick="selectSE()">SE Buildings</button>
                     <button id="SWBuildings" onclick="selectSW()">SW Buildings</button>
                     <button id="CARIBuilding" onclick="selectCARI()">CARI</button>
+                    <button id="BlueBuilding" onclick="selectBLUE()">Blue</button>
                 </div>
                 <button class="dropdown-btn">School of Computing and Academic Studies
                     <i class="fa fa-caret-down"></i>
@@ -217,21 +218,21 @@
         });
     }
 
-    function selectAllBusiness() {
-        /*selects all business schools, disable for now*/
-        /*
+    function selectBLUE() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
         $('img').mapster(initial_opts)
-            .mapster('set',true,'NE01,NE04,NE03,NE12,NE09,NE10,SW09,SE06,SE16', {
+            .mapster('set', true, 'SE01,SE04,SE02,SE06,SE08,SE09,SE12,SE10,SE14,SE16', {
                 fill: true,
                 fillColor: 'FFFF00'
             })
             .mapster('snapshot')
-            //.mapster('rebind',basic_opts);
-            $('area').bind('mouseover', function() {
-              $('img').mapster('tooltip',this,$(this).attr('full'));
-    
-            });
-            */
+            .mapster('rebind', basic_opts);
+        $('#SE01,#SE04,#SE02,#SE06,#SE08,#SE09,#SE12,#SE10,#SE14,#SE16').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
+
+        });
     }
     /* end group selection functions */
 </script>
