@@ -5,14 +5,14 @@
     <div class="col-sm-2">
         <div class="sidenav">
             <div class="sidenav-cont">
-                <button class="dropdown-btn" onclick="selectAllBusiness()">School of Business
+                <button class="dropdown-btn" onclick="">School of Business
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="NEBuildings" onclick="selectGroup()">NE BUILDINGS</button>
-                    <button id="SW09Building" onclick="selectSW()">SW09</button>
-                    <button id="SEBUILDINGS" onclick="selectSE()">SE16/06</button>
-                    <button id="NE01Building" onclick="selectNE01()">NE01</button>
+                    <button id="NEBuildings" onclick="selectGroup()">SELECT BUILDINGS</button>
+                    <button id="SW09Building" onclick="">SW09</button>
+                    <button id="SEBUILDINGS" onclick="">SE16/06</button>
+                    <button id="NE01Building" onclick="">NE01</button>
                 </div>
                 <button class="dropdown-btn">School of Computing and Academic Studies
                     <i class="fa fa-caret-down"></i>
@@ -73,27 +73,18 @@
         </div>
     </div>
     <div class="col-sm-10">
-        <img src="/media/bcitmap.png" usemap="#image-map">
+        <img src="/media/burnaby_campus_map.png" usemap="#image-map">
         <map name="image-map">
-            <area href="#" class="NE" full="ne09 building" id="NE09" building="NE09" target="" alt="" title="" href=""
-                coords="67,203,141,247" shape="rect">
-            <area href="#" class="NE" full="NE10 building" id="NE10" building="NE10" target="" alt="" title="" href=""
-                coords="163,192,166,235,180,238,206,238,226,233,228,190,193,191" shape="poly">
-            <area href="#" class="NE" full="NE12 building" id="NE12" building="NE12" target="" alt="" title="" href=""
-                coords="234,191,236,235,277,238,279,249,287,249,287,232,287,191" shape="poly">
-            <area target="" class="NE" full="NE01 Building" id="NE01" building="NE01" alt="NE01" title="NE01" href=""
-                coords="146,451,67,353" shape="rect">
-            <area target="" class="NE" full="NE04 Building" id="NE04" building="NE04" alt="NE04" title="NE04" href=""
-                coords="161,350,214,390" shape="rect">
-            <area target="" class="NE" full="NE02 Building" id="NE02" building="NE02" alt="NE02" title="NE02" href=""
-                coords="162,397,214,460" shape="rect">
-            <area target="" class="SE" full="SE16 Building" id="SE16" building="SE16" alt="" title="" href=""
-                coords="699,340,687,385,666,393,673,436,714,442,753,426,764,411,735,394,735,385,744,365,713,361,713,343"
-                shape="poly">
-            <area target="" class="SE" full="SE06 Building" id="SE06" building="SE06" alt="" title="" href=""
-                coords="490,406,458,326" shape="rect">
-            <area target="" class="SW" full="SW09 Building" id="SW09" building="SW09" alt="" title="" href=""
-                coords="705,485,760,589" shape="rect">
+            <area href="" id="SE01" building="SE01" full="tooltip" coords="1331,237,1127,235,1127,246,973,247,973,309,1048,309,1069,330,1048,363,1059,377,1073,370,1080,377,1091,377,1102,391,1116,381,1130,377,1137,363,1177,359,1184,338,1295,338,1306,302,1313,280,1331,284" shape="poly">
+            <area href="" id="SE04" building="SE04" full="tooltip" coords="1123,434,1019,434,1019,462,1037,466,1041,530,1130,534,1130,484,1120,484,1130,484" shape="poly">
+            <area href="" id="SE02" building="SE02" full="tooltip" coords="1159,566,1009,563,1009,703,987,703,995,760,980,764,977,810,1156,814,1152,771,1141,771,1138,645,1156,641" shape="poly">
+            <area href="" id="SE06" building="SE06" full="tooltip" coords="1166,419,1238,419,1238,563,1267,563,1267,649,1163,649" shape="poly">
+            <area href="" id="SE09" building="SE09" full="tooltip" coords="1338,681,1392,720" shape="rect">
+            <area href="" id="SE08" building="SE08" full="tooltip" coords="1335,681,1209,681,1209,713,1166,713,1166,749,1202,749,1206,792,1331,788" shape="poly">
+            <area href="" id="SE12" building="SE12" full="tooltip" coords="1338,724,1639,727,1643,799,1338,799" shape="poly">
+            <area href="" id="SE14" building="SE14" full="tooltip" coords="1567,720,1567,670,1600,670,1596,505,1610,505,1610,487,1625,487,1625,505,1668,505,1674,681,1631,678,1632,720" shape="poly">
+            <area href="" id="SE10" building="SE10" full="tooltip" coords="1495,487,1528,487,1528,508,1549,508,1546,530,1556,530,1556,601,1571,623,1571,666,1492,669,1492,601,1474,601,1474,512,1495,508" shape="poly">
+            <area href="" id="SE16" building="SE16" full="tooltip" coords="1800,482,1800,580,1800,616,1778,632,1742,632,1742,715,1753,715,1750,736,1764,740,1764,754,1900,754,1904,747,1954,743,1954,718,1964,718,1961,708,1986,708,1982,682,1964,675,1964,647,1911,643,1911,614,1932,611,1936,546,1868,546,1864,495,1828,495,1828,484" shape="poly">
         </map>
         {{!-- <form action="/main_menu" method="GET">
             <button type="submit" name="mainMenu" id="main-menu-btn">Main Menu</button>
@@ -120,16 +111,6 @@
     }
 
     /* John's code for highlighting buildings */
-
-    //intial tooltip enabling for all the buildings 
-    /*
-     $('img').mapster();
-         $('area').bind('mouseover', function() {
-          $('img').mapster('tooltip',this,$(this).attr('full'));
-    
-        });
-    */
-
     /* Sets what key to use when mapping for mapster*/
     var basic_opts = {
         mapKey: 'building'
@@ -142,24 +123,8 @@
             fill: false,
             stroke: true,
             strokeWidth: 2,
-            strokeColor: 'ff0000'
+            strokeColor: 'ffff00'
         });
-    /*
-$(document).ready(function(){
-    $('#NEBuildings').click(function() {
-        selectGroup(); 
-    });
-    $('#SW09Building').click(function() {
-        selectSW(); 
-    });
-    $('#SEBUILDINGS').click(function() {
-        selectSE(); 
-    });
-    $('#NE01Building').click(function() {
-        selectNE01(); 
-    });
-
-});*/
 
     /* group selection functions */
     function selectGroup() {
@@ -167,86 +132,17 @@ $(document).ready(function(){
             $('img').mapster('tooltip');
         });
         $('img').mapster(initial_opts)
-            .mapster('set', true, 'NE01,NE04,NE03,NE12,NE09,NE10', {
+            .mapster('set', true, 'SE01,SE02,SE04,SE06,SE08,SE10,SE12,SE14,SE16,SE09', {
                 fill: true,
-                fillColor: '00ff00'
+                fillColor: 'ffff00'
             })
             .mapster('snapshot')
             .mapster('rebind', basic_opts);
-        $('#NE01,#NE04,#NE03,#NE12,#NE09,#NE10').bind('mouseover', function () {
+        $('#SE01,#SE02,#SE04,#SE06,#SE08,#SE10,#SE12,#SE14,#SE16,#SE09').bind('mouseover', function () {
             $('img').mapster('tooltip', this, $(this).attr('full'));
 
         });
 
     }
-
-    function selectNE01() {
-        $('area').bind('mouseover', function () {
-            $('img').mapster('tooltip');
-        });
-        $('img').mapster(initial_opts)
-            .mapster('set', true, 'NE01', {
-                fill: true,
-                fillColor: 'FF0000'
-            })
-            .mapster('snapshot')
-            .mapster('rebind', basic_opts);
-        $('#NE01').bind('mouseover', function () {
-            $('img').mapster('tooltip', this, $(this).attr('full'));
-
-        });
-    }
-
-    function selectSE() {
-        $('area').bind('mouseover', function () {
-            $('img').mapster('tooltip');
-        });
-        $('img').mapster(initial_opts)
-            .mapster('set', true, 'SE06,SE16', {
-                fill: true,
-                fillColor: '800000'
-            })
-            .mapster('snapshot')
-            .mapster('rebind', basic_opts);
-        $('#SE06,#SE16').bind('mouseover', function () {
-            $('img').mapster('tooltip', this, $(this).attr('full'));
-
-        });
-    }
-
-    function selectSW() {
-        $('area').bind('mouseover', function () {
-            $('img').mapster('tooltip');
-        });
-        $('img').mapster(initial_opts)
-            .mapster('set', true, 'SW09', {
-                fill: true,
-                fillColor: 'FFFF00'
-            })
-            .mapster('snapshot')
-            .mapster('rebind', basic_opts);
-        $('#SW09').bind('mouseover', function () {
-            $('img').mapster('tooltip', this, $(this).attr('full'));
-
-        });
-    }
-
-    function selectAllBusiness() {
-        /*selects all business schools, disable for now*/
-        /*
-        $('img').mapster(initial_opts)
-            .mapster('set',true,'NE01,NE04,NE03,NE12,NE09,NE10,SW09,SE06,SE16', {
-                fill: true,
-                fillColor: 'FFFF00'
-            })
-            .mapster('snapshot')
-            //.mapster('rebind',basic_opts);
-            $('area').bind('mouseover', function() {
-              $('img').mapster('tooltip',this,$(this).attr('full'));
-    
-            });
-            */
-    }
-
     /* end group selection functions */
 </script>
