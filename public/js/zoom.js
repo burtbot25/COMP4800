@@ -1,7 +1,4 @@
 let map = document.getElementById('map');
-let img = document.getElementById('image-map');
-console.log(img.width);
-console.log(img.height);
 
 const pz = panzoom(map, {
     // transformOrigin : { x: 0.5, y: 0.5 },
@@ -13,5 +10,3 @@ const pz = panzoom(map, {
         return pz.getTransform().scale === 1;
     }
 });
-
-console.log(pz.getTransform());
