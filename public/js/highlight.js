@@ -15,138 +15,91 @@ $( document ).ready(function() {
        });
    }
 });
-   /* John's code for highlighting buildings */
+  /* John's code for highlighting buildings */
+    /* Sets what key to use when mapping for mapster*/
+    var basic_opts = {
+        mapKey: 'building'
+    };
 
-   //intial tooltip enabling for all the buildings 
-   /*
-    $('img').mapster();
-        $('area').bind('mouseover', function() {
-         $('img').mapster('tooltip',this,$(this).attr('full'));
-   
-       });
-   */
+    /* starting values for mapster */
+    var initial_opts = $.extend({}, basic_opts,
+        {
+            staticbuilding: true,
+            fill: false,
+            stroke: true,
+            strokeWidth: 2,
+            strokeColor: 'ffff00'
+        });
 
-   /* Sets what key to use when mapping for mapster*/
-   var basic_opts = {
-       mapKey: 'building'
-   };
+    /* group selection functions */
+    function selectNE() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'NE09,NE07,NE10,NE12,NE08,NE06,NE28,NE16,NE18,NE24,NE22,NE20', {
+                fill: true,
+                fillColor: 'FFFF00'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#NE09,#NE07,#NE10,#NE12,#NE08,#NE06,#NE28,#NE16,#NE18,#NE24,#NE22,#NE20').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
 
-   /* starting values for mapster */
-   var initial_opts = $.extend({}, basic_opts,
-       {
-           staticbuilding: true,
-           fill: false,
-           stroke: true,
-           strokeWidth: 2,
-           strokeColor: 'ff0000'
-       });
-   /*
-$(document).ready(function(){
-   $('#NEBuildings').click(function() {
-       selectGroup(); 
-   });
-   $('#SW09Building').click(function() {
-       selectSW(); 
-   });
-   $('#SEBUILDINGS').click(function() {
-       selectSE(); 
-   });
-   $('#NE01Building').click(function() {
-       selectNE01(); 
-   });
+        });
 
-});*/
+    }
 
-   /* group selection functions */
-   function selectGroup() {
+    function selectSE() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'SE19,SE30,SE40,SE41,SE42,SE50', {
+                fill: true,
+                fillColor: '800000'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#SE19,#SE30,#SE40,#SE41,#SE42,#SE50').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
 
-       $('area').bind('mouseover', function () {
-           console.log("test")
-           $('img').mapster('tooltip');
-       });
-       $('img').mapster(initial_opts)
-           .mapster('set', true, 'NE01,NE04,NE03,NE12,NE09,NE10', {
-               fill: true,
-               fillColor: '00ff00'
-           }, function() {
-            console.log("test")
-           })
-           .mapster('snapshot')
-           .mapster('rebind', basic_opts);
-       $('#NE01,#NE04,#NE03,#NE12,#NE09,#NE10').bind('mouseover', function () {
-           $('img').mapster('tooltip', this, $(this).attr('full'));
-       });
+        });
+    }
 
-   }
+    function selectSW() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'SW01,SW02,SW03,SW05,SW09,SW10,SW11,SW12,SW13,SW14,SW15,SW16', {
+                fill: true,
+                fillColor: '138C40'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#SW01,#SW02,#SW03,#SW05,#SW09,#SW10,#SW11,#SW12,#SW13,#SW14,#SW15,#SW16').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
 
-   function selectNE01() {
-       $('area').bind('mouseover', function () {
-           $('img').mapster('tooltip');
-       });
-       $('img').mapster(initial_opts)
-           .mapster('set', true, 'NE01', {
-               fill: true,
-               fillColor: 'FF0000'
-           })
-           .mapster('snapshot')
-           .mapster('rebind', basic_opts);
-       $('#NE01').bind('mouseover', function () {
-           $('img').mapster('tooltip', this, $(this).attr('full'));
+        });
+    }
+    
+    function selectCARI() {
+        $('area').bind('mouseover', function () {
+            $('img').mapster('tooltip');
+        });
+        $('img').mapster(initial_opts)
+            .mapster('set', true, 'CARI', {
+                fill: true,
+                fillColor: 'FF0000'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+        $('#CARI').bind('mouseover', function () {
+            $('img').mapster('tooltip', this, $(this).attr('full'));
 
-       });
-   }
-
-   function selectSE() {
-       $('area').bind('mouseover', function () {
-           $('img').mapster('tooltip');
-       });
-       $('img').mapster(initial_opts)
-           .mapster('set', true, 'SE06,SE16', {
-               fill: true,
-               fillColor: '800000'
-           })
-           .mapster('snapshot')
-           .mapster('rebind', basic_opts);
-       $('#SE06,#SE16').bind('mouseover', function () {
-           $('img').mapster('tooltip', this, $(this).attr('full'));
-
-       });
-   }
-
-   function selectSW() {
-       $('area').bind('mouseover', function () {
-           $('img').mapster('tooltip');
-       });
-       $('img').mapster(initial_opts)
-           .mapster('set', true, 'SW09', {
-               fill: true,
-               fillColor: 'FFFF00'
-           })
-           .mapster('snapshot')
-           .mapster('rebind', basic_opts);
-       $('#SW09').bind('mouseover', function () {
-           $('img').mapster('tooltip', this, $(this).attr('full'));
-
-       });
-   }
-
-   function selectAllBusiness() {
-       /*selects all business schools, disable for now*/
-       /*
-       $('img').mapster(initial_opts)
-           .mapster('set',true,'NE01,NE04,NE03,NE12,NE09,NE10,SW09,SE06,SE16', {
-               fill: true,
-               fillColor: 'FFFF00'
-           })
-           .mapster('snapshot')
-           //.mapster('rebind',basic_opts);
-           $('area').bind('mouseover', function() {
-             $('img').mapster('tooltip',this,$(this).attr('full'));
-   
-           });
-           */
-   }
-
-   /* end group selection functions */
+        });
+    }
+    /* end group selection functions */
 
  
