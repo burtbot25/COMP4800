@@ -92,7 +92,18 @@
             <area target="" class="SE" full="SE50 Building" id="SE50" building="SE50" alt="SE50" title="SE50" href="" coords="3679,174,3679,239,3647,239,3647,296,3726,292,3730,303,3776,303,3776,289,3801,289,3805,235,3762,235,3783,231,3783,217,3787,217,3790,203,3787,189,3765,174" shape="poly">
             
 <!--            SW Buildings-->
-            
+            <area href="" id="SW01" building="SW01" full="tooltip" coords="1338,923,1334,838,1302,838,1302,879,1270,877,1270,841,1105,838,1105,895,1119,897,1119,927,1048,927,1026,954,1044,988,1084,991,1087,1102,1073,1144,1141,1133,1316,1135,1313,1020,1298,995,1349,999,1363,959,1356,934" shape="poly">
+            <area href="" id="SW02" building="SW02" full="tooltip" coords="1313,1083,1313,1112,1345,1141,1370,1141,1399,1108,1442,1098,1406,1090,1352,1040" shape="poly">
+            <area href="" id="SW03" building="SW03" full="tooltip" coords="1574,1105,1574,1148,1488,1148,1470,1148,1449,1133,1427,1087,1420,983,1356,983,1367,937,1427,935,1424,818,1445,811,1445,786,1492,797,1499,962,1481,983,1481,1098,1546,1090" shape="poly">
+            <area href="" id="SW05" building="SW05" full="tooltip" coords="1520,933,1542,929,1563,921,1563,945,1599,940,1610,972,1599,1008,1578,999,1560,1019,1542,1015,1528,1002,1524,977" shape="poly">
+            <area href="" id="SW09" building="SW09" full="tooltip" coords="1836,857,1986,860,1986,1018,1975,1036,1975,1071,1993,1079,1993,1147,1832,1150" shape="poly">
+            <area href="" id="SW10" building="SW10" full="tooltip" coords="2244,768,2233,776,2179,776,2176,797,2186,829,2222,833,2272,818,2276,768" shape="poly">
+            <area href="" id="SW11" building="SW11" full="tooltip" coords="2380,869,2344,861,2330,878,2283,872,2280,897,2294,935,2330,926,2376,925" shape="poly">
+            <area href="" id="SW12" building="SW12" full="tooltip" coords="2423,747,2383,747,2369,754,2315,754,2312,783,2333,811,2365,808,2416,797" shape="poly">
+            <area href="" id="SW13" building="SW13" full="tooltip" coords="2527,828,2487,828,2480,842,2426,839,2423,860,2433,900,2473,896,2516,889" shape="poly">
+            <area href="" id="SW14" building="SW14" full="tooltip" coords="2559,730,2523,730,2509,748,2466,737,2459,759,2469,803,2501,795,2552,787" shape="poly">
+            <area href="" id="SW15" building="SW15" full="tooltip" coords="2638,826,2620,836,2577,833,2566,858,2580,894,2623,894,2666,886,2673,826" shape="poly">
+            <area href="" id="SW16" building="SW16" full="tooltip" coords="2702,718,2666,718,2652,736,2602,725,2602,747,2609,783,2645,783,2691,776" shape="poly">
             
 <!--            CARI Building-->
             <area target="" class="CARI" full="CARI Building" id="CARI" building="CARI" alt="CARI" title="CARI" href="" coords="2437,1306,2487,1267,2530,1317,2570,1317,2638,1249,2695,1303,2723,1271,2817,1364,2709,1468,2688,1446,2630,1503,2573,1439,2534,1439,2484,1493,2437,1450,2494,1396,2491,1360" shape="poly">
@@ -189,13 +200,13 @@
             $('img').mapster('tooltip');
         });
         $('img').mapster(initial_opts)
-            .mapster('set', true, 'SW09', {
+            .mapster('set', true, 'SW01,SW02,SW03,SW05,SW09,SW10,SW11,SW12,SW13,SW14,SW15,SW16', {
                 fill: true,
-                fillColor: 'FFFF00'
+                fillColor: '138C40'
             })
             .mapster('snapshot')
             .mapster('rebind', basic_opts);
-        $('#SW09').bind('mouseover', function () {
+        $('#SW01,#SW02,#SW03,#SW05,#SW09,#SW10,#SW11,#SW12,#SW13,#SW14,#SW15,#SW16').bind('mouseover', function () {
             $('img').mapster('tooltip', this, $(this).attr('full'));
 
         });
