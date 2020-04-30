@@ -78,13 +78,23 @@
         <img src="/media/burnaby_campus_map.png" usemap="#image-map">
         <map name="image-map">
 <!--            NE Buildings-->
-            
-            
+            <area target="" class="NE" full="NE09 Building" id="NE09" building="NE09" alt="NE09" title="NE09" href="" coords="184,133,184,255,350,255,350,133,310,133,297,172,237,172,241,133" shape="poly">
+            <area target="" class="NE" full="NE07 Building" id="NE07" building="NE07" alt="NE07" title="NE07" href="" coords="367,120,397,120,397,259,371,263" shape="poly">
+            <area target="" class="NE" full="NE08 Building" id="NE08" building="NE08" alt="NE08" title="NE08" href="" coords="419,259,545,259,545,276,589,276,589,346,550,346,550,363,428,363" shape="poly">
+            <area target="" class="NE" full="NE28 Building" id="NE28" building="NE28" alt="NE28" title="NE28" href="" coords="719,398,780,398,780,493,719,493" shape="poly">
+            <area target="" class="NE" full="NE16 Building" id="NE16" building="NE16" alt="NE16" title="NE16" href="" coords="798,502,911,502,937,484,937,346,906,324,806,324" shape="poly">
+            <area target="" class="NE" full="NE18 Building" id="NE18" building="NE18" alt="NE18" title="NE18" href="" coords="793,524,906,519,906,537,937,545,937,654,828,658,828,641,793,641" shape="poly">
+            <area target="" class="NE" full="NE24 Building" id="NE24" building="NE24" alt="NE24" title="NE24" href="" coords="724,636,780,632,780,728,724,728" shape="poly">
+            <area target="" class="NE" full="NE22 Building" id="NE22" building="NE22" alt="NE22" title="NE22" href="" coords="724,840,780,840,776,741,719,741" shape="poly">
+            <area target="" class="NE" full="NE20 Building" id="NE20" building="NE20" alt="NE20" title="NE20" href="" coords="837,667,902,667,902,710,937,710,937,845,902,836,902,814,867,810,858,840,819,840,815,814,798,801,798,715,837,715" shape="poly">
+            <area target="" class="NE" full="NE10 Building" id="NE10" building="NE10" alt="NE10" title="NE10" href="" coords="419,94,589,94,589,228,550,228,537,250,484,246,476,228,419,224" shape="poly">
+            <area target="" class="NE" full="NE12 Building" id="NE12" building="NE12" alt="NE12" title="NE12" href="" coords="606,98,754,102,763,272,728,267,728,241,615,241" shape="poly">
+            <area target="" class="NE" full="NE06 Building" id="NE06" building="NE06" alt="NE06" title="NE06" href="" coords="419,367,567,372,563,497,463,497,458,471,419,467" shape="poly">  
 <!--            NW Buildings-->
             
             
 <!--            SE Buildings-->
-            <area target="" class="SE" full="SE019 Building" id="SE019" building="SE019" alt="SE19" title="SE19" href="" coords="1732,143,1868,243" shape="rect">
+            <area target="" class="SE" full="SE19 Building" id="SE19" building="SE19" alt="SE19" title="SE19" href="" coords="1732,143,1868,243" shape="rect">
             <area target="" class="SE" full="SE30 Building" id="SE30" building="SE30" alt="SE30" title="SE30" href="" coords="2530,179,2659,258" shape="rect">
             <area target="" class="SE" full="SE40 Building" id="SE40" building="SE40" alt="SE40" title="SE40" href="" coords="3411,163,3407,249,3429,249,3429,265,3479,265,3479,249,3497,249,3500,163" shape="poly">
             <area target="" class="SE" full="SE41 Building" id="SE41" building="SE41" alt="SE41" title="SE41" href="" coords="3304,251,3361,372" shape="rect">
@@ -154,13 +164,13 @@
             $('img').mapster('tooltip');
         });
         $('img').mapster(initial_opts)
-            .mapster('set', true, 'NE01,NE04,NE03,NE12,NE09,NE10', {
+            .mapster('set', true, 'NE09,NE07,NE10,NE12,NE08,NE06,NE28,NE16,NE18,NE24,NE22,NE20', {
                 fill: true,
-                fillColor: '00ff00'
+                fillColor: 'FFFF00'
             })
             .mapster('snapshot')
             .mapster('rebind', basic_opts);
-        $('#NE01,#NE04,#NE03,#NE12,#NE09,#NE10').bind('mouseover', function () {
+        $('#NE09,#NE07,#NE10,#NE12,#NE08,#NE06,#NE28,#NE16,#NE18,#NE24,#NE22,#NE20').bind('mouseover', function () {
             $('img').mapster('tooltip', this, $(this).attr('full'));
 
         });
