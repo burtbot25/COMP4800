@@ -73,28 +73,32 @@
         </div>
     </div>
     <div class="col-sm-10">
-        <img src="/media/bcitmap.png" usemap="#image-map">
-        <map name="image-map">
-            <area href="#" class="NE" full="ne09 building" id="NE09" building="NE09" target="" alt="" title="" href=""
-                coords="67,203,141,247" shape="rect">
-            <area href="#" class="NE" full="NE10 building" id="NE10" building="NE10" target="" alt="" title="" href=""
-                coords="163,192,166,235,180,238,206,238,226,233,228,190,193,191" shape="poly">
-            <area href="#" class="NE" full="NE12 building" id="NE12" building="NE12" target="" alt="" title="" href=""
-                coords="234,191,236,235,277,238,279,249,287,249,287,232,287,191" shape="poly">
-            <area target="" class="NE" full="NE01 Building" id="NE01" building="NE01" alt="NE01" title="NE01" href=""
-                coords="146,451,67,353" shape="rect">
-            <area target="" class="NE" full="NE04 Building" id="NE04" building="NE04" alt="NE04" title="NE04" href=""
-                coords="161,350,214,390" shape="rect">
-            <area target="" class="NE" full="NE02 Building" id="NE02" building="NE02" alt="NE02" title="NE02" href=""
-                coords="162,397,214,460" shape="rect">
-            <area target="" class="SE" full="SE16 Building" id="SE16" building="SE16" alt="" title="" href=""
-                coords="699,340,687,385,666,393,673,436,714,442,753,426,764,411,735,394,735,385,744,365,713,361,713,343"
-                shape="poly">
-            <area target="" class="SE" full="SE06 Building" id="SE06" building="SE06" alt="" title="" href=""
-                coords="490,406,458,326" shape="rect">
-            <area target="" class="SW" full="SW09 Building" id="SW09" building="SW09" alt="" title="" href=""
-                coords="705,485,760,589" shape="rect">
-        </map>
+        <div style="overflow: auto">
+        <div id="map" style="display: inline-block;">
+            <img src="/media/bcitmap.png" usemap="#image-map" id="image-map">
+            <map name="image-map">
+                <area href="#" class="NE" full="ne09 building" id="NE09" building="NE09" target="" alt="" title="" href=""
+                    coords="67,203,141,247" shape="rect">
+                <area href="#" class="NE" full="NE10 building" id="NE10" building="NE10" target="" alt="" title="" href=""
+                    coords="163,192,166,235,180,238,206,238,226,233,228,190,193,191" shape="poly">
+                <area href="#" class="NE" full="NE12 building" id="NE12" building="NE12" target="" alt="" title="" href=""
+                    coords="234,191,236,235,277,238,279,249,287,249,287,232,287,191" shape="poly">
+                <area target="" class="NE" full="NE01 Building" id="NE01" building="NE01" alt="NE01" title="NE01" href=""
+                    coords="146,451,67,353" shape="rect">
+                <area target="" class="NE" full="NE04 Building" id="NE04" building="NE04" alt="NE04" title="NE04" href=""
+                    coords="161,350,214,390" shape="rect">
+                <area target="" class="NE" full="NE02 Building" id="NE02" building="NE02" alt="NE02" title="NE02" href=""
+                    coords="162,397,214,460" shape="rect">
+                <area target="" class="SE" full="SE16 Building" id="SE16" building="SE16" alt="" title="" href=""
+                    coords="699,340,687,385,666,393,673,436,714,442,753,426,764,411,735,394,735,385,744,365,713,361,713,343"
+                    shape="poly">
+                <area target="" class="SE" full="SE06 Building" id="SE06" building="SE06" alt="" title="" href=""
+                    coords="490,406,458,326" shape="rect">
+                <area target="" class="SW" full="SW09 Building" id="SW09" building="SW09" alt="" title="" href=""
+                    coords="705,485,760,589" shape="rect">
+            </map>
+        </div>
+        </div>
         <form action="/main_menu" method="GET">
             <button type="submit" name="mainMenu" id="main-menu-btn">Main Menu</button>
         </form>
@@ -249,3 +253,6 @@ $(document).ready(function(){
 
     /* end group selection functions */
 </script>
+{{!-- <script src='https://unpkg.com/panzoom@9.2.4/dist/panzoom.min.js'></script> --}}
+<script src="/panzoom/panzoom.js"></script>
+<script src="js/zoom.js"></script>
