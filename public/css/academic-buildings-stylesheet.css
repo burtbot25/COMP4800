@@ -140,3 +140,7 @@ body {
 .dropdown-container button:last-child:hover{
   border-bottom-left-radius: 40px;
 }
+
+area { 
+  display:none;
+}
