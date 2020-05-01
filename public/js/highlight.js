@@ -123,3 +123,7 @@ function selectKeyPlaces(building) {
 
     });
 }
+
+function toggleDisplay(id){
+    $('#'+id).css("display","block");
+}
