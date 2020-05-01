@@ -121,15 +121,18 @@ body {
   border-bottom-left-radius: 40px;
 }
 
-#image {
-  position: relative;
-  top: 0;
-  left: 0;
-}
+
 #food_services_overlay {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#image {
   position: absolute;
   top: 0px;
   left: 0px;
+  z-index: -1;
 }
 
 #image_map {
