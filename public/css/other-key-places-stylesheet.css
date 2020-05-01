@@ -126,7 +126,7 @@ body {
   top: 0;
   left: 0;
 }
-#food_overlay {
+#food_services_overlay {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -142,4 +142,15 @@ body {
   position: absolute;
   top: 0px;
   left: 0px;
+}
+
+#bus_stops_overlay, 
+#campus_entrances_overlay, 
+#employee_parking_overlay, 
+#first_aid_overlay, 
+#handicap_overlay,
+#security_overlay,
+#student_parking_overlay,
+#visitor_parking_overlay{
+  display: none
 }
