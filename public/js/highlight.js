@@ -127,10 +127,10 @@ function selectKeyPlaces(building) {
 function selectTransit(stop) {
     console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+        $('#bus_stops_overlay').mapster('tooltip');
     });
     
-    $('#image').mapster(initial_opts)
+    $('#bus_stops_overlay').mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
             fillColor: 'FF0000'
@@ -141,12 +141,37 @@ function selectTransit(stop) {
     stop.replace(",", ",#")
 
     $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
 }
 
+
+function selectParking(id,stop) {
+    console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#'+id).mapster('tooltip');
+    });
+    /*
+    $('#'+id).mapster(initial_opts)
+        .mapster('set', true, stop, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    stop.replace(",", ",#")
+
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
+
+    });*/
+}
+
 function toggleDisplay(id){
+    //$('area').css("display","none")
+    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay').css("display","none")
     $('#'+id).css("display","block");
 
 }
