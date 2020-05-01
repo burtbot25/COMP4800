@@ -55,31 +55,9 @@
     </div>
     <div id="map_area" class="col-sm-10">
         {{>overlay}}
-        <div id="details_box" class="col-sm-6">
-            <h3 id="details_title"></h3>
-            <p id="details_info"></p>
-            <p id="details_link"></p>
-        </div>
-        <div class="col-sm-6">
-        </div>
+        
         <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
     </div>
 </div>
 
-<script>
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-  this.classList.toggle("active");
-  var dropdownContent = this.nextElementSibling;
-  if (dropdownContent.style.display === "block") {
-  dropdownContent.style.display = "none";
-  } else {
-  dropdownContent.style.display = "block";
-  }
-  });
-}
-</script>
+<script src="js/script.js"></script>

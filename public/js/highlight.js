@@ -125,11 +125,11 @@ function selectKeyPlaces(building, service_name) {
 
     });
 
-    showDetails(service_name)
+    showDetails(building, service_name)
 }
 
-function showDetails(service_name){
-    document.getElementById("details_title").innerText = service_name
+function showDetails(building, service_name){
+    document.getElementById("details_title").innerText = service_name +  " (" + building + ")"
     document.getElementById("details_info").innerText = "(Description Here)"
     document.getElementById("details_link").innerText = "(Link Here)"
     document.getElementById("details_box").style.border = "solid 1px red"
