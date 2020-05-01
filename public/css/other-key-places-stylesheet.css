@@ -120,3 +120,40 @@ body {
 .dropdown-container button:last-child:hover{
   border-bottom-left-radius: 40px;
 }
+
+
+#food_services_overlay {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#area {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#bus_stops_overlay, 
+#campus_entrances_overlay, 
+#employee_parking_overlay, 
+#first_aid_overlay, 
+#handicap_overlay,
+#security_overlay,
+#student_parking_overlay,
+#visitor_parking_overlay{
+  display: none
+}
