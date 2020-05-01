@@ -13,21 +13,24 @@
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
                 </div>
-                <button class="dropdown-btn" onclick="transit()">Transit Information
+                <button class="dropdown-btn" >Transit Information
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button>Northbound Willingdon Ave @ Canada Way</button>
-                    <button>Southbound Willingdon Ave @ Canada Way</button>
-                    <button>Northbound Willingdon Ave @ Goard Way</button>
-                    <button>Southbound Willingdon Ave @ Goard Way</button>
-                    <button>Northbound Willingdon Ave @ Sanderson Way</button>
-                    <button>Southbound Willingdon Ave @ Sanderson Way</button>
-                    <button>Northbound Willingdon Ave @ Deer Lake Parkway</button>
-                    <button>Eastbound Canada Way @ Willingdon Ave</button>
-                    <button>Westbound Canada Way @ Willingdon Ave</button>
-                    <button>Eastbound Canada Way @ Beta Ave</button>
-                    <button>Westbound Canada Way @ Beta Ave</button>
+                    <button onclick="selectTransit(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
+                    <button onclick="selectTransit(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>
+                    <button onclick="selectTransit(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
+                    <button onclick="selectTransit(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
+                    <button onclick="selectTransit(this.value)" value="SandersonN">Northbound Willingdon Ave @ Sanderson Way</button>
+                    <button onclick="selectTransit(this.value)" value="SanderSonS">Southbound Willingdon Ave @ Sanderson Way</button>
+                    <button onclick="selectTransit(this.value)" value="DeerN">Northbound Willingdon Ave @ Deer Lake Parkway</button>
+                    <button onclick="selectTransit(this.value)" value="WillingdonEB">Eastbound Canada Way @ Willingdon Ave</button>
+                    <button onclick="selectTransit(this.value)" value="WillingdonWB">Westbound Canada Way @ Willingdon Ave</button>
+                    <button onclick="selectTransit(this.value)" value="BetaE">Eastbound Canada Way @ Beta Ave</button>
+                    <button onclick="selectTransit(this.value)" value="BetaW">Westbound Canada Way @ Beta Ave</button>
+                    <button onclick="selectTransit(this.value)" value="MathissiE">Eastbound Sanderson Way @ Mathissi Ave</button>
+                    <button onclick="selectTransit(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @ Willingdon Ave</button>
+                    <button onclick="selectTransit(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @ Waybburne Dr</button>
                 </div>
                 <button class="dropdown-btn">Navigating Campus
                     <i class="fa fa-caret-down"></i>

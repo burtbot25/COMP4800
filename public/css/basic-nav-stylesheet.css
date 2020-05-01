@@ -120,3 +120,38 @@ body {
 .dropdown-container button:last-child:hover{
   border-bottom-left-radius: 40px;
 }
+
+#image {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+#bus_stops_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#area {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+ 
+#campus_entrances_overlay, 
+#employee_parking_overlay, 
+#first_aid_overlay, 
+#handicap_overlay,
+#security_overlay,
+#student_parking_overlay,
+#visitor_parking_overlay,
+#food_services_overlay{
+  display: none
+}

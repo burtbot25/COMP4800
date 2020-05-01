@@ -124,6 +124,28 @@ function selectKeyPlaces(building) {
     });
 }
 
+function selectTransit(stop) {
+    console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
+    });
+    
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, stop, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    stop.replace(",", ",#")
+
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+
 function toggleDisplay(id){
     $('#'+id).css("display","block");
+
 }
