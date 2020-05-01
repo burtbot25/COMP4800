@@ -120,3 +120,26 @@ body {
 .dropdown-container button:last-child:hover{
   border-bottom-left-radius: 40px;
 }
+
+#image {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+#food_overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#area {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}

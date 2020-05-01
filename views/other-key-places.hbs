@@ -9,35 +9,117 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button>All-Day Breakfast & Lunch</button>
-                    <button>Austin Grill Express</button>
-                    <button>Booster Juice</button>
-                    <button>CARI Cafeteria</button>
-                    <button>Fuse Cafe</button>
-                    <button>Gateway Cafe</button>
-                    <button>Grill &amp; Co</button>
-                    <button>Market Kitchen</button>
-                    <button>Poké Pick</button>
-                    <button>Smokes Poutinerie</button>
-                    <button>The Rix Cafe</button>
-                    <button>Tim Hortons</button>
-                    <button>Triple O's</button>
+                    <button id="AllDayBreakfast" onclick="selectKeyPlaces(this.value)" value="SE12">All-Day Breakfast &amp; Lunch</button>
+                    <button id="AustinGrillService" onclick="selectKeyPlaces(this.value)" value="SE12">Austin Grill Express</button>
+                    <button id="BoosterJuice" onclick="selectKeyPlaces(this.value)" value="SE14">Booster Juice</button>
+                    <button id="CampusCafe" onclick="selectKeyPlaces(this.value)" value="SE12">Campus Cafe</button>
+                    <button id="CARICafeteria" onclick="selectKeyPlaces(this.value)" value="CARI">CARI Cafeteria</button>
+                    <button id="ETCCafe" onclick="selectKeyPlaces(this.value)" value="SE01">E.T.C. Café</button>
+                    <button id="FuseCafe" onclick="selectKeyPlaces(this.value)" value="SE01">Fuse Café</button>
+                    <button id="GatewayCare" onclick="selectKeyPlaces(this.value)" value="SW01">Gateway Café</button>
+                    <button id="GrillNCo" onclick="selectKeyPlaces(this.value)" value="SE01">Grill &amp; Co</button>
+                    <button id="HabitatPub" onclick="selectKeyPlaces(this.value)" value="SE16">Habitat Pub</button>
+                    <button id="JWInglisCafe" onclick="selectKeyPlaces(this.value)" value="NE01">J.W. Inglis Café</button>
+                    <button id="LibraryCoffeePod" onclick="selectKeyPlaces(this.value)" value="SE14">Library Coffee Pod</button>
+                    <button id="MarketKitchen" onclick="selectKeyPlaces(this.value)" value="SE02">Market Kitchen</button>
+                    <button id="PokePick" onclick="selectKeyPlaces(this.value)" value="SE02">Poké Pick</button>
+                    <button id="RoyalOakCafe" onclick="selectKeyPlaces(this.value)" value="SE40">Royal Oak Café</button>
+                    <button id="Smokes" onclick="selectKeyPlaces(this.value)" value="SE12">Smokes Poutinerie</button>
+                    <button id="Pavillion" onclick="selectKeyPlaces(this.value)" value="NE01">The Pavillion</button>
+                    <button id="RixClub" onclick="selectKeyPlaces(this.value)" value="SE06">The Rix Club</button>
+                    <button id="TimHortons" onclick="selectKeyPlaces(this.value)" value="SE12">Tim Hortons</button>
+                    <button id="TimHortonsExpress" onclick="selectKeyPlaces(this.value)" value="SE01">Tim Hortons Express</button>
+                    <button id="TownSquareMarket" onclick="selectKeyPlaces(this.value)" value="SE02">Town Square Market</button>
+                    <button id="TripleOs" onclick="selectKeyPlaces(this.value)" value="SE02">Triple O's</button>
+                    <button id="Stand" onclick="selectKeyPlaces(this.value)" value="SE02,SE12">The Stand</button>
                 </div>
                 <button class="dropdown-btn">Study Areas
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button>Library &amp; ehPod</button>
-                    <button>Study Areas and Rooms</button>
+                    <button id="LibraryEhpod" onclick="selectKeyPlaces(this.value)" value="SE14">Library &amp; ehPod</button>
+                    <button id="StudyRooms" onclick="selectKeyPlaces(this.value)" value="SE02,SW01">Study Areas and Rooms</button>
+                </div>
+                <button class="dropdown-btn">Social
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container">
+                    <button id="Games" onclick="selectKeyPlaces(this.value)" value="SE16">Ping Pong & Foosball</button>
+                    <button id="Pool" onclick="selectKeyPlaces(this.value)" value="SE16">Pool in the Habitat Pub</button>
+                    <button id="Events" onclick="selectKeyPlaces(this.value)" value="SE02">Events in the Great Hall</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-sm-10">
-        <img src="/media/bcitmap.png" alt="BCIT Burnaby Campus Map">
-        {{!-- <form action="/main_menu" method="GET">
-            <button type="submit" name="mainMenu" id="main-menu-btn">Main Menu</button>
-        </form> --}}
+        <div style="overflow: auto;">
+            <div id="map" style="display: inline-block;">
+                <div id="food_map" style="position: relative; left: 0; top: 0;">
+                    <img id="image" src="/media/burnaby_campus_map.png" usemap="#image-map">
+                    <img id="food_overlay" src="/media/overlays/food_services_overlay.png">
+                
+                    <map id="image_map" name="image-map">
+        <!--            NE Buildings-->
+                        <area target="" class="NE" full="NE09 Building" id="NE09" building="NE09" alt="NE09" title="NE09" href="#" coords="184,133,184,255,350,255,350,133,310,133,297,172,237,172,241,133" shape="poly">
+                        <area target="" class="NE" full="NE07 Building" id="NE07" building="NE07" alt="NE07" title="NE07" href="#" coords="367,120,397,120,397,259,371,263" shape="poly">
+                        <area target="" class="NE" full="NE08 Building" id="NE08" building="NE08" alt="NE08" title="NE08" href="#" coords="419,259,545,259,545,276,589,276,589,346,550,346,550,363,428,363" shape="poly">
+                        <area target="" class="NE" full="NE28 Building" id="NE28" building="NE28" alt="NE28" title="NE28" href="#" coords="719,398,780,398,780,493,719,493" shape="poly">
+                        <area target="" class="NE" full="NE16 Building" id="NE16" building="NE16" alt="NE16" title="NE16" href="#" coords="798,502,911,502,937,484,937,346,906,324,806,324" shape="poly">
+                        <area target="" class="NE" full="NE18 Building" id="NE18" building="NE18" alt="NE18" title="NE18" href="#" coords="793,524,906,519,906,537,937,545,937,654,828,658,828,641,793,641" shape="poly">
+                        <area target="" class="NE" full="NE24 Building" id="NE24" building="NE24" alt="NE24" title="NE24" href="#" coords="724,636,780,632,780,728,724,728" shape="poly">
+                        <area target="" class="NE" full="NE22 Building" id="NE22" building="NE22" alt="NE22" title="NE22" href="#" coords="724,840,780,840,776,741,719,741" shape="poly">
+                        <area target="" class="NE" full="NE20 Building" id="NE20" building="NE20" alt="NE20" title="NE20" href="#" coords="837,667,902,667,902,710,937,710,937,845,902,836,902,814,867,810,858,840,819,840,815,814,798,801,798,715,837,715" shape="poly">
+                        <area target="" class="NE" full="NE10 Building" id="NE10" building="NE10" alt="NE10" title="NE10" href="#" coords="419,94,589,94,589,228,550,228,537,250,484,246,476,228,419,224" shape="poly">
+                        <area target="" class="NE" full="NE12 Building" id="NE12" building="NE12" alt="NE12" title="NE12" href="#" coords="606,98,754,102,763,272,728,267,728,241,615,241" shape="poly">
+                        <area target="" class="NE" full="NE06 Building" id="NE06" building="NE06" alt="NE06" title="NE06" href="#" coords="419,367,567,372,563,497,463,497,458,471,419,467" shape="poly">  
+                        <area target="" class="NE" full="NE01 building" id="NE01" building="NE01" alt="NE01" title="NE01" href="#" coords="168,525,168,761,188,761,194,767,226,773,220,754,246,754,252,767,342,767,342,529,246,529,246,516,213,510" shape="poly">
+                        <area target="" class="NE" full="NE02 building" id="NE02" building="NE02" alt="NE02" title="NE02" href="#" coords="478,691,423,691,423,808,564,808,564,716,478,716" shape="poly">
+                        <area target="" class="NE" full="NE04 building" id="NE04" building="NE04" alt="NE04" title="NE04" href="#" coords="423,538,423,648,564,650,564,513,496,513,496,538" shape="poly">
+                        <area target="" class="NE" full="NE21 building" id="NE21" building="NE21" alt="NE21" title="NE21" href="#" coords="588,746,649,746,649,845,588,845" shape="poly">
+                        <area target="" class="NE" full="NE23 building" id="NE23" building="NE23" alt="NE23" title="NE23" href="#" coords="594,642,594,728,649,728,649,642" shape="poly">
+                        <area target="" class="NE" full="NE25 building" id="NE25" building="NE25" alt="NE25" title="NE25" href="#" coords="582,489,582,612,649,612,649,489" shape="poly">
+            <!--            NW Buildings-->
+                        <area target="" id="NW01" alt="NW01" full="NW01 building" title="NW01" href="#" coords="588,1077,588,1169,735,1169,735,1077" shape="poly">
+                        <area target="" id="NW03" alt="NW03" full="NW03 building" title="NW03" href="#" coords="454,912,454,1041,570,1041,570,912" shape="poly">
+                        <area target="" id="NW05" alt="NW05" full="NW05 building" title="NW05" href="#" coords="711,893,760,893,760,966,711,966" shape="poly">
+                        <area target="" id="NW06" alt="NW06" full="NW06 building" title="NW06" href="#" coords="937,880,937,991,772,991,772,880" shape="poly">
+                        
+            <!--            SE Buildings-->
+                        <area target="" class="SE" full="SE19 Building" id="SE19" building="SE19" alt="SE19" title="SE19" href="#" coords="1732,143,1868,243" shape="rect">
+                        <area target="" class="SE" full="SE30 Building" id="SE30" building="SE30" alt="SE30" title="SE30" href="#" coords="2530,179,2659,258" shape="rect">
+                        <area target="" class="SE" full="SE40 Building" id="SE40" building="SE40" alt="SE40" title="SE40" href="#" coords="3411,163,3407,249,3429,249,3429,265,3479,265,3479,249,3497,249,3500,163" shape="poly">
+                        <area target="" class="SE" full="SE41 Building" id="SE41" building="SE41" alt="SE41" title="SE41" href="#" coords="3304,251,3361,372" shape="rect">
+                        <area target="" class="SE" full="SE42 Building" id="SE42" building="SE42" alt="SE42" title="SE42" href="#" coords="3393,357,3393,407,3468,407,3525,364,3525,285,3479,289,3483,339,3457,357" shape="poly">
+                        <area target="" class="SE" full="SE50 Building" id="SE50" building="SE50" alt="SE50" title="SE50" href="#" coords="3679,174,3679,239,3647,239,3647,296,3726,292,3730,303,3776,303,3776,289,3801,289,3805,235,3762,235,3783,231,3783,217,3787,217,3790,203,3787,189,3765,174" shape="poly">
+                        <area href="#" class="SE" id="SE01" building="SE01" full="tooltip" coords="1331,237,1127,235,1127,246,973,247,973,309,1048,309,1069,330,1048,363,1059,377,1073,370,1080,377,1091,377,1102,391,1116,381,1130,377,1137,363,1177,359,1184,338,1295,338,1306,302,1313,280,1331,284" shape="poly">
+                        <area href="#" class="SE" id="SE04" building="SE04" full="tooltip" coords="1123,434,1019,434,1019,462,1037,466,1041,530,1130,534,1130,484,1120,484,1130,484" shape="poly">
+                        <area href="#" class="SE" id="SE02" building="SE02" full="tooltip" coords="1159,566,1009,563,1009,703,987,703,995,760,980,764,977,810,1156,814,1152,771,1141,771,1138,645,1156,641" shape="poly">
+                        <area href="#" class="SE" id="SE06" building="SE06" full="tooltip" coords="1166,419,1238,419,1238,563,1267,563,1267,649,1163,649" shape="poly">
+                        <area href="#" class="SE" id="SE09" building="SE09" full="tooltip" coords="1338,681,1392,720" shape="rect">
+                        <area href="#" class="SE" id="SE08" building="SE08" full="tooltip" coords="1335,681,1209,681,1209,713,1166,713,1166,749,1202,749,1206,792,1331,788" shape="poly">
+                        <area href="#" class="SE" id="SE12" building="SE12" full="tooltip" coords="1338,724,1639,727,1643,799,1338,799" shape="poly">
+                        <area href="#" class="SE" id="SE14" building="SE14" full="tooltip" coords="1567,720,1567,670,1600,670,1596,505,1610,505,1610,487,1625,487,1625,505,1668,505,1674,681,1631,678,1632,720" shape="poly">
+                        <area href="#" class="SE" id="SE10" building="SE10" full="tooltip" coords="1495,487,1528,487,1528,508,1549,508,1546,530,1556,530,1556,601,1571,623,1571,666,1492,669,1492,601,1474,601,1474,512,1495,508" shape="poly">
+                        <area href="#" class="SE" id="SE16" building="SE16" full="tooltip" coords="1800,482,1800,580,1800,616,1778,632,1742,632,1742,715,1753,715,1750,736,1764,740,1764,754,1900,754,1904,747,1954,743,1954,718,1964,718,1961,708,1986,708,1982,682,1964,675,1964,647,1911,643,1911,614,1932,611,1936,546,1868,546,1864,495,1828,495,1828,484" shape="poly">
+            <!--            SW Buildings-->
+                        <area href="#" id="SW01" building="SW01" full="tooltip" coords="1338,923,1334,838,1302,838,1302,879,1270,877,1270,841,1105,838,1105,895,1119,897,1119,927,1048,927,1026,954,1044,988,1084,991,1087,1102,1073,1144,1141,1133,1316,1135,1313,1020,1298,995,1349,999,1363,959,1356,934" shape="poly">
+                        <area href="#" id="SW02" building="SW02" full="tooltip" coords="1313,1083,1313,1112,1345,1141,1370,1141,1399,1108,1442,1098,1406,1090,1352,1040" shape="poly">
+                        <area href="#" id="SW03" building="SW03" full="tooltip" coords="1574,1105,1574,1148,1488,1148,1470,1148,1449,1133,1427,1087,1420,983,1356,983,1367,937,1427,935,1424,818,1445,811,1445,786,1492,797,1499,962,1481,983,1481,1098,1546,1090" shape="poly">
+                        <area href="#" id="SW05" building="SW05" full="tooltip" coords="1520,933,1542,929,1563,921,1563,945,1599,940,1610,972,1599,1008,1578,999,1560,1019,1542,1015,1528,1002,1524,977" shape="poly">
+                        <area href="#" id="SW09" building="SW09" full="tooltip" coords="1836,857,1986,860,1986,1018,1975,1036,1975,1071,1993,1079,1993,1147,1832,1150" shape="poly">
+                        <area href="#" id="SW10" building="SW10" full="tooltip" coords="2244,768,2233,776,2179,776,2176,797,2186,829,2222,833,2272,818,2276,768" shape="poly">
+                        <area href="#" id="SW11" building="SW11" full="tooltip" coords="2380,869,2344,861,2330,878,2283,872,2280,897,2294,935,2330,926,2376,925" shape="poly">
+                        <area href="#" id="SW12" building="SW12" full="tooltip" coords="2423,747,2383,747,2369,754,2315,754,2312,783,2333,811,2365,808,2416,797" shape="poly">
+                        <area href="#" id="SW13" building="SW13" full="tooltip" coords="2527,828,2487,828,2480,842,2426,839,2423,860,2433,900,2473,896,2516,889" shape="poly">
+                        <area href="#" id="SW14" building="SW14" full="tooltip" coords="2559,730,2523,730,2509,748,2466,737,2459,759,2469,803,2501,795,2552,787" shape="poly">
+                        <area href="#" id="SW15" building="SW15" full="tooltip" coords="2638,826,2620,836,2577,833,2566,858,2580,894,2623,894,2666,886,2673,826" shape="poly">
+                        <area href="#" id="SW16" building="SW16" full="tooltip" coords="2702,718,2666,718,2652,736,2602,725,2602,747,2609,783,2645,783,2691,776" shape="poly">
+            <!--            CARI Building-->
+                        <area target="" class="CARI" full="CARI Building" id="CARI" building="CARI" alt="CARI" title="CARI" href="#" coords="2437,1306,2487,1267,2530,1317,2570,1317,2638,1249,2695,1303,2723,1271,2817,1364,2709,1468,2688,1446,2630,1503,2573,1439,2534,1439,2484,1493,2437,1450,2494,1396,2491,1360" shape="poly">
+                    </map>
+                </div>
+            </div>
+        </div>
         <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
     </div>
 </div>
