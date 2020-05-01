@@ -157,3 +157,14 @@ body {
 #visitor_parking_overlay{
   display: none
 }
+
+#map_area {
+  position: relative;
+}
+
+#details_box {
+  position: absolute;
+  bottom: 125px;
+  background-color: white;
+
+}
