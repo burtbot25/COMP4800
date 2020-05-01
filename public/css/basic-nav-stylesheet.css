@@ -133,6 +133,13 @@ body {
   left: 0px;
 }
 
+#student_parking_overlay {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+
 #image_map {
   position: absolute;
   top: 0px;
