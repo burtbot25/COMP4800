@@ -144,4 +144,8 @@ function selectTransit(stop) {
         $('#image').mapster('tooltip', this, $(this).attr('full'));
 
     });
+
+function toggleDisplay(id){
+    $('#'+id).css("display","block");
+
 }
