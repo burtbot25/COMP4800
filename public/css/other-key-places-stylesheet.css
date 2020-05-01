@@ -34,6 +34,9 @@ body {
     vertical-align: bottom;
     margin-top: 100px;
     margin-right: 30px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
 .col-sm-2 {
@@ -156,4 +159,15 @@ body {
 #student_parking_overlay,
 #visitor_parking_overlay{
   display: none
+}
+
+#map_area {
+  position: relative;
+}
+
+#details_box {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+
 }
