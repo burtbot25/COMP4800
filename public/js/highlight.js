@@ -105,10 +105,10 @@ function selectCARI() {
 function selectKeyPlaces(building) {
     console.log("Building: " + building)
     $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+        $('#food_services_overlay').mapster('tooltip');
     });
     
-    $('#image').mapster(initial_opts)
+    $('#food_services_overlay').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
             fillColor: 'FF0000'
@@ -119,7 +119,7 @@ function selectKeyPlaces(building) {
     building.replace(",", ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#food_services_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
 }
