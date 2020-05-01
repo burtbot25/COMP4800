@@ -168,10 +168,15 @@ function selectParking(id,stop) {
 
     });*/
 }
-
+function toggleDropdown(self) {
+    console.log(self);  
+    $(".dropdown-btn").not(self).next(".dropdown-container").css("display","none");
+    $(".dropdown-btn").not(self).next(".dropdown-container").removeClass('active');
+}
 function toggleDisplay(id){
     //$('area').css("display","none")
+    $('img').mapster('unbind');
     $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay').css("display","none")
-    $('#'+id).css("display","block");
+    $('#'+id.value).css("display","block");
 
 }

@@ -13,7 +13,7 @@
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
                 </div>
-                <button class="dropdown-btn" onclick="toggleDisplay(this.value)" value="bus_stops_overlay">Transit Information
+                <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Transit Information
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
@@ -22,7 +22,7 @@
                     <button onclick="selectTransit(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
                     <button onclick="selectTransit(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
                     <button onclick="selectTransit(this.value)" value="SandersonN">Northbound Willingdon Ave @ Sanderson Way</button>
-                    <button onclick="selectTransit(this.value)" value="SanderSonS">Southbound Willingdon Ave @ Sanderson Way</button>
+                    <button onclick="selectTransit(this.value)" value="SandersonS">Southbound Willingdon Ave @ Sanderson Way</button>
                     <button onclick="selectTransit(this.value)" value="DeerN">Northbound Willingdon Ave @ Deer Lake Parkway</button>
                     <button onclick="selectTransit(this.value)" value="WillingdonEB">Eastbound Canada Way @ Willingdon Ave</button>
                     <button onclick="selectTransit(this.value)" value="WillingdonWB">Westbound Canada Way @ Willingdon Ave</button>
@@ -44,11 +44,11 @@
                     <button>Trades Buildings</button>
                     <button>Accessibility Routes</button>
                 </div>
-                <button class="dropdown-btn">Parking Information
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">Parking Information
                     <i class="fa fa-caret-down"></i>
                 </button>
-                <div class="dropdown-container">
-                    <button onclick="toggleDisplay(this.value),selectParking(this.value)" value="student_parking_overlay">Student Parking</button>
+                <div class="dropdown-container" >
+                    <button onclick="toggleDisplay(this),selectParking(this.value)" value="student_parking_overlay">Student Parking</button>
                     <button>Employee Parking</button>
                     <button>Visitor Parking</button>
                     <button>Accessible Parking</button>
