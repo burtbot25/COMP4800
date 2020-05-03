@@ -5,9 +5,16 @@
     <div class="col-sm-2">
         <div class="sidenav">
             <div class="sidenav-cont">
+                {{#each businessAllBuildings}}
+                    <button class="dropdown-btn" onclick="selectBusinessSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                {{/each}}
+<!--
                 <button class="dropdown-btn" onclick="">School of Business
                     <i class="fa fa-caret-down"></i>
                 </button>
+-->
                 <div class="dropdown-container">
                     {{#each businessSchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
