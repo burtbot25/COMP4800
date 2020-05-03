@@ -34,6 +34,9 @@ body {
     vertical-align: bottom;
     margin-top: 100px;
     margin-right: 30px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
 .col-sm-2 {
@@ -143,4 +146,35 @@ body {
 
 area { 
   display:none;
+}
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#bus_stops_overlay, 
+#campus_entrances_overlay, 
+#employee_parking_overlay, 
+#first_aid_overlay, 
+#food_services_overlay,
+#handicap_overlay,
+#security_overlay,
+#student_parking_overlay,
+#visitor_parking_overlay{
+  display: none
+}
+
+#map_area {
+/*  position: relative;*/
+  display: inline-block; 
+  overflow: auto;    
+}
+
+#details_box {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+
 }
