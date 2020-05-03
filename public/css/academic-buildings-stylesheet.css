@@ -148,10 +148,17 @@ area {
   display:none;
 }
 
+#image {
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
 #image_map {
   position: absolute;
   top: 0px;
   left: 0px;
+  z-index: -1;    
 }
 
 #bus_stops_overlay, 

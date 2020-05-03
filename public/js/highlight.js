@@ -129,6 +129,33 @@ function selectKeyPlaces(building, service_name, description) {
     showDetails(building, service_name, description)
 }
 
+function selectAcademicSchools(building, service_name, description) {
+    console.log("Building: " + building)
+    console.log("Service Name: " + service_name)
+    console.log("Description: + " + description)
+
+    $('area').bind('mouseover', function () {
+        $('image').mapster('tooltip');
+    });
+    
+    $('image').mapster(initial_opts)
+        .mapster('set', true, building, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    building.replace(",", ",#")
+
+    $('#' + building).bind('mouseover', function () { // ID goes here
+        $('image').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+
+    showDetails(building, service_name, description)
+}
+
 function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name +  " (" + building + ")"
     document.getElementById("details_info").innerText = "(currently blank)" + description
