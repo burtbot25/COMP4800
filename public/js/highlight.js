@@ -102,9 +102,10 @@ function selectCARI() {
 }
 /* end group selection functions */
 
-function selectKeyPlaces(building, service_name) {
+function selectKeyPlaces(building, service_name, description) {
     console.log("Building: " + building)
     console.log("Service Name: " + service_name)
+    console.log("Description: + " + description)
 
     $('area').bind('mouseover', function () {
         $('#food_services_overlay').mapster('tooltip');
@@ -125,12 +126,12 @@ function selectKeyPlaces(building, service_name) {
 
     });
 
-    showDetails(building, service_name)
+    showDetails(building, service_name, description)
 }
 
-function showDetails(building, service_name){
+function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name +  " (" + building + ")"
-    document.getElementById("details_info").innerText = "(Description Here)"
+    document.getElementById("details_info").innerText = "(currently blank)" + description
     document.getElementById("details_link").innerText = "(Link Here)"
     document.getElementById("details_box").style.border = "solid 1px red"
 }
