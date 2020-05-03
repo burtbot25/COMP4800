@@ -9,73 +9,54 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="SE06" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE06" value="description">SE06</button>
-                    <button id="SE10" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE10" value="description">SE10</button>
+                    {{#each businessSchool}}
+                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
+                    {{/each}}
                 </div>
                 <button class="dropdown-btn">School of Computing and Academic Studies
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="SW02" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW02" value="description">SW02</button>
-                    <button id="SW03" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW03" value="description">SW03</button>
-                    <button id="SE12" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">SE12</button>
+                    {{#each computingSchool}}
+                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
+                    {{/each}}
                 </div>
                 <button class="dropdown-btn">School of Construction and the Environment
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="SW01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW01" value="description">SW01</button>
-                    <button id="SW02" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW02" value="description">SW02</button>
-                    <button id="SW03" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW03" value="description">SW03</button>
-                    <button id="SE01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">SE01</button>
-                    <button id="SE04" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE04" value="description">SE04</button>
-                    <button id="NE01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">NE01</button>
-                    <button id="NE02" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE02" value="description">NE02</button>
-                    <button id="NE04" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE04" value="description">NE04</button>
-                    <button id="NE06" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE06" value="description">NE06</button>
-                    <button id="NE08" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE08" value="description">NE08</button>
-                    <button id="NE10" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE10" value="description">NE10</button>
-                    <button id="NE10" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE10" value="description">NE12</button>
-                    <button id="NW03" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NW03" value="description">NW03</button>
+                    {{#each constructionSchool}}
+                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
+                    {{/each}}
                 </div>
                 <button class="dropdown-btn">School of Energy
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="SW01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW01" value="description">SW01</button>
-                    <button id="SW03" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW03" value="description">SW03</button>
-                    <button id="SW09" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW09" value="description">SW09</button>
-                    <button id="SE08" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE08" value="description">SE08</button>
-                    <button id="NE01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">NE01</button>
-                    <button id="NE23" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE23" value="description">NE23</button>
-                    <button id="NE25" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE25" value="description">NE25</button>
-                    <button id="NW06" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NW06" value="description">NW06</button>
+                    {{#each energySchool}}
+                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
+                    {{/each}}
                 </div>
                 <button class="dropdown-btn">School of Health Sciences
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="SW01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW01" value="description">SW01</button>
-                    <button id="SW03" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW03" value="description">SW03</button>
-                    <button id="SE12" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">SE12</button>
-                    <button id="NE01" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">NE01</button>
+                    {{#each healthSciSchool}}
+                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
+                    {{/each}}
                 </div>
                 <button class="dropdown-btn">School of Transportation
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="NE16" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE16" value="description">NE16</button>
-                    <button id="NE18" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE18" value="description">NE18</button>
-                    <button id="NE20" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE20" value="description">NE20</button>
-                    <button id="NE24" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE24" value="description">NE24</button>
-                    <button id="NE25" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE25" value="description">NE25</button>
-                    <button id="NE28" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE28" value="description">NE28</button>
+                    {{#each transportationSchool}}
+                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
+                    {{/each}}
                 </div>
             </div>
         </div>
     </div>
     <div class="col-sm-10">
-        <!-- Need to remove this inline styling eventually -->
         <div style="overflow: auto;">
             <div id="map_area" style="display: inline-block;">
                 {{>overlay}}
