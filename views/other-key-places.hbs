@@ -9,45 +9,49 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="AllDayBreakfast" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE12">All-Day Breakfast &amp; Lunch</button>
-                    <button id="AustinGrillService" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE12">Austin Grill Express</button>
-                    <button id="BoosterJuice" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE14">Booster Juice</button>
-                    <button id="CampusCafe" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE12">Campus Café</button>
-                    <button id="CARICafeteria" onclick="selectKeyPlaces(this.value, this.innerText)" value="CARI">CARI Cafeteria</button>
-                    <button id="ETCCafe" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE01">E.T.C. Café</button>
-                    <button id="FuseCafe" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE01">Fuse Café</button>
-                    <button id="GatewayCare" onclick="selectKeyPlaces(this.value, this.innerText)" value="SW01">Gateway Café</button>
-                    <button id="GrillNCo" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE01">Grill &amp; Co</button>
-                    <button id="HabitatPub" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE16">Habitat Pub</button>
-                    <button id="JWInglisCafe" onclick="selectKeyPlaces(this.value, this.innerText)" value="NE01">J.W. Inglis Café</button>
-                    <button id="LibraryCoffeePod" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE14">Library Coffee Pod</button>
-                    <button id="MarketKitchen" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02">Market Kitchen</button>
-                    <button id="PokePick" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02">Poké Pick</button>
-                    <button id="RoyalOakCafe" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE40">Royal Oak Café</button>
-                    <button id="Smokes" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE12">Smokes Poutinerie</button>
-                    <button id="Pavillion" onclick="selectKeyPlaces(this.value, this.innerText)" value="NE01">The Pavillion</button>
-                    <button id="RixClub" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE06">The Rix Club</button>
-                    <button id="TimHortons" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE12">Tim Hortons</button>
-                    <button id="TimHortonsExpress" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE01">Tim Hortons Express</button>
-                    <button id="TownSquareMarket" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02">Town Square Market</button>
-                    <button id="TripleOs" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02">Triple O's</button>
-                    <button id="Stand" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02,SE12">The Stand</button>
+                    {{!-- <button id="AllDayBreakfast" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">All-Day Breakfast &amp; Lunch</button>
+                    <button id="AustinGrillService" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Austin Grill Express</button>
+                    <button id="BoosterJuice" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE14" value="description">Booster Juice</button>
+                    <button id="CampusCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Campus Café</button>
+                    <button id="CARICafeteria" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="CARI" value="description">CARI Cafeteria</button>
+                    <button id="ETCCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">E.T.C. Café</button>
+                    <button id="FuseCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">Fuse Café</button>
+                    <button id="GatewayCare" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW01" value="description">Gateway Café</button>
+                    <button id="GrillNCo" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">Grill &amp; Co</button>
+                    <button id="HabitatPub" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE16" value="description">Habitat Pub</button>
+                    <button id="JWInglisCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">J.W. Inglis Café</button>
+                    <button id="LibraryCoffeePod" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE14" value="description">Library Coffee Pod</button>
+                    <button id="MarketKitchen" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Market Kitchen</button>
+                    <button id="PokePick" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Poké Pick</button>
+                    <button id="RoyalOakCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE40" value="description">Royal Oak Café</button>
+                    <button id="Smokes" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Smokes Poutinerie</button>
+                    <button id="Pavillion" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">The Pavillion</button>
+                    <button id="RixClub" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE06" value="description">The Rix Club</button>
+                    <button id="TimHortons" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Tim Hortons</button>
+                    <button id="TimHortonsExpress" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">Tim Hortons Express</button>
+                    <button id="TownSquareMarket" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Town Square Market</button>
+                    <button id="TripleOs" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Triple O's</button>
+                    <button id="Stand" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02,SE12" value="description">The Stand</button> --}}
+
+                    {{#each foodLocations}}
+                        <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '{{this.description}}')">{{this.name}}</button>
+                    {{/each}}
                 </div>
-                <button id="Microwaves" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02">Microwaves</button>
+                <button id="Microwaves" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Microwaves</button>
                 <button class="dropdown-btn">Social
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="Games" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE16">Ping Pong &amp; Foosball</button>
-                    <button id="Pool" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE16">Pool in the Habitat Pub</button>
-                    <button id="Events" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02">Events in the Great Hall</button>
+                    <button id="Games" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE16" value="description">Ping Pong &amp; Foosball</button>
+                    <button id="Pool" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE16" value="description">Pool in the Habitat Pub</button>
+                    <button id="Events" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Events in the Great Hall</button>
                 </div>
                 <button class="dropdown-btn">Study Areas
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="LibraryEhpod" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE14">Library &amp; ehPod</button>
-                    <button id="StudyRooms" onclick="selectKeyPlaces(this.value, this.innerText)" value="SE02,SW01">Study Areas and Rooms</button>
+                    <button id="LibraryEhpod" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE14" value="description">Library &amp; ehPod</button>
+                    <button id="StudyRooms" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02,SW01" value="description">Study Areas and Rooms</button>
                 </div>
                 
             </div>
