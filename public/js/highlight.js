@@ -227,7 +227,7 @@ function selectParking(id,stop) {
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
     });
-    /*
+    
     $('#'+id).mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
@@ -236,12 +236,11 @@ function selectParking(id,stop) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop.replace(",", ",#")
-
-    $('#' + stop).bind('mouseover', function () { // ID goes here
+    var replaced = stop.replace(/,/g, ",#")
+    $('#' + replaced).bind('mouseover', function () { // ID goes here
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
-    });*/
+    });
 }
 function toggleDropdown(self) {
     console.log(self);  

@@ -1306,7 +1306,7 @@ A jQuery plugin to enhance image maps.
          */
         
         function hasVml() {
-            var a = $('<div />').appendTo('body');
+            var a = $('<div />').appendTo('#map');
             a.html('<v:shape id="vml_flag1" adj="1" />');
             
             var b = a[0].firstChild;
@@ -4277,7 +4277,7 @@ A jQuery plugin to enhance image maps.
         'border-radius: 6px 6px 6px 6px; opacity: 0.9;"></dteniv>',
         showToolTip: false,
         toolTipFade: true,
-        toolTipClose: ['tooltip-click'],
+        toolTipClose: ['area-click'],
         onShowToolTip: null,
         onHideToolTip: null
     });
@@ -4322,7 +4322,7 @@ A jQuery plugin to enhance image maps.
                 position:"absolute"
             })).hide();
         
-        $('body').append(tooltip);
+        $('#map').append(tooltip);
 
         // we must actually add the tooltip to the DOM and "show" it in order to figure out how much space it
         // consumes, and then reposition it with that knowledge.
@@ -4464,15 +4464,17 @@ A jQuery plugin to enhance image maps.
 
             ttopts.left = corners[0];
             ttopts.top = corners[1];
-
+            ttopts.left = target.coords.split(",")[0]*1.2
+            ttopts.top = target.coords.split(",")[1]*1.2
+                
         } else {
             
             ttopts.left = options.left;
             ttopts.top = options.top;
         }
 
-        ttopts.left += (options.offsetx || 0);
-        ttopts.top +=(options.offsety || 0);
+        //ttopts.left += (options.offsetx || 0);
+        //ttopts.top +=(options.offsety || 0);
 
         ttopts.css= options.css;
         ttopts.fadeDuration = options.fadeDuration;
