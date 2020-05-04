@@ -100,6 +100,27 @@ function selectCARI() {
 
     });
 }
+
+function selectSchool(school_name, building, description) {
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
+    });
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, building, {
+            fill: true,
+            fillColor: '138C40'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+    
+    building.replace(",", ",#")
+    $('#' + building).bind('mouseover', function () {
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    
+    showBuildingDetails(school_name, description)
+}
 /* end group selection functions */
 
 function selectKeyPlaces(building, service_name, description) {
@@ -129,15 +150,55 @@ function selectKeyPlaces(building, service_name, description) {
     showDetails(building, service_name, description)
 }
 
+function selectAcademicSchools(building, service_name, description) {
+    console.log("Building: " + building)
+    console.log("Service Name: " + service_name)
+    console.log("Description: + " + description)
+
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
+    });
+    
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, building, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    building.replace(",", ",#")
+
+    $('#' + building).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+
+    showBuildingDetails(building, description)
+}
+
 function showDetails(building, service_name, description){
-    document.getElementById("details_title").innerText = service_name +  " (" + building + ")"
+    document.getElementById("details_title").innerText = service_name
     document.getElementById("details_info").innerText = "(currently blank)" + description
     document.getElementById("details_link").innerText = "(Link Here)"
     document.getElementById("details_box").style.border = "solid 1px red"
 }
 
-function selectTransit(stop) {
-    console.log("Building: " + stop)
+
+function showBuildingDetails(building, description){
+    document.getElementById("details_title").innerText = building
+    document.getElementById("details_info").innerText = description
+    document.getElementById("details_box").style.border = "solid 1px red"
+}
+
+function showDetailsTemp(building, service_name, description){
+    document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_info").innerText = description
+    document.getElementById("details_box").style.border = "solid 1px red"
+}
+
+function selectTransit(stop, name, bus) {
+    // console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#bus_stops_overlay').mapster('tooltip');
     });
@@ -156,6 +217,8 @@ function selectTransit(stop) {
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
+    bus = bus.replace(",", "\n");
+    showDetailsTemp(stop, name, bus)
 }
 
 

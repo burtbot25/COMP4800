@@ -162,3 +162,14 @@ body {
 #food_services_overlay{
   display: none
 }
+
+#map_area {
+  position: relative;
+}
+
+#details_box {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+
+}
