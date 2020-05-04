@@ -184,14 +184,21 @@ function showDetails(building, service_name, description){
     document.getElementById("details_box").style.border = "solid 1px red"
 }
 
+
 function showBuildingDetails(building, description){
     document.getElementById("details_title").innerText = building
     document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.border = "solid 1px red"
 }
 
-function selectTransit(stop) {
-    console.log("Building: " + stop)
+function showDetailsTemp(building, service_name, description){
+    document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_info").innerText = description
+    document.getElementById("details_box").style.border = "solid 1px red"
+}
+
+function selectTransit(stop, name, bus) {
+    // console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#bus_stops_overlay').mapster('tooltip');
     });
@@ -210,6 +217,8 @@ function selectTransit(stop) {
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
+    bus = bus.replace(",", "\n");
+    showDetailsTemp(stop, name, bus)
 }
 
 
