@@ -162,3 +162,10 @@ body {
 #food_services_overlay{
   display: none
 }
+
+#details_box {
+  position: absolute;
+  bottom: 0px;
+  background-color: white;
+
+}
