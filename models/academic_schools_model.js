@@ -29,3 +29,22 @@ exports.getAllBusiness = () => {
   return db.execute("SELECT * FROM schools WHERE schoolName = 'School of Business'");
 }
 
+exports.getAllComputing = () => {
+  return db.execute("SELECT * FROM schools WHERE schoolName = 'School of Computing and Academic Studies'");
+}
+
+exports.getAllConstruction = () => {
+  return db.execute("SELECT * FROM schools WHERE schoolName = 'School of Construction and the Environment'");    
+}
+
+exports.getAllEnergy = () => {
+  return db.execute("SELECT * FROM schools WHERE schoolName = 'School of Energy'");    
+}
+
+exports.getAllHealthSci = () => {
+  return db.execute("SELECT * FROM schools WHERE schoolName = 'School of Health Sciences'");    
+}
+
+exports.getAllTransportation = () => {
+  return db.execute("SELECT * FROM schools WHERE schoolName = 'School of Transportation'");    
+}
