@@ -150,17 +150,24 @@ area {
 }
 */
 
-#image {
+#campus_entrances_overlay {
   position: relative;
   top: 0px;
+  left: 0px;    
+}
+
+#image {
+  position: absolute;
+  top: 0px;
   left: 0px;
+  z-index: -1;
+}    
 }
 
 #image_map {
   position: absolute;
   top: 0px;
   left: 0px; 
-  z-index: -1;
 }
 
 area {
@@ -170,7 +177,6 @@ area {
 }
 
 #bus_stops_overlay, 
-#campus_entrances_overlay, 
 #employee_parking_overlay, 
 #first_aid_overlay, 
 #food_services_overlay,
