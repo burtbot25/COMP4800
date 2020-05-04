@@ -103,9 +103,9 @@ function selectCARI() {
 
 function selectSchool(school_name, building, description) {
     $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+        $('#campus_entrances_overlay').mapster('tooltip');
     });
-    $('#image').mapster(initial_opts)
+    $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, {
             fill: true,
             fillColor: '138C40'
@@ -115,7 +115,7 @@ function selectSchool(school_name, building, description) {
     
     building.replace(",", ",#")
     $('#' + building).bind('mouseover', function () {
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
     
@@ -156,10 +156,10 @@ function selectAcademicSchools(building, service_name, description) {
     console.log("Description: + " + description)
 
     $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+        $('#campus_entrances_overlay').mapster('tooltip');
     });
     
-    $('#image').mapster(initial_opts)
+    $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
             fillColor: 'FF0000'
@@ -170,10 +170,10 @@ function selectAcademicSchools(building, service_name, description) {
     building.replace(",", ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-
+    description = description.replace(/,/g, "\n");
     showBuildingDetails(building, description)
 }
 
