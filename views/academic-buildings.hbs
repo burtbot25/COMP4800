@@ -5,56 +5,72 @@
     <div class="col-sm-2">
         <div class="sidenav">
             <div class="sidenav-cont">
+<!--                School of Business-->
                 {{#each businessAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectBusinessSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
                         <i class="fa fa-caret-down"></i>
                     </button>
                 {{/each}}
-<!--
-                <button class="dropdown-btn" onclick="">School of Business
-                    <i class="fa fa-caret-down"></i>
-                </button>
--->
                 <div class="dropdown-container">
                     {{#each businessSchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
                     {{/each}}
                 </div>
-                <button class="dropdown-btn">School of Computing and Academic Studies
-                    <i class="fa fa-caret-down"></i>
-                </button>
+                
+<!--                School of Computing and Academic Studies-->
+                {{#each computingAllBuildings}}
+                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                {{/each}}
                 <div class="dropdown-container">
                     {{#each computingSchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
                     {{/each}}
                 </div>
-                <button class="dropdown-btn">School of Construction and the Environment
-                    <i class="fa fa-caret-down"></i>
-                </button>
+                
+<!--                School of Construction and the Environment-->
+                {{#each constructionAllBuildings}}
+                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                {{/each}}
                 <div class="dropdown-container">
                     {{#each constructionSchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
                     {{/each}}
                 </div>
-                <button class="dropdown-btn">School of Energy
-                    <i class="fa fa-caret-down"></i>
-                </button>
+                
+<!--                School of Energy-->
+                {{#each energyAllBuildings}}
+                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                {{/each}}
                 <div class="dropdown-container">
                     {{#each energySchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
                     {{/each}}
                 </div>
-                <button class="dropdown-btn">School of Health Sciences
-                    <i class="fa fa-caret-down"></i>
-                </button>
+                
+<!--                School of Health Sciences-->
+                {{#each healthAllBuildings}}
+                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                {{/each}}
                 <div class="dropdown-container">
                     {{#each healthSciSchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
                     {{/each}}
                 </div>
-                <button class="dropdown-btn">School of Transportation
-                    <i class="fa fa-caret-down"></i>
-                </button>
+                
+<!--                School of Transportation-->
+                {{#each transportationAllBuildings}}
+                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
+                        <i class="fa fa-caret-down"></i>
+                    </button>
+                {{/each}}
                 <div class="dropdown-container">
                     {{#each transportationSchool}}
                         <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>

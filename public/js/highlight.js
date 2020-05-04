@@ -101,7 +101,7 @@ function selectCARI() {
     });
 }
 
-function selectBusinessSchool(school_name, building, description) {
+function selectSchool(school_name, building, description) {
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
     });
