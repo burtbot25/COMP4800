@@ -159,27 +159,25 @@ function selectTransit(stop) {
 }
 
 
-function selectParking(classid,stop) {
-    //console.log("Building: " + stop)
+function selectParking(id,stop) {
+    console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
-        $('.'+classid).mapster('tooltip');
+        $('#'+id).mapster('tooltip');
     });
     
-    
-    $('.'+classid).mapster(initial_opts)
+    $('#'+id).mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
             fillColor: 'FF0000'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
-/*
-    stop.replace(",", ",#")
 
-    $('#' + stop).bind('mouseover', function () { // ID goes here
+    var replaced = stop.replace(/,/g, ",#")
+    $('#' + replaced).bind('mouseover', function () { // ID goes here
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
-    });*/
+    });
 }
 function toggleDropdown(self) {
     console.log(self);  
