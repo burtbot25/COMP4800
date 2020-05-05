@@ -91,3 +91,9 @@
         </div>
     </div>
 </div>
+<script>
+    let image_map = document.getElementById('image_map');
+    Array.from(image_map.children).forEach(e => {
+        e.removeAttribute("title");
+    })
+</script>
