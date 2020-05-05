@@ -1,5 +1,5 @@
 .jumbotron {
-    background-color: #1307ba;
+    background-color: #003c71;
     color: white;
 }
 
@@ -11,9 +11,9 @@
 .main-menu-nav button {
     width: 275px;
     height: 60px;
-    color: white;
-    background-color: #f72e0f;
-    border: 2px solid #f72e0f;
+    color: #003c71;
+    background-color: #ffea2e;
+    border: 2px solid #ffea2e;
     border-radius: 12px;
     font-size: 20px;
     font-weight: bold;
