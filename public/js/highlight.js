@@ -231,7 +231,7 @@ function selectParking(id,stop) {
     $('#'+id).mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
