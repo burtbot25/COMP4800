@@ -179,22 +179,28 @@ function selectAcademicSchools(building, service_name, description) {
 
 function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = "(currently blank)" + description
     document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.border = "solid 1px red"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
 }
 
 
 function showBuildingDetails(building, description){
     document.getElementById("details_title").innerText = building
+    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
-    document.getElementById("details_box").style.border = "solid 1px #003c71"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
 }
 
 function showDetailsTemp(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
-    document.getElementById("details_box").style.border = "solid 1px red"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
 }
 
 function selectTransit(stop, name, bus) {
