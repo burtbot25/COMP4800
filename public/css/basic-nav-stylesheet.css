@@ -136,7 +136,8 @@ area {
 #security_overlay,
 #student_parking_overlay,
 #visitor_parking_overlay,
-#food_services_overlay{
+#food_services_overlay,
+#bike_overlay{
   display: none
 }
 
