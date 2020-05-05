@@ -118,7 +118,7 @@ function selectSchool(school_name, building, description) {
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-    
+    description = description.replace(/,/g, "\n");
     showBuildingDetails(school_name, description)
 }
 /* end group selection functions */
@@ -162,7 +162,7 @@ function selectAcademicSchools(building, service_name, description) {
     $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -188,7 +188,7 @@ function showDetails(building, service_name, description){
 function showBuildingDetails(building, description){
     document.getElementById("details_title").innerText = building
     document.getElementById("details_info").innerText = description
-    document.getElementById("details_box").style.border = "solid 1px red"
+    document.getElementById("details_box").style.border = "solid 1px #003c71"
 }
 
 function showDetailsTemp(building, service_name, description){
