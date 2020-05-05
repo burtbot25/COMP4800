@@ -150,6 +150,10 @@ body {
   left: 0px;
 }
 
+area { 
+  display:none;
+}
+
 #bus_stops_overlay, 
 #campus_entrances_overlay, 
 #employee_parking_overlay, 

@@ -145,12 +145,6 @@ body {
   border-bottom-left-radius: 40px;
 }
 
-/*
-area { 
-  display:none;
-}
-*/
-
 #campus_entrances_overlay {
   position: relative;
   top: 0px;
@@ -175,6 +169,7 @@ area {
   position: absolute;
   top: 0px;
   left: 0px;
+  display:none;
 }
 
 #bus_stops_overlay, 
