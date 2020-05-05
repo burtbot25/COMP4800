@@ -44,17 +44,18 @@
                     <button onclick="selectTransit(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
                         Waybburne Dr</button> --}}
                 </div>
-                <button class="dropdown-btn" onclick="toggleDisplay(this)" value="bus_stops_overlay">Navigating Campus
+                <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Navigating Campus
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
                     <button>Campus Square</button>
-                    <button onlick="selectTransit(this.value)" value="CARI">CARI Building</button>
-                    <button>Telus Theatre</button>
-                    <button>Student Housing</button>
-                    <button>Recreation Centre</button>
+                    <button onclick="selectTransit(this.value)" value="CARI">CARI Building</button>
+                    <button onclick="selectTransit(this.value)" value="SE06">Telus Theatre</button>
+                    <button onclick="selectTransit(this.value)" value="SW10,SW11,SW12,SW13,SW14,SW15,SW16">Student Housing</button>
+                    <button onclick="selectTransit(this.value)" value="SE16">Recreation Centre</button>
                     <button>Trades Buildings</button>
-                    <button>Accessibility Routes</button>
+                    <button onclick="toggleDisplay(this)" value="bike_overlay">Bicycle Route Information</button>
+                    <button >Accessibility Routes</button>
                 </div>
                 <button class="dropdown-btn" onclick="toggleDropdown(this)">Parking Information
                     <i class="fa fa-caret-down"></i>

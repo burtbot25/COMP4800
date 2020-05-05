@@ -212,7 +212,7 @@ function selectTransit(stop, name, bus) {
         .mapster('rebind', basic_opts);
 
     stop.replace(",", ",#")
-
+    console.log(stop);
     $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
@@ -242,6 +242,31 @@ function selectParking(id,stop) {
 
     });
 }
+
+function selectCampus(building) {
+    // console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#bus_stops_overlay').mapster('tooltip');
+    });
+    
+    $('#bus_stops_overlay').mapster(initial_opts)
+        .mapster('set', true, stop, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    stop.replace(",", ",#")
+    console.log(stop);
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    bus = bus.replace(",", "\n");
+    showDetailsTemp(stop, name, bus)
+}
+
 function toggleDropdown(self) {
     console.log(self);  
     $(".dropdown-btn").not(self).next(".dropdown-container").css("display","none");
