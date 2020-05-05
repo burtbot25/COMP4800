@@ -103,9 +103,9 @@ function selectCARI() {
 
 function selectSchool(school_name, building, description) {
     $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+        $('#campus_entrances_overlay').mapster('tooltip');
     });
-    $('#image').mapster(initial_opts)
+    $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, {
             fill: true,
             fillColor: '138C40'
@@ -115,10 +115,10 @@ function selectSchool(school_name, building, description) {
     
     building.replace(",", ",#")
     $('#' + building).bind('mouseover', function () {
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-    
+    description = description.replace(/,/g, "\n");
     showBuildingDetails(school_name, description)
 }
 /* end group selection functions */
@@ -156,13 +156,13 @@ function selectAcademicSchools(building, service_name, description) {
     console.log("Description: + " + description)
 
     $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+        $('#campus_entrances_overlay').mapster('tooltip');
     });
     
-    $('#image').mapster(initial_opts)
+    $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -170,31 +170,37 @@ function selectAcademicSchools(building, service_name, description) {
     building.replace(",", ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-
+    description = description.replace(/,/g, "\n");
     showBuildingDetails(building, description)
 }
 
 function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = "(currently blank)" + description
     document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.border = "solid 1px red"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
 }
 
 
 function showBuildingDetails(building, description){
     document.getElementById("details_title").innerText = building
+    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
-    document.getElementById("details_box").style.border = "solid 1px red"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
 }
 
 function showDetailsTemp(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
-    document.getElementById("details_box").style.border = "solid 1px red"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
 }
 
 function selectTransit(stop, name, bus) {
@@ -231,7 +237,7 @@ function selectParking(id,stop) {
     $('#'+id).mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
