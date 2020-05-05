@@ -23,26 +23,27 @@ img {
 }
 
 button {
-    color: #572603;
-    background-color: #f5a627;
+    color: #003c71;
+    background-color: #ffea2e;
     width: 100px;
     height: 40px;
     text-align: inherit;
-    border: 2px solid #f5a627;
+    border: 2px solid #ffea2e;
     border-radius: 12px;
     font-size: 18px;
     font-weight: bold;
     display: flex;    
-    margin-top: 480px;
+    margin-top: 20px;
     justify-content: center;
+    position: relative;
 }
 
 #restart {
-    float: right;
-    margin-right: 50px;
+    float: left;
+    margin-left: 150px;
 }
 
 #finish {
-    float: left;
-    margin-left: 50px;
+    float: right;
+    margin-right: 150px;
 }
