@@ -3,8 +3,6 @@ body {
 }
 
 .heading {
-    background-color: #1307ba;
-    color: white;
     width: 2500px;
     height: 100px;
     font-size: 25px;
@@ -24,30 +22,29 @@ body {
 #main-menu-btn {
     width: 130px;
     height: 30px;
-    color: #572603;
-    background-color: #f5a627;
-    border: 2px solid #f5a627;
-    border-radius: 12px;
     font-size: 16px;
     font-weight: bold;
     float: right;
     vertical-align: bottom;
     margin-top: 100px;
     margin-right: 30px;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
 }
 
 .col-sm-2 {
-  height: 598px;
+  height: 100%;
   width: 176px;
   z-index: 1;
   left: 0;
-  background-image: linear-gradient(#1307ba 0%, #eb4034 100%);
   overflow-x: hidden;
-  padding-top: 20px;  
+  padding-top: 20px;
+  position: absolute;
 }
 
 .col-sm-10 {
-    padding-left: 0;
+    margin-left: 200px;
     padding-right: 0;
 }
 
@@ -56,12 +53,10 @@ body {
   float: right;
 }
 
-.col-sm-2 button, .dropdown-btn{
+.col-sm-2 button, .dropdown-btn {
   padding: 10px;   
   text-decoration: none;
   font-size: 13px;
-  color: white;
-  opacity: 0.8;
   display: block;
   border: none;
   background: none;
@@ -75,8 +70,6 @@ body {
   padding: 10px;
   text-decoration: none;
   font-size: 14px;
-  color: white;
-  opacity: 0.8;
   display: block;
   border: none;
   background: none;
@@ -86,24 +79,15 @@ body {
   outline: none;
 }
 
-.active {
-  background-color: rgba(95, 38, 255, 0.4);
-  color: white;
-  border-top-left-radius: 40px;
-}
-
 .active::after {
     font-weight: 900;
     display: inline-block;
     padding-right: 15px;
     font-size: 180%;
-    color: #1307ba;
 }
 
 .dropdown-container {
   display: none;
-  background-color: rgba(95, 38, 255, 0.4);
-  opacity: 0.7;
   border-bottom-left-radius: 40px;
 }
 
@@ -117,24 +101,13 @@ body {
 }
 
 .col-sm-2 button:hover, .dropdown-btn:hover{
-  background-color: #3b2dfa;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
-  opacity: 1;
 }
 
 .active:hover{
-  background-color: rgba(53, 164, 255, 0.6);
   border-top-left-radius: 40px;
   border-bottom-left-radius: 0;
-  opacity: 1;
-}
-
-.dropdown-container button:hover{
-  background-color: rgba(53, 164, 255, 0.6);
-  border-radius: 0;
-  opacity: 1;
-    
 }
 
 .dropdown-container button:last-child:hover{
@@ -142,5 +115,56 @@ body {
 }
 
 area { 
-  display:none;
+  display: none;
+}
+
+#campus_entrances_overlay {
+  position: relative;
+  top: 0px;
+  left: 0px;    
+}
+
+#image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}    
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px; 
+}
+
+/*
+area {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+*/
+
+#bus_stops_overlay, 
+#employee_parking_overlay, 
+#first_aid_overlay, 
+#food_services_overlay,
+#handicap_overlay,
+#security_overlay,
+#student_parking_overlay,
+#visitor_parking_overlay{
+  display: none
+}
+
+/*
+#map_area {
+  position: relative;
+  display: inline-block; 
+  overflow: auto;    
+}
+*/
+
+#details_box {
+  position: absolute;
+  bottom: 0px;
 }

@@ -100,10 +100,34 @@ function selectCARI() {
 
     });
 }
+
+function selectSchool(school_name, building, description) {
+    $('area').bind('mouseover', function () {
+        $('#campus_entrances_overlay').mapster('tooltip');
+    });
+    $('#campus_entrances_overlay').mapster(initial_opts)
+        .mapster('set', true, building, {
+            fill: true,
+            fillColor: '138C40'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+    
+    building.replace(",", ",#")
+    $('#' + building).bind('mouseover', function () {
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    description = description.replace(/,/g, "\n");
+    showBuildingDetails(school_name, description)
+}
 /* end group selection functions */
 
-function selectKeyPlaces(building) {
+function selectKeyPlaces(building, service_name, description) {
     console.log("Building: " + building)
+    console.log("Service Name: " + service_name)
+    console.log("Description: + " + description)
+
     $('area').bind('mouseover', function () {
         $('#food_services_overlay').mapster('tooltip');
     });
@@ -122,10 +146,65 @@ function selectKeyPlaces(building) {
         $('#food_services_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
+
+    showDetails(building, service_name, description)
 }
 
-function selectTransit(stop) {
-    console.log("Building: " + stop)
+function selectAcademicSchools(building, service_name, description) {
+    console.log("Building: " + building)
+    console.log("Service Name: " + service_name)
+    console.log("Description: + " + description)
+
+    $('area').bind('mouseover', function () {
+        $('#campus_entrances_overlay').mapster('tooltip');
+    });
+    
+    $('#campus_entrances_overlay').mapster(initial_opts)
+        .mapster('set', true, building, { // String goes here
+            fill: true,
+            fillColor: 'ffea2e'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    building.replace(",", ",#")
+
+    $('#' + building).bind('mouseover', function () { // ID goes here
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    description = description.replace(/,/g, "\n");
+    showBuildingDetails(building, description)
+}
+
+function showDetails(building, service_name, description){
+    document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_info").innerText = "(currently blank)" + description
+    document.getElementById("details_link").innerText = "(Link Here)"
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
+}
+
+
+function showBuildingDetails(building, description){
+    document.getElementById("details_title").innerText = building
+    document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_info").innerText = description
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
+}
+
+function showDetailsTemp(building, service_name, description){
+    document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_info").innerText = description
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
+}
+
+function selectTransit(stop, name, bus) {
+    // console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#bus_stops_overlay').mapster('tooltip');
     });
@@ -144,6 +223,8 @@ function selectTransit(stop) {
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
+    bus = bus.replace(",", "\n");
+    showDetailsTemp(stop, name, bus)
 }
 
 
@@ -152,21 +233,20 @@ function selectParking(id,stop) {
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
     });
-    /*
+    
     $('#'+id).mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop.replace(",", ",#")
-
-    $('#' + stop).bind('mouseover', function () { // ID goes here
+    var replaced = stop.replace(/,/g, ",#")
+    $('#' + replaced).bind('mouseover', function () { // ID goes here
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
-    });*/
+    });
 }
 function toggleDropdown(self) {
     console.log(self);  

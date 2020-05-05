@@ -13,24 +13,36 @@
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
                 </div>
-                <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Transit Information
+                <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Transit
+                    Information
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button onclick="selectTransit(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
+                    {{#each transit}}
+                    <button onclick="selectTransit('{{this.id}}', '{{this.name}}', '{{this.bus}}')">{{this.name}}</button>
+                    {{/each}}
+                    {{!-- <button onclick="selectTransit(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectTransit(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectTransit(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
                     <button onclick="selectTransit(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
-                    <button onclick="selectTransit(this.value)" value="SandersonN">Northbound Willingdon Ave @ Sanderson Way</button>
-                    <button onclick="selectTransit(this.value)" value="SanderSonS">Southbound Willingdon Ave @ Sanderson Way</button>
-                    <button onclick="selectTransit(this.value)" value="DeerN">Northbound Willingdon Ave @ Deer Lake Parkway</button>
-                    <button onclick="selectTransit(this.value)" value="WillingdonEB">Eastbound Canada Way @ Willingdon Ave</button>
-                    <button onclick="selectTransit(this.value)" value="WillingdonWB">Westbound Canada Way @ Willingdon Ave</button>
+                    <button onclick="selectTransit(this.value)" value="SandersonN">Northbound Willingdon Ave @
+                        Sanderson Way</button>
+                    <button onclick="selectTransit(this.value)" value="SandersonS">Southbound Willingdon Ave @
+                        Sanderson Way</button>
+                    <button onclick="selectTransit(this.value)" value="DeerN">Northbound Willingdon Ave @ Deer Lake
+                        Parkway</button>
+                    <button onclick="selectTransit(this.value)" value="WillingdonEB">Eastbound Canada Way @ Willingdon
+                        Ave</button>
+                    <button onclick="selectTransit(this.value)" value="WillingdonWB">Westbound Canada Way @ Willingdon
+                        Ave</button>
                     <button onclick="selectTransit(this.value)" value="BetaE">Eastbound Canada Way @ Beta Ave</button>
                     <button onclick="selectTransit(this.value)" value="BetaW">Westbound Canada Way @ Beta Ave</button>
-                    <button onclick="selectTransit(this.value)" value="MathissiE">Eastbound Sanderson Way @ Mathissi Ave</button>
-                    <button onclick="selectTransit(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @ Willingdon Ave</button>
-                    <button onclick="selectTransit(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @ Waybburne Dr</button>
+                    <button onclick="selectTransit(this.value)" value="MathissiE">Eastbound Sanderson Way @ Mathissi
+                        Ave</button>
+                    <button onclick="selectTransit(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @
+                        Willingdon Ave</button>
+                    <button onclick="selectTransit(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
+                        Waybburne Dr</button> --}}
                 </div>
                 <button class="dropdown-btn">Navigating Campus
                     <i class="fa fa-caret-down"></i>
@@ -48,10 +60,10 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container" >
-                    <button onclick="toggleDisplay(this),selectParking(this.value)" value="student_parking_overlay">Student Parking</button>
-                    <button>Employee Parking</button>
-                    <button>Visitor Parking</button>
-                    <button>Accessible Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="sparking" name="LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTD" value="student_parking_overlay">Student Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="eparking" name="LOT7,LOT5,LOT12,LOT26,LOT27,LOT6,LOT62,LOT9,LOT4,LOT15,LOT22,LOT23,LOT21,LOT211,LOT212,LOT213,LOT214,LOT24,LOT25,LOT20,LOT29,LOT28,LOT281,LOT1,LOT10,LOT16,LOT19" value="employee_parking_overlay">Employee Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="vparking" name="LOTV1,LOTV2,LOTV3,LOTV4,LOTV5" value="visitor_parking_overlay">Visitor Parking</button>
+                    <button onclick="toggleDisplay(this)" value="handicap_overlay">Accessible Parking</button>
                     <button>EV Charging</button>
                     <button>Carshare Parking</button>
                     <button>Pay Station</button>
@@ -68,18 +80,18 @@
 </div>
 
 <script>
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
 
-for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-    });
-}
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
 </script>
