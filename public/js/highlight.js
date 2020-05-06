@@ -203,7 +203,7 @@ function showDetailsTemp(building, service_name, description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function selectTransit(stop, name, bus) {
+function selectNav(stop, name, bus) {
     // console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#bus_stops_overlay').mapster('tooltip');
@@ -218,13 +218,15 @@ function selectTransit(stop, name, bus) {
         .mapster('rebind', basic_opts);
 
     stop.replace(",", ",#")
-
+    console.log(stop);
     $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-    bus = bus.replace(",", "\n");
-    showDetailsTemp(stop, name, bus)
+    if (bus != null) {
+        bus = bus.replace(",", "\n");
+        showDetailsTemp(stop, name, bus)
+    }
 }
 
 
@@ -248,15 +250,41 @@ function selectParking(id,stop) {
 
     });
 }
+
+function selectCampus(building) {
+    // console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#bus_stops_overlay').mapster('tooltip');
+    });
+    
+    $('#bus_stops_overlay').mapster(initial_opts)
+        .mapster('set', true, stop, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    stop.replace(",", ",#")
+    console.log(stop);
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    bus = bus.replace(",", "\n");
+    showDetailsTemp(stop, name, bus)
+}
+
 function toggleDropdown(self) {
     console.log(self);  
     $(".dropdown-btn").not(self).next(".dropdown-container").css("display","none");
     $(".dropdown-btn").not(self).next(".dropdown-container").removeClass('active');
 }
 function toggleDisplay(id){
+    console.log(id);
     //$('area').css("display","none")
     $('img').mapster('unbind');
-    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay').css("display","none")
+    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay').css("display","none")
     $('#'+id.value).css("display","block");
 
 }
