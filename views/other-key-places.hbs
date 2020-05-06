@@ -9,49 +9,26 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    {{!-- <button id="AllDayBreakfast" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">All-Day Breakfast &amp; Lunch</button>
-                    <button id="AustinGrillService" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Austin Grill Express</button>
-                    <button id="BoosterJuice" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE14" value="description">Booster Juice</button>
-                    <button id="CampusCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Campus Café</button>
-                    <button id="CARICafeteria" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="CARI" value="description">CARI Cafeteria</button>
-                    <button id="ETCCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">E.T.C. Café</button>
-                    <button id="FuseCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">Fuse Café</button>
-                    <button id="GatewayCare" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SW01" value="description">Gateway Café</button>
-                    <button id="GrillNCo" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">Grill &amp; Co</button>
-                    <button id="HabitatPub" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE16" value="description">Habitat Pub</button>
-                    <button id="JWInglisCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">J.W. Inglis Café</button>
-                    <button id="LibraryCoffeePod" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE14" value="description">Library Coffee Pod</button>
-                    <button id="MarketKitchen" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Market Kitchen</button>
-                    <button id="PokePick" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Poké Pick</button>
-                    <button id="RoyalOakCafe" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE40" value="description">Royal Oak Café</button>
-                    <button id="Smokes" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Smokes Poutinerie</button>
-                    <button id="Pavillion" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="NE01" value="description">The Pavillion</button>
-                    <button id="RixClub" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE06" value="description">The Rix Club</button>
-                    <button id="TimHortons" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE12" value="description">Tim Hortons</button>
-                    <button id="TimHortonsExpress" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE01" value="description">Tim Hortons Express</button>
-                    <button id="TownSquareMarket" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Town Square Market</button>
-                    <button id="TripleOs" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Triple O's</button>
-                    <button id="Stand" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02,SE12" value="description">The Stand</button> --}}
-
                     {{#each foodLocations}}
                         <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '{{this.description}}')">{{this.name}}</button>
                     {{/each}}
                 </div>
-                <button id="Microwaves" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Microwaves</button>
+                <button id="Microwaves" onclick="selectKeyPlaces('{{microwavesLocations}}', this.innerText, '')">Microwaves</button>
                 <button class="dropdown-btn">Social
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="Games" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE16" value="description">Ping Pong &amp; Foosball</button>
-                    <button id="Pool" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE16" value="description">Pool in the Habitat Pub</button>
-                    <button id="Events" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02" value="description">Events in the Great Hall</button>
+                    {{#each socialLocations}}
+                        <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '')">{{this.name}}</button>
+                    {{/each}}
                 </div>
                 <button class="dropdown-btn">Study Areas
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
-                    <button id="LibraryEhpod" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE14" value="description">Library &amp; ehPod</button>
-                    <button id="StudyRooms" onclick="selectKeyPlaces(this.name, this.innerText, this.value)" name="SE02,SW01" value="description">Study Areas and Rooms</button>
+                    {{#each studyAreaLocations}}
+                        <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '')">{{this.name}}</button>
+                    {{/each}}
                 </div>
                 
             </div>
