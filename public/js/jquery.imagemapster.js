@@ -4464,8 +4464,8 @@ A jQuery plugin to enhance image maps.
 
             ttopts.left = corners[0];
             ttopts.top = corners[1];
-            ttopts.left = target.coords.split(",")[0]*1.2
-            ttopts.top = target.coords.split(",")[1]*1.2
+            ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/15
+            ttopts.top = target.coords.split(",")[1] -target.coords.split(",")[1]/15
                 
         } else {
             
