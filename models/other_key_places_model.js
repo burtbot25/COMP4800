@@ -14,13 +14,25 @@ exports.getMicrowaveInfo = () => {
 }
 
 exports.getSocialInfo = () => {
-  let sql = 'SELECT * FROM socialLocations ORDER BY name ASC'
+  let sql = 'SELECT * FROM socialLocations ORDER BY names ASC'
 
   return db.execute(sql);
 }
 
 exports.getStudyAreasInfo = () => {
   let sql = 'SELECT * FROM studyAreas ORDER BY name ASC'
+
+  return db.execute(sql);
+}
+
+exports.getFoodDescription = () => {
+  let sql = 'SELECT * FROM foodDescriptions'
+
+  return db.execute(sql);
+}
+
+exports.getFoodLinks = () => {
+  let sql = 'SELECT * FROM foodLinks'
 
   return db.execute(sql);
 }
