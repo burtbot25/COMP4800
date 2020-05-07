@@ -1,8 +1,24 @@
 const db = require("../util/database");
 const mysql = require("mysql2");
 
-exports.getBusinessBuildings = () => {
-  return db.execute("SELECT * FROM buildings WHERE description LIKE '%School of Business%'");
+exports.getSE06 = () => {
+  return db.execute("SELECT * FROM buildings WHERE buildingNumber = 'SE06'");
+}
+
+exports.getSE10 = () => {
+  return db.execute("SELECT * FROM buildings WHERE buildingNumber = 'SE10'");
+}
+
+exports.getSE12 = () => {
+  return db.execute("SELECT * FROM buildings WHERE buildingNumber = 'SE12'");
+}
+
+exports.getSW02 = () => {
+  return db.execute("SELECT * FROM buildings WHERE buildingNumber = 'SW02'");
+}
+
+exports.getSW03 = () => {
+  return db.execute("SELECT * FROM buildings WHERE buildingNumber = 'SW03'");
 }
 
 exports.getComputingBuildings = () => {

@@ -108,7 +108,7 @@ function selectSchool(school_name, building, description) {
     $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, {
             fill: true,
-            fillColor: '138C40'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -150,11 +150,7 @@ function selectKeyPlaces(building, service_name, description) {
     showDetails(building, service_name, description)
 }
 
-function selectAcademicSchools(building, service_name, description) {
-    console.log("Building: " + building)
-    console.log("Service Name: " + service_name)
-    console.log("Description: + " + description)
-
+function selectSchoolBuilding(building, description) {
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
     });
