@@ -13,13 +13,13 @@
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
                 </div>
-                <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Transit
+                <button onclick="toggleDisplay(this), selectTransit(name)" value="bus_stops_overlay" name="T">Transit
                     Information
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
                     {{#each transit}}
-                    <button onclick="selectNav('{{this.id}}', '{{this.name}}', '{{this.bus}}')">{{this.name}}</button>
+                    <button onclick="selectNav('{{this.id}}', '{{this.name}}', '{{this.busRoute}}')">{{this.name}}</button>
                     {{/each}}
                     {{!-- <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectNav(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>

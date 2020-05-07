@@ -203,6 +203,40 @@ function showDetailsTemp(building, service_name, description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
+function selectTransit(key, name, bus) {
+    // console.log("Building: " + stop)
+    // $('area').bind('mouseover', function () {
+    //     $('#bus_stops_overlay').mapster('tooltip');
+    // });
+    console.log("test")
+    $('#bus_stops_overlay').mapster({
+        initial_opts,
+        mapKey: 'data-key',
+        strokeWidth:2,
+        strokeColor: 'F88017',
+        mapValue: 'full',
+        showToolTip: true
+        }
+        )
+        .mapster('set', true, key, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        // .mapster('snapshot')
+        // .mapster('rebind', basic_opts);
+
+    // stop.replace(",", ",#")
+    console.log(key);
+    // $('#' + key).bind('mouseover', function () { // ID goes here
+    //     $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
+
+    // });
+    // if (bus != null) {
+    //     bus = bus.replace(",", "\n");
+    //     showDetailsTemp(stop, name, bus)
+    // }
+}
+
 function selectNav(stop, name, bus) {
     // console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
