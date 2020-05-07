@@ -145,6 +145,7 @@ area {
 }
 */
 
+/*
 #bus_stops_overlay, 
 #employee_parking_overlay, 
 #first_aid_overlay, 
@@ -156,6 +157,7 @@ area {
 #bike_overlay{
   display: none
 }
+*/
 
 /*
 #map_area {
