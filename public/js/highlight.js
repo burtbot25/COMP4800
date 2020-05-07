@@ -118,8 +118,6 @@ function selectSchool(school_name, building, description) {
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-    description = description.replace(/,/g, "\n");
-    showBuildingDetails(school_name, description)
 }
 /* end group selection functions */
 
@@ -150,43 +148,11 @@ function selectKeyPlaces(building, service_name, description) {
     showDetails(building, service_name, description)
 }
 
-function selectSchoolBuilding(building, description) {
-    $('area').bind('mouseover', function () {
-        $('#campus_entrances_overlay').mapster('tooltip');
-    });
-    
-    $('#campus_entrances_overlay').mapster(initial_opts)
-        .mapster('set', true, building, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-
-    building = building.replace(/,/g, ",#")
-
-    $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    description = description.replace(/,/g, "\n");
-    showBuildingDetails(building, description)
-}
-
 function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = "(currently blank)" + description
     document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
-}
-
-
-function showBuildingDetails(building, description){
-    document.getElementById("details_title").innerText = building
-    document.getElementById("details_title").style.fontWeight = "bold"
-    document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
 }
