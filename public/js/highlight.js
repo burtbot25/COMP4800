@@ -113,7 +113,7 @@ function selectSchool(school_name, building, description) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
     
-    building.replace(",", ",#")
+    building = building.replace(/,/g, ",#")
     $('#' + building).bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
@@ -140,7 +140,7 @@ function selectKeyPlaces(building, service_name, description) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building.replace(",", ",#")
+    building = building.replace(",", ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
         $('#food_services_overlay').mapster('tooltip', this, $(this).attr('full'));
@@ -167,7 +167,7 @@ function selectAcademicSchools(building, service_name, description) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building.replace(",", ",#")
+    building = building.replace(/,/g, ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
@@ -251,7 +251,7 @@ function selectNav(stop, name, bus) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop.replace(",", ",#")
+    stop = stop.replace(/,/g, ",#")
     console.log(stop);
     $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
@@ -278,8 +278,8 @@ function selectParking(id,stop) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    var replaced = stop.replace(/,/g, ",#")
-    $('#' + replaced).bind('mouseover', function () { // ID goes here
+    stop = stop.replace(/,/g, ",#")
+    $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
     });
@@ -299,7 +299,7 @@ function selectCampus(building) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop.replace(",", ",#")
+    stop = stop.replace(/,/g, ",#")
     console.log(stop);
     $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
