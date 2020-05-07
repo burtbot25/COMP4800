@@ -24,9 +24,10 @@
                     {{/each}}
                 </div> --}}
                 <button id="Social" onclick="selectKeyPlaces('{{socialBuildings}}', '{{socialNames}}')">Social</button>
-                <button class="dropdown-btn">Study Areas
+                <button id="Study Areas" onclick="selectKeyPlaces('{{studyBuildings}}', '{{studyNames}}')">Study Areas</button>
+                {{!-- <button class="dropdown-btn">Study Areas
                     <i class="fa fa-caret-down"></i>
-                </button>
+                </button> --}}
                 {{!-- <div class="dropdown-container">
                     {{#each studyAreaLocations}}
                         <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '')">{{this.name}}</button>

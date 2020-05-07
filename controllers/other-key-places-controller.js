@@ -39,6 +39,12 @@ exports.getMap = async (req, res) => {
 
     var studyAreasInfoData = await other_key_places_model.getStudyAreasInfo();
     var studyAreasInfo = studyAreasInfoData[0]
+    var studyBuildings = [];
+    var studyNames = [];
+    studyAreasInfo.forEach(row => {
+        studyBuildings.push(row.buildingNumber)
+        studyNames.push(row.name)
+    });
 
     res.render('other-key-places', { 
         otherKeyPlacesCSS: true,
@@ -46,7 +52,8 @@ exports.getMap = async (req, res) => {
         microwavesLocations: microwavesLocations,
         socialBuildings: socialBuildings,
         socialNames: socialNames,
-        studyAreaLocations: studyAreasInfo,
+        studyBuildings: studyBuildings,
+        studyNames: studyNames,
         foodDescription: foodDescription,
         foodLink: foodLink
     });
