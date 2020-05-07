@@ -145,6 +145,7 @@ area {
 }
 */
 
+/*
 #bus_stops_overlay, 
 #employee_parking_overlay, 
 #first_aid_overlay, 
@@ -152,9 +153,11 @@ area {
 #handicap_overlay,
 #security_overlay,
 #student_parking_overlay,
-#visitor_parking_overlay{
+#visitor_parking_overlay,
+#bike_overlay{
   display: none
 }
+*/
 
 /*
 #map_area {

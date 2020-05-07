@@ -1,7 +1,12 @@
 let schoolModel = require("../models/academic_schools_model");
 
 exports.getMap = async (req, res) => {
-    var businessData = await schoolModel.getBusinessBuildings();
+    var SE06Data = await schoolModel.getSE06();
+    var SE10Data = await schoolModel.getSE10();
+    var SE12Data = await schoolModel.getSE12();
+    var SW02Data = await schoolModel.getSW02();
+    var SW03Data = await schoolModel.getSW03();
+    
     var computingData = await schoolModel.getComputingBuildings();
     var constructionData = await schoolModel.getConstructionBuildings();
     var energyData = await schoolModel.getEnergyBuildings();
@@ -17,7 +22,11 @@ exports.getMap = async (req, res) => {
     
     res.render('academic-buildings', { 
         academicBuildingsCSS: true,
-        businessSchool: businessData[0],
+        SE06School: SE06Data[0],
+        SE10School: SE10Data[0],
+        SE12School: SE12Data[0],
+        SW02School: SW02Data[0],
+        SW03School: SW03Data[0],
         computingSchool: computingData[0],
         constructionSchool: constructionData[0],
         energySchool: energyData[0],
