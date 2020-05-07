@@ -1,6 +1,6 @@
 <!-- Need to remove this inline styling eventually -->
-<div style="overflow: auto;">
-    <div id="map" style="display: inline-block;">
+<div id="outer-map">
+    <div id="map">
         <div id="map_container" style="position: relative; left: 0; top: 0;">
             <img id="bus_stops_overlay" src="/media/overlays/bus_stops_overlay.png" usemap="#image-map">
             <img id="campus_entrances_overlay" src="/media/overlays/campus_entrances_overlay.png" usemap="#image-map">
@@ -156,7 +156,7 @@
 <script src="/panzoom/panzoom.js"></script>
 <script src="js/zoom.js"></script>
 <script>
-    let image_map = document.getElementById('image_map');
+    var image_map = document.getElementById('image_map');
     Array.from(image_map.children).forEach(e => {
         e.removeAttribute("title");
     })
