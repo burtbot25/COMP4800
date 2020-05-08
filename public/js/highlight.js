@@ -121,16 +121,56 @@ function selectSchool(school_name, building, description) {
 }
 /* end group selection functions */
 
-function selectKeyPlaces(building, service_name, description) {
-    console.log("Building: " + building)
-    console.log("Service Name: " + service_name)
-    console.log("Description: + " + description)
-
+function selectKeyPlaces(buildings, names) {
+    hideOverlay();
+    hideFoodDetails();
+    console.log("selectKeyPlaces")
     $('area').bind('mouseover', function () {
-        $('#food_services_overlay').mapster('tooltip');
+        $('#image').mapster('tooltip');
+    });
+
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, buildings, { // String goes here
+            fill: true,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    buildings = buildings.split(",")
+    buildings = buildings.join(",#")
+
+    $('#' + buildings).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('alt'));
+
+    });
+
+    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
+    foodBuildings.forEach(id => {
+        document.getElementById(id).visibility = "none"
+    });
+
+    updateToolTip(buildings, names);
+}
+
+function updateToolTip(buildings, names) {
+    buildings = buildings.split(",#")
+    names = names.split(",")
+
+    for (var i = 0; i < buildings.length; i++){
+        document.getElementById(buildings[i]).alt = names[i];
+    }
+}
+
+function selectMicrowaves(building) {
+    hideOverlay();
+    hideFoodDetails();
+    console.log("Select Microwaves")
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
     });
     
-    $('#food_services_overlay').mapster(initial_opts)
+    $('#image').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
             fillColor: 'FF0000'
@@ -138,14 +178,74 @@ function selectKeyPlaces(building, service_name, description) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building = building.replace(",", ",#")
+    building = building.split(",")
+    building = building.join(",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#food_services_overlay').mapster('tooltip', this, $(this).attr('full'));
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
 
     });
 
-    showDetails(building, service_name, description)
+    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
+    foodBuildings.forEach(id => {
+        document.getElementById(id).visibility = "none"
+    });
+
+}
+
+function selectFoods(building, service_name, description, foodLink) {
+    console.log("Building: " + building)
+    console.log("Service Name: " + service_name)
+    console.log("Description: " + description)
+    console.log("Food Link: " + foodLink)
+    showOverlay();
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
+    });
+    
+    foodBuildings = "FI01,FI02,FI03,FI04,FI05,FI06,FI07,FI08,FI09"
+
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, foodBuildings, { // String goes here
+            fill: false,
+            stroke: false,
+            fillColor: 'FF0000'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    foodBuildings = foodBuildings.split(",")
+    foodBuildings = foodBuildings.join(",#")
+
+    $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    
+    showFoodDetails(service_name, description+"", foodLink+"")
+}
+
+function showOverlay(){
+    document.getElementById("image").src = "/media/food_map.png"
+}
+
+function hideOverlay(){
+    document.getElementById("image").src = "/media/burnaby_campus_map.png"
+}
+
+function showFoodDetails(service_name, description, foodLink){
+    document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_info").innerText = description
+    document.getElementById("details_link").innerText = foodLink
+    document.getElementById("details_link").href = foodLink
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
+}
+
+function hideFoodDetails(){
+    document.getElementById("details_box").style.display = "none"
 }
 
 function showDetails(building, service_name, description){

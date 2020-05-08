@@ -5,31 +5,34 @@
     <div class="col-sm-2">
         <div class="sidenav">
             <div class="sidenav-cont">
-                <button class="dropdown-btn">Food &amp; Coffee
+                {{!-- <button class="dropdown-btn">Food &amp; Coffee
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
                     {{#each foodLocations}}
                         <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '{{this.description}}')">{{this.name}}</button>
                     {{/each}}
-                </div>
-                <button id="Microwaves" onclick="selectKeyPlaces('{{microwavesLocations}}', this.innerText, '')">Microwaves</button>
-                <button class="dropdown-btn">Social
+                </div> --}}
+                <button id="Food" onclick="selectFoods('{{foodLocations}}', this.innerText, '{{foodDescription}}', '{{foodLink}}')">Food &amp; Coffee</button>
+                <button id="Microwaves" onclick="selectMicrowaves('{{microwavesLocations}}')">Microwaves</button>
+                {{!-- <button class="dropdown-btn">Social
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container">
                     {{#each socialLocations}}
                         <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '')">{{this.name}}</button>
                     {{/each}}
-                </div>
-                <button class="dropdown-btn">Study Areas
+                </div> --}}
+                <button id="Social" onclick="selectKeyPlaces('{{socialBuildings}}', '{{socialNames}}')">Social</button>
+                <button id="Study Areas" onclick="selectKeyPlaces('{{studyBuildings}}', '{{studyNames}}')">Study Areas</button>
+                {{!-- <button class="dropdown-btn">Study Areas
                     <i class="fa fa-caret-down"></i>
-                </button>
-                <div class="dropdown-container">
+                </button> --}}
+                {{!-- <div class="dropdown-container">
                     {{#each studyAreaLocations}}
                         <button onclick="selectKeyPlaces('{{this.buildingNumber}}', '{{this.name}}', '')">{{this.name}}</button>
                     {{/each}}
-                </div>
+                </div> --}}
                 
             </div>
         </div>
