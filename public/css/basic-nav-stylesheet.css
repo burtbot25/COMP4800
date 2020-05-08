@@ -112,19 +112,30 @@ body {
   left: 0px;
 }
 
-#ev_overlay{
+#electrical_vehicle_overlay{
   position: relative;
   top: 0px;
   left: 0px;
 }
 
-#cs_overlay{
+#car_share_overlay{
   position: relative;
   top: 0px;
   left: 0px;
 }
 
-#br_overlay{
+#bike_repair_overlay{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#pay_station_overlay{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+#motorcycle_overlay{
   position: relative;
   top: 0px;
   left: 0px;
@@ -158,9 +169,11 @@ area {
 #visitor_parking_overlay,
 #food_services_overlay,
 #bike_overlay,
-#ev_overlay,
-#cs_overlay,
-#br_overlay{
+#electrical_vehicle_overlay,
+#car_share_overlay,
+#bike_repair_overlay,
+#pay_station_overlay,
+#motorcycle_overlay{
   display: none
 }
 

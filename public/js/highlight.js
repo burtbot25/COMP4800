@@ -235,7 +235,8 @@ function selectParking(id,stop) {
     $('#'+id).mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
-            fillColor: 'ffea2e'
+            fillColor: 'ffea2e',
+            mapKey: 'parking-key',
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -280,7 +281,7 @@ function toggleDisplay(id){
     console.log(id);
     //$('area').css("display","none")
     $('img').mapster('unbind');
-    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#ev_overlay,#cs_overlay, #br_overlay').css("display","none")
+    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#electrical_vehicle_overlay,#car_share_overlay, #bike_repair_overlay,#pay_station_overlay,#motorcycle_overlay').css("display","none")
     $('#'+id.value).css("display","block");
 
 }
