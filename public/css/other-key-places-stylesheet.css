@@ -98,17 +98,16 @@ body {
 }
 
 
-#food_services_overlay {
+/* #food_services_overlay {
   position: relative;
   top: 0px;
   left: 0px;
-}
+} */
 
 #image {
-  position: absolute;
+  position: relative;
   top: 0px;
   left: 0px;
-  z-index: -1;
 }
 
 #image_map {
@@ -127,6 +126,7 @@ area {
   display:none;
 }
 
+#food_services_overlay,
 #bus_stops_overlay, 
 #campus_entrances_overlay, 
 #employee_parking_overlay, 
