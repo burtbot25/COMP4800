@@ -350,6 +350,39 @@ function selectParking(id,stop,key) {
         strokeColor: 'F88017',
         mapValue: 'full',
         showToolTip: true,
+        staticState: true,
+        fill:false
+        }
+        )
+        .mapster('set', true,stop, { // String goes here
+            fill: true,
+            fillColor: 'ffea2e'
+        })
+
+    stop = stop.replace(/,/g, ",#")
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    //showDetailsTemp("test1","Student Parking","While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
+}
+
+function selectLot(id,stop,key) {
+    
+    console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#'+id).mapster('tooltip');
+    });
+    
+    $('#'+id).mapster({
+        initial_opts,
+        mapKey: key,
+        strokeWidth:2,
+        strokeColor: 'F88017',
+        mapValue: 'full',
+        showToolTip: true,
+        staticState: true,
+        fill:false
         }
         )
         .mapster('set', true,stop, { // String goes here
