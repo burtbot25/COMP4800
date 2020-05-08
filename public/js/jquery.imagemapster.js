@@ -4277,7 +4277,7 @@ A jQuery plugin to enhance image maps.
         'border-radius: 6px 6px 6px 6px; opacity: 0.9;"></dteniv>',
         showToolTip: false,
         toolTipFade: true,
-        toolTipClose: ['area-click'],
+        toolTipClose: ['area-mouseout','image-mouseout'],
         onShowToolTip: null,
         onHideToolTip: null
     });

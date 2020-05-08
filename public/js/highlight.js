@@ -380,7 +380,7 @@ function toggleDisplay(id){
     console.log(id);
     //$('area').css("display","none")
     $('img').mapster('unbind');
-    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay').css("display","none")
+    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#ev_overlay,#cs_overlay, #br_overlay').css("display","none")
     $('#'+id.value).css("display","block");
 
 }

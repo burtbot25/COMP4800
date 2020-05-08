@@ -12,9 +12,10 @@
             <img id="student_parking_overlay" src="/media/overlays/student_parking_overlay.png" usemap="#image-map">
             <img id="visitor_parking_overlay" src="/media/overlays/visitor_parking_overlay.png" usemap="#image-map">
             <img id="bike_overlay" src="/media/overlays/bike_overlay.png" usemap="#image-map">
+            <img id="ev_overlay" src="/media/overlays/ev_parking.png" usemap="#image-map">
+            <img id="br_overlay" src="/media/overlays/bike_repair.png" usemap="#image-map">
+            <img id="cs_overlay" src="/media/overlays/car_share_parking.png" usemap="#image-map">
             <img id="image" src="/media/burnaby_campus_map.png" usemap="#image-map">
-
-
             <map id="image_map" name="image-map">
                 <!-- Food Locations-->
                 <area style="display:none" target="" class="food_icon_map" id="FI01" building="FI01" alt="NE01" full="J.W. Inglis Café, The Pavillion" title="NE01" href="#" coords="289,537,328,572" shape="rect">
@@ -116,8 +117,9 @@
                 <area target="" class="sparking" id="LOTS2"  building="LOTS2"  full="LOT S"  alt="LOT S2" title="LOT S2" href="#" coords="2294,1382,2365,1460" shape="rect">
                 <area target="" class="sparking" id="LOTM"   building="LOTM"   full="LOT M"  alt="LOT M" title="LOT M" href="#" coords="3185,900,2913,832" shape="rect">
                 <area target="" class="sparking" id="LOTH"   building="LOTH"   full="LOT H"  alt="LOT H" title="LOT H" href="#" coords="2745,185,2860,396" shape="rect">
-                <area target="" class="sparking" id="LOTD"   building="LOTD"   full="LOT D"  alt="LOT D" title="LOT D" href="#" coords="3411,483,3597,487,3708,540,3615,694" shape="poly">
+                <area target="" class="sparking" id="LOTO"   building="LOTO"   full="LOT O"  alt="LOT O" title="LOT O" href="#" coords="3411,483,3597,487,3708,540,3615,694" shape="poly">
             <!-- employee parking-->
+            <!--
                 <area target="" class="eparking" id="LOT19"   building="LOT19"   full="LOT 19"   alt="LOT 19" title="LOT 19" href="" coords="690,821,797,914" shape="rect">
                 <area target="" class="eparking" id="LOT16"   building="LOT16"   full="LOT 16"   alt="LOT 16" title="LOT 16" href="" coords="797,937,890,1033" shape="rect">
                 <area target="" class="eparking" id="LOT1"   building="LOT1"   full="LOT 1"   alt="LOT 1" title="LOT 1" href="" coords="1012,976,1087,1055" shape="rect">
@@ -145,12 +147,13 @@
                 <area target="" class="eparking" id="LOT29"  building="LOT29"  full="LOT 29"  alt="LOT 29" title="LOT 29" href="#" coords="2874,1205,2501,1219,2369,1346,2373,1489,2351,1532,2441,1513,2408,1420,2462,1366,2426,1330,2444,1269,2509,1252,2555,1266,2881,1259" shape="poly">
                 <area target="" class="eparking" id="LOT28"  building="LOT28"  full="LOT 28"  alt="LOT 28" title="LOT 28" href="#" coords="3790,148,3919,220" shape="rect">
                 <area target="" class="eparking" id="LOT281" building="LOT281" full="LOT 28" alt="LOT 28.1" title="LOT 28.1" href="#" coords="3827,243,3902,279,3873,369,3730,419,3594,401,3612,336,3658,347,3744,354,3798,347,3848,294" shape="poly">
+            -->
             <!-- visitor parking-->
-                <area target="" class="vparking" id="LOTV3"  building="LOTV3"  full="LOT V3"  alt="LOT V3" title="LOT V3" href="#" coords="1603,418,1742,482" shape="rect">
+             <!--   <area target="" class="vparking" id="LOTV3"  building="LOTV3"  full="LOT V3"  alt="LOT V3" title="LOT V3" href="#" coords="1603,418,1742,482" shape="rect">
                 <area target="" class="vparking" id="LOTV2"  building="LOTV2"  full="LOT V2"  alt="LOT v2" title="LOT v2" href="#" coords="221,478,317,521" shape="rect">
                 <area target="" class="vparking" id="LOTV1"  building="LOTV1"  full="LOT V1"  alt="LOT V1" title="LOT V1" href="#" coords="1023,1178,1413,1235" shape="rect">
                 <area target="" class="vparking" id="LOTV4"  building="LOTV4"  full="LOT V4"  alt="LOT V4" title="LOT V4" href="#" coords="3504,162,3568,262" shape="rect">
-                <area target="" class="vparking" id="LOTV5"  building="LOTV5"  full="LOT V5"  alt="LOT V5" title="LOT V5" href="#" coords="1606,1055,1793,1108" shape="rect">
+                <area target="" class="vparking" id="LOTV5"  building="LOTV5"  full="LOT V5"  alt="LOT V5" title="LOT V5" href="#" coords="1606,1055,1793,1108" shape="rect"> -->
             <!-- student housing parking-->
                 <area target="" class="parking" id="house"  building="house"  full="Student Housing Parking"  alt="STUDENT HOUSING PARKING" title="STUDENT HOUSING PARKING" href="#" coords="2333,976,2344,1048,2530,1015,2673,997,2681,915,2509,933" shape="poly">
             <!-- accessible parking icons-->
@@ -179,6 +182,21 @@
                 <area target="" class="aparking" id="HC23" building="HC23" full="accessible parking" alt="HC24" title="HC24" href="" coords="2448,200,2512,261" shape="rect">
                 <area target="" class="aparking" id="HC24" building="HC24" full="accessible parking" alt="HC25" title="HC25" href="" coords="3300,189,3372,257" shape="rect">
                 <area target="" class="aparking" id="HC25" building="HC25" full="accessible parking" alt="HC26" title="HC26" href="" coords="3307,403,3375,468" shape="rect">
+            <!-- Electrical vehical,carshare,bike repair areas-->
+                <area target="" id="EV1" building = "EV1" full = "EV1" alt="EV1" href="#" coords="178,243,249,301" shape="rect">
+                <area target="" id="EV2" building = "EV2" full = "EV2" alt="EV2" href="#" coords="339,480,403,540" shape="rect">
+                <area target="" id="EV3" building = "EV3" full = "EV3" alt="EV3" href="#" coords="1066,1262,1001,1198" shape="rect">
+                <area target="" id="EV4" building = "EV4" full = "EV4" alt="EV4" href="#" coords="2523,1244,2587,1305" shape="rect">
+                <area target="" id="EV5" building = "EV5" full = "EV5" alt="EV5" href="#" coords="1520,344,1603,397" shape="rect">
+                <area target="" id="CS1" building = "CS1" full = "CS1" alt="CS1" href="#" coords="156,1129,224,1200" shape="rect">
+                <area target="" id="CS2" building = "CS2" full = "CS2" alt="CS2" href="#" coords="973,82,1048,150" shape="rect">
+                <area target="" id="CS3" building = "CS3" full = "CS3" alt="CS3" href="#" coords="1921,252,2004,320" shape="rect">
+                <area target="" id="BR1" building = "BR1" full = "BR1" alt="BR1" href="#" coords="167,747,224,808" shape="rect">
+                <area target="" id="BR2" building = "BR2" full = "BR2" alt="BR2" href="#" coords="1112,752,1184,809" shape="rect">
+                <area target="" id="BR3" building = "BR3" full = "BR3" alt="BR3" href="#" coords="1503,1028,1571,1093" shape="rect">
+                <area target="" id="BR4" building = "BR4" full = "BR4" alt="BR4" href="#" coords="1954,623,2025,691" shape="rect">
+            
+
             </map>
         </div>
     </div>
