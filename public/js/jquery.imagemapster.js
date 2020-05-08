@@ -4461,7 +4461,7 @@ A jQuery plugin to enhance image maps.
                                     tooltip.outerHeight(true));
 
             // Try to upper-left align it first, if that doesn't work, change the parameters
-                    
+
             ttopts.left = corners[0];
             ttopts.top = corners[1];
             if(target.coords.split(",")[0] < 50){
