@@ -245,16 +245,17 @@ function selectService(building, name, description, link) {
 
     });
     description = description.replace(/,/g, "\n");
-    showServiceDetails(building, name, description, link);
+    showDetails(building, name, description, link);
 }
 
-function showServiceDetails(building, name, description, link){
+function showDetails(name, description, link){
     document.getElementById("details_box").style.display = "block"
-    document.getElementById("details_title").innerText = name + building
+    document.getElementById("details_title").innerText = name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
+    document.getElementById("details_link").target = "_blank"
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
 }
@@ -274,6 +275,7 @@ function showFoodDetails(service_name, description, foodLink){
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
     document.getElementById("details_link").href = foodLink
+    document.getElementById("details_link").target = "_blank"
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
 }
@@ -282,7 +284,7 @@ function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-function showDetails(building, service_name, description){
+function showDetails1(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = "(currently blank)" + description

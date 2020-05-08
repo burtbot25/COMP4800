@@ -186,6 +186,10 @@ html, body {
     padding: 0;
 }
 
+.campus-map {
+  display: none;
+}
+
 #main-menu-btn {
     width: 130px;
     height: 30px;
@@ -321,7 +325,12 @@ area {
 #security_overlay,
 #student_parking_overlay,
 #visitor_parking_overlay,
-#bike_overlay{
+#bike_overlay,
+#electrical_vehicle_overlay,
+#bike_repair_overlay,
+#car_share_overlay,
+#pay_station_overlay,
+#motorcycle_overlay{
   display: none
 }
 
