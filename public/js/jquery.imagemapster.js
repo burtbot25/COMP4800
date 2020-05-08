@@ -4461,33 +4461,11 @@ A jQuery plugin to enhance image maps.
                                     tooltip.outerHeight(true));
 
             // Try to upper-left align it first, if that doesn't work, change the parameters
-
+                    
             ttopts.left = corners[0];
             ttopts.top = corners[1];
-            console.log("container width" + target.coords)
-            console.log("x coordss" + target.coords.split(",")[0])
-            console.log("y coordss" + target.coords.split(",")[1])
-            if(target.coords.split(",")[0] < 50){
-                ttopts.left = target.coords.split(",")[0]*1.4
-            }
-            else if(target.coords.split(",")[0] < 200){
-                ttopts.left = target.coords.split(",")[0]*1.2
-            }
-            else if(target.coords.split(",")[0] < 500){
-                ttopts.left = target.coords.split(",")[0]*1.1
-            }
-            else if(target.coords.split(",")[0] < 700){
-                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/50
-            } else {
-                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/25
-            }
-            if (target.coords.split(",")[1] < 100) {
-                ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 2
-            } else if (target.coords.split(",")[1] < 300) {
-                ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 5
-            } else {
-                ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 6
-            }
+            ttopts.left = target.coords.split(",")[0] + 10
+            ttopts.top = target.coords.split(",")[1]  - 10
              
         } else {
             
