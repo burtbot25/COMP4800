@@ -267,8 +267,10 @@ function showDetailsTemp(building, service_name, description){
 
 var transit = false;
 var busData = [];
-function selectTransit(key, name, bus) {
-
+function selectTransit() {
+    let stops = $(".bus")
+    $("area").hide();
+    $(".bus").show();
     console.log(transit);
     if (transit == false) {
         fetch("/getTransit")
@@ -288,9 +290,7 @@ function selectTransit(key, name, bus) {
             console.log(error);
         });
     }
-    console.log(busData);
     busOverlay();
-    console.log(key);
 }
 
 function busOverlay() {
@@ -299,13 +299,13 @@ function busOverlay() {
         fill: false,
         mapKey: 'data-key',
         fill: false,
-        stroke: true,
-        strokeWidth: 2,
-        strokeColor: 'ffff00',
         clickNavigate: true,           
         showToolTip: true,
         staticState: true,
-        areas: busData
+        stroke: true,
+        strokeWidth: 2,
+        strokeColor: 'ffff00',
+        // areas: busData
     })
 }
 
