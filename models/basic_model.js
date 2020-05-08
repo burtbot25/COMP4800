@@ -9,3 +9,8 @@ exports.getTransitInfo = () => {
     let sql = `SELECT * FROM busStops`;
     return db.execute(sql);
 };
+
+exports.getTransitDescription = () => {
+    let sql = `SELECT * FROM busDescriptions`;
+    return db.execute(sql);
+}

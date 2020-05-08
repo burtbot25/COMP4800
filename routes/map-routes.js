@@ -17,5 +17,6 @@ router.get('/other_key_places', otherKeyPlacesController.getMap);
 router.get('/finish', finishController.getMap);
 
 router.get('/getTransit', basicNavController.getTransit);
+router.get('/getTransitDesc', basicNavController.getTransitDesc)
 
 module.exports = router;

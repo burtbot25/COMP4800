@@ -10,3 +10,9 @@ exports.getTransit = async (req, res) => {
     busData = transitData[0]
     res.send(busData);
 };
+
+exports.getTransitDesc = async (req, res) => {
+    let transitData = await basicModel.getTransitDescription();
+    busData = transitData[0]
+    res.send(busData);
+};

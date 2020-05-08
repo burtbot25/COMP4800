@@ -257,20 +257,20 @@ function showDetails(building, service_name, description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function showDetailsTemp(building, service_name, description){
-    document.getElementById("details_title").innerText = service_name
+function showDetailsTransit(description){
+    document.getElementById("details_box").style.display = "block"
+    // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
+    document.getElementById("details_box").style.overflow= "scroll"
 }
 
 var transit = false;
 var busData = [];
-function selectTransit() {
-    let stops = $(".bus")
-    $("area").hide();
-    $(".bus").show();
+function selectTransit() {  
+    showBasicOverlay("/media/bus_map.png");
     console.log(transit);
     if (transit == false) {
         fetch("/getTransit")
@@ -289,25 +289,40 @@ function selectTransit() {
         .catch(function (error) {
             console.log(error);
         });
+    } else {
+        busOverlay();
     }
-    busOverlay();
+    fetch("/getTransitDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        console.log(data)
+        console.log(data[0].description);
+        showDetailsTransit(data[0].description);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
 }
 
 function busOverlay() {
-    $('#bus_stops_overlay').mapster({
+    $('#image').mapster({
         singleSelect: true,
         fill: false,
-        mapKey: 'data-key',
+        mapKey: 'building',
         fill: false,
+        toolTipClose: ['area-mouseout','image-mouseout'],
         clickNavigate: true,           
         showToolTip: true,
         staticState: true,
-        stroke: true,
-        strokeWidth: 2,
-        strokeColor: 'ffff00',
-        // areas: busData
+        areas: busData
     })
 }
+
+function showBasicOverlay(source){
+    document.getElementById("image").src = source
+}
+
 
 function selectNav(stop, name, bus) {
     // console.log("Building: " + stop)
@@ -356,7 +371,7 @@ function selectParking(id,stop) {
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
     });
-    showDetailsTemp("test1","Student Parking","While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
+    showDetailsTransit("test1","Student Parking","While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
 }
 
 function selectCampus(building) {
