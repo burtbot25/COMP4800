@@ -108,18 +108,16 @@ function selectSchool(school_name, building, description) {
     $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, {
             fill: true,
-            fillColor: '138C40'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
     
-    building.replace(",", ",#")
+    building = building.replace(/,/g, ",#")
     $('#' + building).bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-    description = description.replace(/,/g, "\n");
-    showBuildingDetails(school_name, description)
 }
 /* end group selection functions */
 
@@ -180,8 +178,12 @@ function selectMicrowaves(building) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
+<<<<<<< HEAD
     building = building.split(",")
     building = building.join(",#")
+=======
+    building = building.replace(",", ",#")
+>>>>>>> d3ce773f57ed1b319c4cd01c351eba407720472f
 
     $('#' + building).bind('mouseover', function () { // ID goes here
         $('#image').mapster('tooltip', this, $(this).attr('full'));
@@ -250,47 +252,11 @@ function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-function selectAcademicSchools(building, service_name, description) {
-    console.log("Building: " + building)
-    console.log("Service Name: " + service_name)
-    console.log("Description: + " + description)
-
-    $('area').bind('mouseover', function () {
-        $('#campus_entrances_overlay').mapster('tooltip');
-    });
-    
-    $('#campus_entrances_overlay').mapster(initial_opts)
-        .mapster('set', true, building, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-
-    building.replace(",", ",#")
-
-    $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    description = description.replace(/,/g, "\n");
-    showBuildingDetails(building, description)
-}
-
 function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = "(currently blank)" + description
     document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
-}
-
-
-function showBuildingDetails(building, description){
-    document.getElementById("details_title").innerText = building
-    document.getElementById("details_title").style.fontWeight = "bold"
-    document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
 }
@@ -351,7 +317,7 @@ function selectNav(stop, name, bus) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop.replace(",", ",#")
+    stop = stop.replace(/,/g, ",#")
     console.log(stop);
     $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
@@ -378,8 +344,8 @@ function selectParking(id,stop) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    var replaced = stop.replace(/,/g, ",#")
-    $('#' + replaced).bind('mouseover', function () { // ID goes here
+    stop = stop.replace(/,/g, ",#")
+    $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
     });
@@ -399,7 +365,7 @@ function selectCampus(building) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop.replace(",", ",#")
+    stop = stop.replace(/,/g, ",#")
     console.log(stop);
     $('#' + stop).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
