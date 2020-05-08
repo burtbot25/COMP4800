@@ -5,23 +5,22 @@
     <div class="col-sm-2">
         <div class="sidenav">
             <div class="sidenav-cont">
-                <button class="dropdown-btn">Timing
+                <button class="dropdown-btn" onclick="toggleDisplay(this), selectTiming()" value="timing_overlay">Timing
                     <i class="fa fa-caret-down"></i>
                 </button>
+                <!--
                 <div class="dropdown-container">
                     <button>Student Housing to NE01</button>
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
                 </div>
-                <button onclick="toggleDisplay(this), selectTransit(name)" value="bus_stops_overlay" name="T">Transit
-                    Information
-                    <i class="fa fa-caret-down"></i>
+                <button onclick="selectTransit()">Transit Information
                 </button>
-                <div class="dropdown-container">
+                {{!-- <div class="dropdown-container">
                     {{#each transit}}
                     <button onclick="selectNav('{{this.id}}', '{{this.name}}', '{{this.busRoute}}')">{{this.name}}</button>
                     {{/each}}
-                    {{!-- <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
+                    <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectNav(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectNav(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
                     <button onclick="selectNav(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
@@ -42,8 +41,8 @@
                     <button onclick="selectNav(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @
                         Willingdon Ave</button>
                     <button onclick="selectNav(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
-                        Waybburne Dr</button> --}}
-                </div>
+                        Waybburne Dr</button>
+                </div> --}}
                 <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Navigating Campus
                     <i class="fa fa-caret-down"></i>
                 </button>
@@ -68,7 +67,7 @@
                     <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'accessible-key')" name="HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26" value="handicap_overlay">Accessible Parking</button>
                     <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'electric-key')" name="EV1,EV2,EV3,EV4,EV5" value="electrical_vehicle_overlay" >EV Charging</button>
                     <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'share-parking-key')" name="CS1,CS2,CS3" value="car_share_overlay">Carshare Parking</button>
-                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'paystation-key')" name="PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10" value="pay_station_overlay">Pay Station</button>
+                    <button onclick="toggleDisplay(this),selectPaystation(this.value,this.name,'paystation-key')" name="PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10" value="pay_station_overlay">Pay Station</button>
                     <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'motorcycle-key')" name="MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8" value="motorcycle_overlay">Motorcycle Area</button>
                     <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'bike-key')" name="BR1,BR2,BR3,BR4" value="bike_repair_overlay">Bike Repair</button>
                 </div>
