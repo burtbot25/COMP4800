@@ -4273,7 +4273,7 @@ A jQuery plugin to enhance image maps.
     var m = $.mapster, u = m.utils;
     
     $.extend(m.defaults, {
-        toolTipContainer: '<div style="border: 1px solid black; background: #FFFFFF; max-width:160px; padding:4px; margin: 4px; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; ' +
+        toolTipContainer: '<div style="border: 1px solid black; color:#003C71;background: #FFEA2E; max-width:320px; padding:4px; margin: 4px; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; ' +
         'border-radius: 6px 6px 6px 6px; opacity: 0.9;"></dteniv>',
         showToolTip: false,
         toolTipFade: true,

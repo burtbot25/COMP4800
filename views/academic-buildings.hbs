@@ -7,84 +7,151 @@
             <div class="sidenav-cont">
 <!--                School of Business-->
                 {{#each businessAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
-                        <i class="fa fa-caret-down"></i>
-                    </button>
+                    <button class="school-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}</button>
                 {{/each}}
-                <div class="dropdown-container">
-                    {{#each businessSchool}}
-                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
-                    {{/each}}
-                </div>
                 
 <!--                School of Computing and Academic Studies-->
                 {{#each computingAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
-                        <i class="fa fa-caret-down"></i>
+                    <button class="school-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
                     </button>
                 {{/each}}
-                <div class="dropdown-container">
-                    {{#each computingSchool}}
-                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
-                    {{/each}}
-                </div>
                 
 <!--                School of Construction and the Environment-->
                 {{#each constructionAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
-                        <i class="fa fa-caret-down"></i>
+                    <button class="school-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
                     </button>
                 {{/each}}
-                <div class="dropdown-container">
-                    {{#each constructionSchool}}
-                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
-                    {{/each}}
-                </div>
                 
 <!--                School of Energy-->
                 {{#each energyAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
-                        <i class="fa fa-caret-down"></i>
+                    <button class="school-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
                     </button>
                 {{/each}}
-                <div class="dropdown-container">
-                    {{#each energySchool}}
-                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
-                    {{/each}}
-                </div>
                 
 <!--                School of Health Sciences-->
                 {{#each healthAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
-                        <i class="fa fa-caret-down"></i>
+                    <button class="school-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
                     </button>
                 {{/each}}
-                <div class="dropdown-container">
-                    {{#each healthSciSchool}}
-                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
-                    {{/each}}
-                </div>
                 
 <!--                School of Transportation-->
                 {{#each transportationAllBuildings}}
-                    <button class="dropdown-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
-                        <i class="fa fa-caret-down"></i>
+                    <button class="school-btn" onclick="selectSchool('{{this.schoolName}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.schoolName}}
                     </button>
                 {{/each}}
-                <div class="dropdown-container">
-                    {{#each transportationSchool}}
-                        <button onclick="selectAcademicSchools('{{this.buildingNumber}}', '{{this.buildingNumber}}', '{{this.description}}')">{{this.buildingNumber}}</button>
-                    {{/each}}
-                </div>
             </div>
         </div>
     </div>
     <div class="col-sm-10">
         <div id="map_area">
-            {{>overlay}}
+            <div style="overflow: auto;">
+                <div id="map" style="display: inline-block;">
+                    <div id="map_container" style="position: relative; left: 0; top: 0;">
+                        <img id="campus_entrances_overlay" src="/media/overlays/campus_entrances_overlay.png" usemap="#image-map">
+                        <img id="image" src="/media/burnaby_campus_map.png">
+                        <map id="image_map" name="image-map">
+                        <!--            NE Buildings-->
+                            {{#each NE01School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE01" building="NE01" alt="NE01" title="NE01" href="#" coords="168,525,168,761,188,761,194,767,226,773,220,754,246,754,252,767,342,767,342,529,246,529,246,516,213,510" shape="poly">
+                            {{/each}}
+                            {{#each NE02School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE02" building="NE02" alt="NE02" title="NE02" href="#" coords="478,691,423,691,423,808,564,808,564,716,478,716" shape="poly">
+                            {{/each}}
+                            {{#each NE04School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE04" building="NE04" alt="NE04" title="NE04" href="#" coords="423,538,423,648,564,650,564,513,496,513,496,538" shape="poly">
+                            {{/each}}
+                            {{#each NE06School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE06" building="NE06" alt="NE06" title="NE06" href="#" coords="419,367,567,372,563,497,463,497,458,471,419,467" shape="poly">
+                            {{/each}}
+                            {{#each NE08School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE08" building="NE08" alt="NE08" title="NE08" href="#" coords="419,259,545,259,545,276,589,276,589,346,550,346,550,363,428,363" shape="poly">
+                            {{/each}}
+                            {{#each NE10School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE10" building="NE10" alt="NE10" title="NE10" href="#" coords="419,94,589,94,589,228,550,228,537,250,484,246,476,228,419,224" shape="poly">
+                            {{/each}}
+                            {{#each NE12School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE12" building="NE12" alt="NE12" title="NE12" href="#" coords="606,98,754,102,763,272,728,267,728,241,615,241" shape="poly">
+                            {{/each}}
+                            {{#each NE16School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE16" building="NE16" alt="NE16" title="NE16" href="#" coords="798,502,911,502,937,484,937,346,906,324,806,324" shape="poly">
+                            {{/each}}
+                            {{#each NE18School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE18" building="NE18" alt="NE18" title="NE18" href="#" coords="793,524,906,519,906,537,937,545,937,654,828,658,828,641,793,641" shape="poly">
+                            {{/each}}
+                            {{#each NE20School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE20" building="NE20" alt="NE20" title="NE20" href="#" coords="837,667,902,667,902,710,937,710,937,845,902,836,902,814,867,810,858,840,819,840,815,814,798,801,798,715,837,715" shape="poly">
+                            {{/each}}
+                            {{#each NE23School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE23" building="NE23" alt="NE23" title="NE23" href="#" coords="594,642,594,728,649,728,649,642" shape="poly">
+                            {{/each}}
+                            {{#each NE24School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE24" building="NE24" alt="NE24" title="NE24" href="#" coords="724,636,780,632,780,728,724,728" shape="poly">
+                            {{/each}}
+                            {{#each NE25School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE25" building="NE25" alt="NE25" title="NE25" href="#" coords="582,489,582,612,649,612,649,489" shape="poly">
+                            {{/each}}
+                            {{#each NE28School}}
+                                <area target="" class="NE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NE28" building="NE28" alt="NE28" title="NE28" href="#" coords="719,398,780,398,780,493,719,493" shape="poly">
+                            {{/each}}
+
+                        <!--            NW Buildings-->
+                            {{#each NW03School}}
+                                <area target="" class="NW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NW03" building="NW03" alt="NW03" title="NW03" href="#" coords="454,912,454,1041,570,1041,570,912" shape="poly">
+                            {{/each}}
+                            {{#each NW06School}}
+                                <area target="" class="NW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="NW06" building="NW06" alt="NW06" title="NW06" href="#" coords="937,880,937,991,772,991,772,880" shape="poly">
+                            {{/each}}
+
+                        <!--            SE Buildings-->
+                            {{#each SE01School}}
+                                <area target="" class="SE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SE01" building="SE01" alt="SE01" title="SE01" href="#" coords="1331,237,1127,235,1127,246,973,247,973,309,1048,309,1069,330,1048,363,1059,377,1073,370,1080,377,1091,377,1102,391,1116,381,1130,377,1137,363,1177,359,1184,338,1295,338,1306,302,1313,280,1331,284" shape="poly">
+                            {{/each}}
+                            {{#each SE04School}}
+                                <area target="" class="SE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SE04" building="SE04" alt="SE04" title="SE04" href="#" coords="1123,434,1019,434,1019,462,1037,466,1041,530,1130,534,1130,484,1120,484,1130,484" shape="poly">
+                            {{/each}}
+                            {{#each SE06School}}
+                                <area target="" class="SE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SE06" building="SE06" alt="SE06" title="SE06" href="#" coords="1166,419,1238,419,1238,563,1267,563,1267,649,1163,649" shape="poly">
+                            {{/each}}
+                            {{#each SE10School}}
+                                <area target="" class="SE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SE10" building="SE10" alt="SE10" title="SE10" href="#" coords="1495,487,1528,487,1528,508,1549,508,1546,530,1556,530,1556,601,1571,623,1571,666,1492,669,1492,601,1474,601,1474,512,1495,508" shape="poly">
+                            {{/each}}
+                            {{#each SE08School}}
+                                <area target="" class="SE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SE08" building="SE08" alt="SE08" title="SE08" href="#" coords="1335,681,1209,681,1209,713,1166,713,1166,749,1202,749,1206,792,1331,788" shape="poly">
+                            {{/each}}
+                            {{#each SE12School}}
+                                <area target="" class="SE" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SE12" building="SE12" alt="SE12" title="SE12" href="#" coords="1338,724,1639,727,1643,799,1338,799" shape="poly">
+                            {{/each}}
+                            
+                        <!--            SW Buildings-->
+                            {{#each SW01School}}
+                                <area target="" class="SW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SW01" building="SW01" alt="SW01" title="SW01" href="#" coords="1338,923,1334,838,1302,838,1302,879,1270,877,1270,841,1105,838,1105,895,1119,897,1119,927,1048,927,1026,954,1044,988,1084,991,1087,1102,1073,1144,1141,1133,1316,1135,1313,1020,1298,995,1349,999,1363,959,1356,934" shape="poly">
+                            {{/each}}
+                            {{#each SW02School}}
+                                <area target="" class="SW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SW02" building="SW02" alt="SW02" title="SW02" href="#" coords="1313,1083,1313,1112,1345,1141,1370,1141,1399,1108,1442,1098,1406,1090,1352,1040" shape="poly">
+                            {{/each}}
+                            {{#each SW03School}}
+                                <area target="" class="SW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SW03" building="SW03" alt="SW03" title="SW03" href="#" coords="1574,1105,1574,1148,1488,1148,1470,1148,1449,1133,1427,1087,1420,983,1356,983,1367,937,1427,935,1424,818,1445,811,1445,786,1492,797,1499,962,1481,983,1481,1098,1546,1090" shape="poly">
+                            {{/each}}
+                            {{#each SW05School}}
+                                <area target="" class="SW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SW05" building="SW05" alt="SW05" title="SW05" href="#" coords="1520,933,1542,929,1563,921,1563,945,1599,940,1610,972,1599,1008,1578,999,1560,1019,1542,1015,1528,1002,1524,977" shape="poly">
+                            {{/each}}
+                            {{#each SW09School}}
+                                <area target="" class="SW" full="<b>{{this.buildingNumber}}</b><br>{{this.description}}" id="SW09" building="SW09" alt="SW09" title="SW09" href="#" coords="1836,857,1986,860,1986,1018,1975,1036,1975,1071,1993,1079,1993,1147,1832,1150" shape="poly">
+                            {{/each}}
+                        </map>
+                    </div>
+                </div>
+            </div>
+            <div id="details_box" class="col-sm-6">
+                <h3 id="details_title"></h3>
+                <p id="details_info"></p>
+                <p id="details_link"></p>
+            </div>
+            <div class="col-sm-6">
+            </div>
+            <script src="/panzoom/panzoom.js"></script>
+            <script src="js/zoom.js"></script>
             <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
         </div>
     </div>
 </div>
-
-<script src="js/script.js"></script>
