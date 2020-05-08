@@ -4464,6 +4464,9 @@ A jQuery plugin to enhance image maps.
 
             ttopts.left = corners[0];
             ttopts.top = corners[1];
+           // ttopts.left = target.coords.split(",")[0] + 10
+           // ttopts.top = target.coords.split(",")[1]  - 10
+           console.log("init " +  ttopts.left + " / " + ttopts.top)
             if(target.coords.split(",")[0] < 50){
                 ttopts.left = target.coords.split(",")[0]*1.4
             }
@@ -4491,7 +4494,7 @@ A jQuery plugin to enhance image maps.
             ttopts.left = options.left;
             ttopts.top = options.top;
         }
-        console.log("final" +  ttopts.left + " / " + ttopts.top)
+        console.log("final " +  ttopts.left + " / " + ttopts.top)
         //ttopts.left += (options.offsetx || 0);
         //ttopts.top +=(options.offsety || 0);
 
