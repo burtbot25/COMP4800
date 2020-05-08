@@ -178,12 +178,8 @@ function selectMicrowaves(building) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-<<<<<<< HEAD
     building = building.split(",")
     building = building.join(",#")
-=======
-    building = building.replace(",", ",#")
->>>>>>> d3ce773f57ed1b319c4cd01c351eba407720472f
 
     $('#' + building).bind('mouseover', function () { // ID goes here
         $('#image').mapster('tooltip', this, $(this).attr('full'));
