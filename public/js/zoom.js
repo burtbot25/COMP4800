@@ -1,6 +1,6 @@
-let map = document.getElementById('map');
+var map = document.getElementById('map');
 
-const pz = panzoom(map, {
+var pz = panzoom(map, {
     // transformOrigin : { x: 0.5, y: 0.5 },
     maxZoom         : 2.0,
     minZoom         : 1.0,
