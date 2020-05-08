@@ -36,6 +36,19 @@ function basic_nav() {
         console.log(error);
     });
 }
+function parking() {
+    fetch("/basic_nav/parking")
+    .then(res => res.text())
+    .then(function (data) {
+        document.open();
+        document.write(data);
+        document.close();
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
 
 function academic_buildings() {
     fetch("/academic_buildings")

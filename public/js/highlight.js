@@ -28,7 +28,7 @@ var initial_opts = $.extend({}, basic_opts,
         fill: false,
         stroke: true,
         strokeWidth: 2,
-        strokeColor: 'ffff00'
+        strokeColor: 'ffff00',
     });
 
 /* group selection functions */
@@ -351,20 +351,28 @@ function selectNav(stop, name, bus) {
 }
 
 
-function selectParking(id,stop) {
+function selectParking(id,stop,key) {
+    
     console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
     });
     
-    $('#'+id).mapster(initial_opts)
-        .mapster('set', true, stop, { // String goes here
+    $('#'+id).mapster({
+        initial_opts,
+        mapKey: key,
+        strokeWidth:2,
+        strokeColor: 'F88017',
+        mapValue: 'full',
+        showToolTip: true,
+        staticState: true,
+        fill:false
+        }
+        )
+        .mapster('set', true,stop, { // String goes here
             fill: true,
-            fillColor: 'ffea2e',
-            mapKey: 'parking-key',
+            fillColor: 'ffea2e'
         })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
 
     stop = stop.replace(/,/g, ",#")
     $('#' + stop).bind('mouseover', function () { // ID goes here
@@ -373,6 +381,70 @@ function selectParking(id,stop) {
     });
     showDetailsTransit("test1","Student Parking","While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
 }
+
+function selectLot(id,stop,key) {
+    
+    console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#'+id).mapster('tooltip');
+    });
+    
+    $('#'+id).mapster({
+        initial_opts,
+        mapKey: key,
+        strokeWidth:2,
+        strokeColor: 'F88017',
+        mapValue: 'full',
+        showToolTip: true,
+        staticState: true,
+        fill:false
+        }
+        )
+        .mapster('set', true,stop, { // String goes here
+            fill: true,
+            fillColor: 'ffea2e'
+        })
+
+    stop = stop.replace(/,/g, ",#")
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    showDetailsTemp("test1","Student Parking","While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
+}
+
+
+function selectPaystation(id,stop,key) {
+    
+    console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#'+id).mapster('tooltip');
+    });
+    
+    $('#'+id).mapster({
+        initial_opts,
+        mapKey: key,
+        strokeWidth:2,
+        strokeColor: 'F88017',
+        mapValue: 'full',
+        showToolTip: true,
+        staticState: true,
+        fill:false
+        }
+        )
+        .mapster('set', true,stop, { // String goes here
+            fill: true,
+            fillColor: 'ffea2e'
+        })
+
+    stop = stop.replace(/,/g, ",#")
+    $('#' + stop).bind('mouseover', function () { // ID goes here
+        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    showDetailsTemp("test1","Pay Parking","Pay stations are conveniently located near each of the campus parking lots. Pay stations accept credit cards only, so be sure to have a card on hand or <a href='https://verrus.com/Permits/default.aspx?r='>pre-purchase a parking permit</a> before arriving on campus. Alternatively, students can also <a href='https://www.paybyphone.com/'>pay through the paybyphone app</a>.")
+}
+
 
 function selectCampus(building) {
     // console.log("Building: " + stop)
@@ -398,6 +470,10 @@ function selectCampus(building) {
     showDetailsTemp(stop, name, bus)
 }
 
+function selectTiming(){
+    showDetailsTemp("","Timing","Although the Burnaby Campus may seem large on a map, it’s a lot faster to get from one end of campus to the other than you might think. Believe it or not, it takes only 10 minutes to walk from NE01 to SE16 or from Willingdon Avenue to Wayburne Drive. ")
+}
+
 function toggleDropdown(self) {
     console.log(self);  
     $(".dropdown-btn").not(self).next(".dropdown-container").css("display","none");
@@ -407,7 +483,7 @@ function toggleDisplay(id){
     console.log(id);
     //$('area').css("display","none")
     $('img').mapster('unbind');
-    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#electrical_vehicle_overlay,#car_share_overlay, #bike_repair_overlay,#pay_station_overlay,#motorcycle_overlay').css("display","none")
+    $('#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#electrical_vehicle_overlay,#car_share_overlay, #bike_repair_overlay,#pay_station_overlay,#motorcycle_overlay,#timing_overlay').css("display","none")
     $('#'+id.value).css("display","block");
 
 }

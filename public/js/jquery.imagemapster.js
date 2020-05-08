@@ -4464,20 +4464,37 @@ A jQuery plugin to enhance image maps.
 
             ttopts.left = corners[0];
             ttopts.top = corners[1];
-            ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/15
-            if (target.coords.split(",")[1] < 150) {
-
+           // ttopts.left = target.coords.split(",")[0] + 10
+           // ttopts.top = target.coords.split(",")[1]  - 10
+           console.log("init " +  ttopts.left + " / " + ttopts.top)
+            if(target.coords.split(",")[0] < 50){
+                ttopts.left = target.coords.split(",")[0]*1.4
+            }
+            else if(target.coords.split(",")[0] < 200){
+                ttopts.left = target.coords.split(",")[0]*1.2
+            }
+            else if(target.coords.split(",")[0] < 500){
+                ttopts.left = target.coords.split(",")[0]*1.1
+            }
+            else if(target.coords.split(",")[0] < 700){
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/50
+            } else {
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/25
+            }
+            if (target.coords.split(",")[1] < 100) {
                 ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 2
             } else if (target.coords.split(",")[1] < 300) {
                 ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 5
-            } else (ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 8)
-                
+            } else {
+                ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 6
+            }
+             
         } else {
             
             ttopts.left = options.left;
             ttopts.top = options.top;
         }
-
+        console.log("final " +  ttopts.left + " / " + ttopts.top)
         //ttopts.left += (options.offsetx || 0);
         //ttopts.top +=(options.offsety || 0);
 
