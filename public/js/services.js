@@ -1,5 +1,11 @@
-var createDropdown = (name) => {
-    return `<button id="" class="dropdown-btn"> ${name} <i class="fa fa-caret-down"></i> </button>`;
+var createDropdown = (name, id) => {
+    return `
+    <button class="dropdown-btn"> ${name} <i class="fa fa-caret-down"></i> </button> 
+    <div id=${id} class="dropdown-container"> </div>`;
+};
+
+var createButton = (building, name, description) => {
+    return `<button onclick="selectService('${building}', '${name} - ${building}', '${description}')"> ${name} </button>`;
 };
 
 var getData = async () => {
@@ -15,28 +21,33 @@ var populateMenu = async () => {
     let serviceGroups = data.serviceGroups[0];
     let menuOptions = new Array();
     serviceGroups.forEach((element) => {
-        menuOptions.push(createDropdown(element.name));
+        menuOptions.push(createDropdown(element.name, element.id));
     });
-    console.log(menuOptions);
     campusMap.insertAdjacentHTML('beforeend', sidenav);
     campusMap.insertAdjacentHTML('beforeend', map);
-    let panzoom =  document.createElement("script");
-    panzoom.src = "/panzoom/panzoom.js"
-    let zoom =  document.createElement("script");
-    zoom.src = "js/zoom.js";
-    campusMap.append(panzoom);
+    let html = document.querySelector('html');
+    let body = document.querySelector('body');
+    html.style.height = '';
+    body.style.height = '';
+    let nav = document.getElementById('sidenav');
+    menuOptions.forEach((e) => {
+        nav.insertAdjacentHTML('beforeend', e);
+    });
+    let services = data.services[0];
+    services.forEach((e) => {
+        let el = document.getElementById(e.group);
+        let test = createButton(e.buildingNumber, e.serviceName, e.description);
+        el.insertAdjacentHTML('beforeend', test);
+    });
+    let script = document.createElement('script');
+    script.src = 'js/script.js';
+    campusMap.append(script);
+    let zoom = document.createElement('script');
+    zoom.src = 'js/zoom.js';
     campusMap.append(zoom);
-    let nav = document.getElementById("sidenav");
-    menuOptions.forEach(e => {
-        nav.insertAdjacentHTML("beforeend", e);
-    })
 };
-
+``;
 populateMenu();
-
-var dropdownButton = `<button class="dropdown-btn"> ${name} <i class="fa fa-caret-down"></i> </button>var button = <button > ${name} </button>`;
-
- dropDownContainer = `<div class="dropdown-container"> </div>`;
 
 var sidenav = `
     <div class="col-sm-2">
@@ -238,5 +249,4 @@ var map = `
     </script>
     <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
 </div> 
-
 `;

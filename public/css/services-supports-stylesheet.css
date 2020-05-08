@@ -164,8 +164,9 @@ area {
     bottom: 0px;
 } */
 
-body {
+html, body {
     overflow-x: hidden;
+    height: 100%;
 }
 
 .heading {

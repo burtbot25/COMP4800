@@ -173,6 +173,29 @@ function selectSchoolBuilding(building, description) {
     showBuildingDetails(building, description)
 }
 
+function selectService(building, name, description) {
+    $('area').bind('mouseover', function () {
+        $('#campus_entrances_overlay').mapster('tooltip');
+    });
+    console.log(building);
+    $('#campus_entrances_overlay').mapster(initial_opts)
+        .mapster('set', true, building, { // String goes here
+            fill: true,
+            fillColor: 'ffea2e'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    building = building.replace(/,/g, ",#")
+
+    $('#' + building).bind('mouseover', function () { // ID goes here
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
+
+    });
+    description = description.replace(/,/g, "\n");
+    showDetails(building, name, description)
+}
+
 function showDetails(building, service_name, description){
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
