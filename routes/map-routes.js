@@ -11,6 +11,7 @@ const finishController = require('../controllers/finish-controller');
 router.get('/', startController.getMap);
 router.get('/main_menu', mainMenuController.mainMenu);
 router.get('/basic_nav', basicNavController.getMap);
+router.get('/basic_nav/parking', basicNavController.getParking);
 router.get('/academic_buildings', academicBuildingsController.getMap);
 router.get('/services_supports', servicesSupportsController.getMap);
 router.get('/other_key_places', otherKeyPlacesController.getMap);

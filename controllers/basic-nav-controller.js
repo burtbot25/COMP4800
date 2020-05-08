@@ -10,3 +10,10 @@ exports.getTransit = async (req, res) => {
     busData = transitData[0]
     res.send(busData);
 };
+
+
+exports.getParking = async (req, res) => {
+    let transitData = await basicModel.getTransitInfo();
+    busData = transitData[0]
+    res.render('basic-nav', { basicNavCSS: true });
+};
