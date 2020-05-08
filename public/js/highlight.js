@@ -346,6 +346,7 @@ function selectParking(id,stop) {
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
     });
+    showDetails("test","test","test")
 }
 
 function selectCampus(building) {
