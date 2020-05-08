@@ -135,7 +135,10 @@ area {
 #security_overlay,
 #student_parking_overlay,
 #visitor_parking_overlay,
-#bike_overlay{
+#bike_overlay,
+#ev_overlay,
+#cs_overlay,
+#br_overlay{
   display: none
 }
 

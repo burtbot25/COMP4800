@@ -112,6 +112,26 @@ body {
   left: 0px;
 }
 
+#ev_overlay{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#cs_overlay{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#br_overlay{
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+
+
 
 #image_map {
   position: absolute;
@@ -137,7 +157,10 @@ area {
 #student_parking_overlay,
 #visitor_parking_overlay,
 #food_services_overlay,
-#bike_overlay{
+#bike_overlay,
+#ev_overlay,
+#cs_overlay,
+#br_overlay{
   display: none
 }
 
