@@ -61,15 +61,16 @@
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-container" >
-                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="sparking" name="LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTD" value="student_parking_overlay">Student Parking</button>
-                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="eparking" name="LOT7,LOT5,LOT12,LOT26,LOT27,LOT6,LOT62,LOT9,LOT4,LOT15,LOT22,LOT23,LOT21,LOT211,LOT212,LOT213,LOT214,LOT24,LOT25,LOT20,LOT29,LOT28,LOT281,LOT1,LOT10,LOT16,LOT19" value="employee_parking_overlay">Employee Parking</button>
-                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="vparking" name="LOTV1,LOTV2,LOTV3,LOTV4,LOTV5" value="visitor_parking_overlay">Visitor Parking</button>
-                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" name="HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26" value="handicap_overlay">Accessible Parking</button>
-                    <button>EV Charging</button>
-                    <button>Carshare Parking</button>
-                    <button>Pay Station</button>
-                    <button>Motorcycle Area</button>
-                    <button>Bike Repair</button>
+                    <button onclick="parking()">testing parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'lot-key')" category="sparking" name="LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTO,house" value="student_parking_overlay">Student Parking</button>
+                   <!-- <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="eparking" name="LOT7,LOT5,LOT12,LOT26,LOT27,LOT6,LOT62,LOT9,LOT4,LOT15,LOT22,LOT23,LOT21,LOT211,LOT212,LOT213,LOT214,LOT24,LOT25,LOT20,LOT29,LOT28,LOT281,LOT1,LOT10,LOT16,LOT19" value="employee_parking_overlay">Employee Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="vparking" name="LOTV1,LOTV2,LOTV3,LOTV4,LOTV5" value="visitor_parking_overlay">Visitor Parking</button> -->
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'accessible-key')" name="HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26" value="handicap_overlay">Accessible Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'electric-key')" name="EV1,EV2,EV3,EV4,EV5" value="electrical_vehicle_overlay" >EV Charging</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'share-parking-key')" name="CS1,CS2,CS3" value="car_share_overlay">Carshare Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'paystation-key')" name="PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10" value="pay_station_overlay">Pay Station</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'motorcycle-key')" name="MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8" value="motorcycle_overlay">Motorcycle Area</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name,'bike-key')" name="BR1,BR2,BR3,BR4" value="bike_repair_overlay">Bike Repair</button>
                 </div>
             </div>
         </div>
