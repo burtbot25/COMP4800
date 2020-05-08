@@ -136,9 +136,11 @@ area {
 #student_parking_overlay,
 #visitor_parking_overlay,
 #bike_overlay,
-#ev_overlay,
-#cs_overlay,
-#br_overlay{
+#electrical_vehicle_overlay,
+#car_share_overlay,
+#bike_repair_overlay,
+#pay_station_overlay,
+#motorcycle_overlay{
   display: none
 }
 
