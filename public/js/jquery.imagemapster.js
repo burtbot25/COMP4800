@@ -4464,13 +4464,23 @@ A jQuery plugin to enhance image maps.
 
             ttopts.left = corners[0];
             ttopts.top = corners[1];
-            ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/15
-            if (target.coords.split(",")[1] < 150) {
+            /*
+            console.log("container width" + target.width)
+            console.log("x coordss" + target.coords.split(",")[0])
+            console.log("y coordss" + target.coords.split(",")[1])*/
+            if(target.coords.split(",")[0] < 500){
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/50
+            } else {
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/25
+            }
+            if (target.coords.split(",")[1] < 100) {
 
                 ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 2
             } else if (target.coords.split(",")[1] < 300) {
                 ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 5
-            } else (ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 8)
+            } else {
+                ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 6
+            }
                 
         } else {
             
