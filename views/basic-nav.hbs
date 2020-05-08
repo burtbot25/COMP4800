@@ -13,16 +13,14 @@
                     <button>Student Housing to NE01</button>
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
-                </div> -->
-                <button onclick="toggleDisplay(this), selectTransit(name)" value="bus_stops_overlay" name="T">Transit
-                    Information
-                    <i class="fa fa-caret-down"></i>
+                </div>
+                <button onclick="selectTransit()">Transit Information
                 </button>
-                <div class="dropdown-container">
+                {{!-- <div class="dropdown-container">
                     {{#each transit}}
                     <button onclick="selectNav('{{this.id}}', '{{this.name}}', '{{this.busRoute}}')">{{this.name}}</button>
                     {{/each}}
-                    {{!-- <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
+                    <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectNav(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>
                     <button onclick="selectNav(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
                     <button onclick="selectNav(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
@@ -43,8 +41,8 @@
                     <button onclick="selectNav(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @
                         Willingdon Ave</button>
                     <button onclick="selectNav(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
-                        Waybburne Dr</button> --}}
-                </div>
+                        Waybburne Dr</button>
+                </div> --}}
                 <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Navigating Campus
                     <i class="fa fa-caret-down"></i>
                 </button>
