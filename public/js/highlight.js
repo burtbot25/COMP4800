@@ -346,7 +346,7 @@ function selectParking(id,stop) {
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
     });
-    showDetails("test","test","test")
+    showDetailsTemp("test1","Student Parking","While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
 }
 
 function selectCampus(building) {
