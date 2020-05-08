@@ -265,38 +265,48 @@ function showDetailsTemp(building, service_name, description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function selectTransit(key, name, bus) {
-    // console.log("Building: " + stop)
-    // $('area').bind('mouseover', function () {
-    //     $('#bus_stops_overlay').mapster('tooltip');
-    // });
-    console.log("test")
-    $('#bus_stops_overlay').mapster({
-        initial_opts,
-        mapKey: 'data-key',
-        strokeWidth:2,
-        strokeColor: 'F88017',
-        mapValue: 'full',
-        showToolTip: true
-        }
-        )
-        .mapster('set', true, key, { // String goes here
-            fill: true,
-            fillColor: 'FF0000'
+var transit = false;
+var busData = [];
+function selectTransit() {
+    let stops = $(".bus")
+    $("area").hide();
+    $(".bus").show();
+    console.log(transit);
+    if (transit == false) {
+        fetch("/getTransit")
+        .then(res => res.text())
+        .then(function (data) {
+            data = JSON.parse(data);
+            data.forEach(function(item) {
+                busData.push({
+                    "key": item.id,
+                    "toolTip" : item.busRoute
+                })
+            })
+            busOverlay();
+            transit = true;
         })
-        // .mapster('snapshot')
-        // .mapster('rebind', basic_opts);
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
+    busOverlay();
+}
 
-    // stop.replace(",", ",#")
-    console.log(key);
-    // $('#' + key).bind('mouseover', function () { // ID goes here
-    //     $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
-
-    // });
-    // if (bus != null) {
-    //     bus = bus.replace(",", "\n");
-    //     showDetailsTemp(stop, name, bus)
-    // }
+function busOverlay() {
+    $('#bus_stops_overlay').mapster({
+        singleSelect: true,
+        fill: false,
+        mapKey: 'data-key',
+        fill: false,
+        clickNavigate: true,           
+        showToolTip: true,
+        staticState: true,
+        stroke: true,
+        strokeWidth: 2,
+        strokeColor: 'ffff00',
+        // areas: busData
+    })
 }
 
 function selectNav(stop, name, bus) {
