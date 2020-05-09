@@ -101,23 +101,35 @@ function selectCARI() {
     });
 }
 
-function selectSchool(school_name, building, description) {
+function selectSchool(buildings, descriptions) {
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
     });
     $('#campus_entrances_overlay').mapster(initial_opts)
-        .mapster('set', true, building, {
+        .mapster('set', true, buildings, {
             fill: true,
             fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
     
-    building = building.replace(/,/g, ",#")
-    $('#' + building).bind('mouseover', function () {
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
+    buildings = buildings.replace(/,/g, ",#")
+    
+    $('#' + buildings).bind('mouseover', function () {
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('alt'));
 
     });
+    
+    updateSchoolToolTip(buildings, descriptions);
+}
+
+function updateSchoolToolTip(buildings, names) {
+    buildings = buildings.split(",#")
+    names = names.split(",")
+
+    for (var i = 0; i < buildings.length; i++){
+        document.getElementById(buildings[i]).alt = "<b>" + buildings[i] + "</b><br>" + names[i];
+    }
 }
 /* end group selection functions */
 
