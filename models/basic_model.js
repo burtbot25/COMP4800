@@ -14,3 +14,8 @@ exports.getTransitDescription = () => {
     let sql = `SELECT * FROM busDescriptions`;
     return db.execute(sql);
 }
+
+exports.getCampusDescription = () => {
+    let sql = `SELECT * FROM navCampusDescriptions`;
+    return db.execute(sql);
+}
