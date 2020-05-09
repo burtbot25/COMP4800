@@ -20,5 +20,6 @@ router.get('/servicesData', servicesSupportsController.getServicesData);
 
 router.get('/getTransit', basicNavController.getTransit);
 router.get('/getTransitDesc', basicNavController.getTransitDesc)
+router.get('/getCampusDesc', basicNavController.getCampusDesc)
 
 module.exports = router;
