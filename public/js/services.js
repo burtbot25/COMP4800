@@ -32,7 +32,7 @@ var populateMenu = async () => {
 
     //If you don't need to create dropdowns, then just loop through everything and modify createButton() as needed
     serviceGroups.forEach((element) => { 
-        nav.insertAdjacentElement(createDropdown(element.name, element.id));
+        nav.insertAdjacentHTML('beforeend', createDropdown(element.name, element.id));
     });
 
     //Make sure to set height for html and body to 100% in css
@@ -48,7 +48,6 @@ var populateMenu = async () => {
         let el = document.getElementById(e.group);
         el.insertAdjacentHTML('beforeend', createButton(e.buildingNumber, e.serviceName, e.description, e.link));
     });
-
 
     let script = document.createElement('script');
     script.src = 'js/script.js';
