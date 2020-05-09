@@ -375,6 +375,17 @@ function showBasicOverlay(source){
 function selectNav() {
     $('img').mapster('unbind');
     hideOverlay();
+    fetch("/getCampusDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        console.log(data)
+        console.log(data[0].description);
+        showDetailsTransit(data[0].description);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
     // console.log("Building: " + stop)
     // $('area').bind('mouseover', function () {
     //     $('#bus_stops_overlay').mapster('tooltip');

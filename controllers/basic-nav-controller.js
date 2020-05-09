@@ -22,3 +22,9 @@ exports.getTransitDesc = async (req, res) => {
     busData = transitData[0]
     res.send(busData);
 };
+
+exports.getCampusDesc = async (req, res) => {
+    let campusData = await basicModel.getCampusDescription();
+    navCampusData = campusData[0]
+    res.send(navCampusData);
+};
