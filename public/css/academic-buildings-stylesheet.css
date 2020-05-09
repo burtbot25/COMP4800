@@ -119,38 +119,35 @@ area {
   left: 0px; 
 }
 
-/*
 area {
   position: absolute;
   top: 0px;
   left: 0px;
 }
-*/
 
-/*
+#bike_overlay,
+#bike_repair_overlay,
 #bus_stops_overlay, 
+#car_share_overlay,
 #employee_parking_overlay, 
+#electrical_vehicle_overlay,
+#evcsbr_parking_overlay,
 #first_aid_overlay, 
 #food_services_overlay,
+#handicap_merged,
 #handicap_overlay,
+#motorcycle_overlay,
+#pay_station_overlay,
 #security_overlay,
+#student_parking_merged,
 #student_parking_overlay,
 #visitor_parking_overlay,
-#bike_overlay{
+#timing_overlay {
   display: none
 }
-*/
 
-/*
 #map_area {
   position: relative;
   display: inline-block; 
   overflow: auto;    
 }
-*/
-
-/*
-#details_box {
-  position: absolute;
-  bottom: 0px;
-}*/
