@@ -372,30 +372,43 @@ function showBasicOverlay(source){
 }
 
 
-function selectNav(stop, name, bus) {
+function selectNav() {
+    $('img').mapster('unbind');
+    hideOverlay();
+    fetch("/getCampusDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        console.log(data)
+        console.log(data[0].description);
+        showDetailsTransit(data[0].description);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
     // console.log("Building: " + stop)
-    $('area').bind('mouseover', function () {
-        $('#bus_stops_overlay').mapster('tooltip');
-    });
+    // $('area').bind('mouseover', function () {
+    //     $('#bus_stops_overlay').mapster('tooltip');
+    // });
     
-    $('#bus_stops_overlay').mapster(initial_opts)
-        .mapster('set', true, stop, { // String goes here
-            fill: true,
-            fillColor: 'FF0000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
+    // $('#bus_stops_overlay').mapster(initial_opts)
+    //     .mapster('set', true, stop, { // String goes here
+    //         fill: true,
+    //         fillColor: 'FF0000'
+    //     })
+    //     .mapster('snapshot')
+    //     .mapster('rebind', basic_opts);
 
-    stop = stop.replace(/,/g, ",#")
-    console.log(stop);
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
+    // stop = stop.replace(/,/g, ",#")
+    // console.log(stop);
+    // $('#' + stop).bind('mouseover', function () { // ID goes here
+    //     $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
-    });
-    if (bus != null) {
-        bus = bus.replace(",", "\n");
-        showDetailsTemp(stop, name, bus)
-    }
+    // });
+    // if (bus != null) {
+    //     bus = bus.replace(",", "\n");
+    //     showDetailsTemp(stop, name, bus)
+    // }
 }
 
 

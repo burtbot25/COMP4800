@@ -347,3 +347,7 @@ area {
   position: absolute;
   bottom: 0px;
 }
+
+.mapster_tooltip {
+    pointer-events: none;
+  }
