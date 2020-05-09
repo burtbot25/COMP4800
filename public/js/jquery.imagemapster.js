@@ -4268,6 +4268,12 @@ A jQuery plugin to enhance image maps.
    requires areacorners.js
 */
 
+/*
+default styling : '<div style="border: 2px solid black; background: #EEEEEE; width:160px; padding:4px; margin: 4px; -moz-box-shadow: 3px 3px 5px #535353; ' +
+        '-webkit-box-shadow: 3px 3px 5px #535353; box-shadow: 3px 3px 5px #535353; -moz-border-radius: 6px 6px 6px 6px; -webkit-border-radius: 6px; ' +
+        'border-radius: 6px 6px 6px 6px; opacity: 0.9;"></dteniv>'
+*/
+
 (function ($) {
 
     var m = $.mapster, u = m.utils;
@@ -4277,7 +4283,7 @@ A jQuery plugin to enhance image maps.
         'border-radius: 6px 6px 6px 6px; opacity: 0.9;"></dteniv>',
         showToolTip: false,
         toolTipFade: true,
-        toolTipClose: ['image-mouseout'],
+        toolTipClose: ['area-mouseout','image-mouseout'],
         onShowToolTip: null,
         onHideToolTip: null
     });
@@ -4466,7 +4472,6 @@ A jQuery plugin to enhance image maps.
             ttopts.top = corners[1];
            // ttopts.left = target.coords.split(",")[0] + 10
            // ttopts.top = target.coords.split(",")[1]  - 10
-           console.log("init " +  ttopts.left + " / " + ttopts.top)
             if(target.coords.split(",")[0] < 50){
                 ttopts.left = target.coords.split(",")[0]*1.4
             }
@@ -4494,7 +4499,6 @@ A jQuery plugin to enhance image maps.
             ttopts.left = options.left;
             ttopts.top = options.top;
         }
-        console.log("final " +  ttopts.left + " / " + ttopts.top)
         //ttopts.left += (options.offsetx || 0);
         //ttopts.top +=(options.offsety || 0);
 
