@@ -133,9 +133,9 @@ function updateSchoolToolTip(buildings, names) {
 }
 /* end group selection functions */
 
-function selectKeyPlaces(buildings, names) {
-    hideOverlay();
-    hideFoodDetails();
+async function selectKeyPlaces(buildings, names) {
+    await hideOverlay();
+    await hideFoodDetails();
     console.log("selectKeyPlaces")
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -174,9 +174,9 @@ function updateToolTip(buildings, names) {
     }
 }
 
-function selectMicrowaves(building) {
-    hideOverlay();
-    hideFoodDetails();
+async function selectMicrowaves(building) {
+    await hideOverlay();
+    await hideFoodDetails();
     console.log("Select Microwaves")
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -205,36 +205,38 @@ function selectMicrowaves(building) {
 
 }
 
-function selectFoods(building, service_name, description, foodLink) {
+async function selectFoods(building, service_name, description, foodLink) {
     console.log("Building: " + building)
     console.log("Service Name: " + service_name)
     console.log("Description: " + description)
     console.log("Food Link: " + foodLink)
-    showOverlay();
-    $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
+    showOverlay().then(function(res) {
+        $('area').bind('mouseover', function () {
+            $('#image').mapster('tooltip');
+        });
+        
+        foodBuildings = "FI01,FI02,FI03,FI04,FI05,FI06,FI07,FI08,FI09"
+    
+        $('#image').mapster(initial_opts)
+            .mapster('set', true, foodBuildings, { // String goes here
+                fill: false,
+                stroke: false,
+                fillColor: 'FF0000'
+            })
+            .mapster('snapshot')
+            .mapster('rebind', basic_opts);
+    
+        foodBuildings = foodBuildings.split(",")
+        foodBuildings = foodBuildings.join(",#")
+    
+        $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
+            $('#image').mapster('tooltip', this, $(this).attr('full'));
+    
+        });
+        
+        showFoodDetails(service_name, description+"", foodLink+"")
     });
     
-    foodBuildings = "FI01,FI02,FI03,FI04,FI05,FI06,FI07,FI08,FI09"
-
-    $('#image').mapster(initial_opts)
-        .mapster('set', true, foodBuildings, { // String goes here
-            fill: false,
-            stroke: false,
-            fillColor: 'FF0000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-
-    foodBuildings = foodBuildings.split(",")
-    foodBuildings = foodBuildings.join(",#")
-
-    $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    
-    showFoodDetails(service_name, description+"", foodLink+"")
 }
 
 function selectService(building, name, description, link) {
@@ -272,11 +274,11 @@ function showDetails(name, description, link){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function showOverlay(){
+async function showOverlay(){
     document.getElementById("image").src = "/media/food_map.png"
 }
 
-function hideOverlay(){
+async function hideOverlay(){
     document.getElementById("image").src = "/media/burnaby_campus_map.png"
 }
 
