@@ -4283,7 +4283,7 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
         'border-radius: 6px 6px 6px 6px; opacity: 0.9;"></dteniv>',
         showToolTip: false,
         toolTipFade: true,
-        toolTipClose: ['area-mouseout','image-mouseout'],
+        toolTipClose: ['image-mouseout'],
         onShowToolTip: null,
         onHideToolTip: null
     });
