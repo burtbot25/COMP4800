@@ -151,3 +151,7 @@ area {
   display: inline-block; 
   overflow: auto;    
 }
+
+.mapster_tooltip {
+  pointer-events: none;
+}

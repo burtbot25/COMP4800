@@ -186,8 +186,8 @@ area {
 
 #details_box {
   position: absolute;
-  bottom: 100px;
-  height: 100px;
+  bottom: 0px;
+  height: 85px;
   display: none;
 }
 

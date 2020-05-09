@@ -7,12 +7,12 @@
             <div class="sidenav-cont">
                 <button onclick="toggleDisplay(this), selectTiming()" value="timing_overlay">Timing
                 </button>
-                <!--
+
                 <div class="dropdown-container">
                     <button>Student Housing to NE01</button>
                     <button>Willingdon Avenue to Wayburne Drive</button>
                     <button>CARI Building to Wayburne Drive</button>
-                </div> -->
+                </div>
                 <button onclick="selectTransit()">Transit Information
                 </button>
                 {{!-- <div class="dropdown-container">
@@ -42,10 +42,9 @@
                     <button onclick="selectNav(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
                         Waybburne Dr</button>
                 </div> --}}
-                <button class="dropdown-btn" onclick="toggleDropdown(this), toggleDisplay(this)" value="bus_stops_overlay">Navigating Campus
-                    <i class="fa fa-caret-down"></i>
+                <button onclick="selectNav()">Navigating Campus
                 </button>
-                <div class="dropdown-container">
+                {{!-- <div class="dropdown-container">
                     <button>Campus Square</button>
                     <button onclick="toggleDisplay(this), selectNav(this.name)" name="CARI" value="bus_stops_overlay">CARI Building</button>
                     <button onclick="toggleDisplay(this), selectNav(this.name)" name="SE06" value="bus_stops_overlay">Telus Theatre</button>
@@ -53,8 +52,8 @@
                     <button onclick="toggleDisplay(this), selectNav(this.name)" name="SE16" value="bus_stops_overlay">Recreation Centre</button>
                     <button>Trades Buildings</button>
                     <button onclick="toggleDisplay(this)" value="bike_overlay">Bicycle Route Information</button>
-                    <button >Accessibility Routes</button>
-                </div>
+                </div> --}}
+                <button >Accessibility Routes</button>
                 <button class="dropdown-btn" onclick="toggleDropdown(this)">Parking Information
                     <i class="fa fa-caret-down"></i>
                 </button>
