@@ -445,8 +445,62 @@ function selectParking(id,stop,key) {
     showDetailsTransit("While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
 }
 
-function selectLot(id,stop,key) {
+function toggleHandicap(){
+    let key = 'accessible-key'
+    let stops = 'HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/handicap_merged.png"
+    selectParking(id,stops,key)
+}
+
+function toggleElectricVehicle(){
+    let stops = 'EV1,EV2,EV3,EV4,EV5'
+    let key = 'electric-key'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/ev_parking.png"
+    selectParking(id,stops,key)
+}
+
+function toggleShareParking(){
+    let key = 'share-parking-key'
+    let stops = "CS1,CS2,CS3"
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/car_share_parking.png"
+    selectParking(id,stops,key)
+}
+
+function togglePaystation(){
+    let key = 'paystation-key'
+    let stops = 'PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/paystation_overlay.png"
+    selectParking(id,stops,key)
+}
+
+function toggleMotorcycle(){
+    let key = 'motorcycle-key'
+    let stops = 'MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/motorcycle_overlay.png"
+    selectParking(id,stops,key)
+}
+
+function toggleBikeRepair(){
+    let key = 'bike-key'
+    let stops = 'BR1,BR2,BR3,BR4'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/bike_repair.png"
+    selectParking(id,stops,key)
     
+}
+
+function selectLot() {
+    let key = 'lot-key'
+    let stop = 'LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTO,house'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/parking_merged.png"
+
+
     console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
@@ -534,7 +588,13 @@ function selectCampus(building) {
 }
 
 function selectTiming(){
-    showDetailsTemp("Although the Burnaby Campus may seem large on a map, it’s a lot faster to get from one end of campus to the other than you might think. Believe it or not, it takes only 10 minutes to walk from NE01 to SE16 or from Willingdon Avenue to Wayburne Drive. ")
+    let key = ''
+    let stops = ''
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/timing_merged.png"
+    selectParking(id,stops,key)
+    
+    showDetailsTransit("Although the Burnaby Campus may seem large on a map, it’s a lot faster to get from one end of campus to the other than you might think. Believe it or not, it takes only 10 minutes to walk from NE01 to SE16 or from Willingdon Avenue to Wayburne Drive. ")
 }
 
 function toggleDropdown(self) {
