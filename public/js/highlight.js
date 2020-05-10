@@ -257,21 +257,129 @@ function showDetails(building, service_name, description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function showDetailsTemp(building, service_name, description){
-    document.getElementById("details_title").innerText = service_name
+function showDetailsTransit(description, nav){
+    document.getElementById("details_box").style.display = "block"
+    // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
+
+    if (nav == true) {
+        var icon = document.createElement("i");
+        icon.setAttribute("class", "fa fa-arrow-right");
+        document.getElementById("details_box").appendChild(icon);
+        $(".fa-arrow-right").click(navArrow);
+    } else {
+        $(".fa-arrow-right").remove();
+    }
 }
 
-function selectTransit(key, name, bus) {
-    // console.log("Building: " + stop)
-    // $('area').bind('mouseover', function () {
-    //     $('#bus_stops_overlay').mapster('tooltip');
-    // });
-    console.log("test")
-    $('#bus_stops_overlay').mapster({
+
+var transit = false;
+var busData = [];
+function selectTransit() {  
+    showBasicOverlay("/media/bus_map.png");
+    console.log(transit);
+    if (transit == false) {
+        fetch("/getTransit")
+        .then(res => res.text())
+        .then(function (data) {
+            data = JSON.parse(data);
+            data.forEach(function(item) {
+                busData.push({
+                    "key": item.id,
+                    "toolTip" : item.busRoute
+                })
+            })
+            busOverlay();
+            transit = true;
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    } else {
+        busOverlay();
+    }
+    fetch("/getTransitDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        console.log(data)
+        console.log(data[0].description);
+        showDetailsTransit(data[0].description);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}
+
+function busOverlay() {
+    $('#image').mapster({
+        singleSelect: true,
+        fill: false,
+        mapKey: 'building',
+        fill: false,
+        toolTipClose: ['area-mouseout','image-mouseout'],
+        clickNavigate: true,           
+        showToolTip: true,
+        staticState: true,
+        areas: busData
+    })
+}
+
+function showBasicOverlay(source){
+    document.getElementById("image").src = source
+}
+
+function nextIndex(index, arr) {
+    index++;
+    index = index % arr.length;
+    return index;
+}
+
+
+var navIndex = 0;
+var navDesc = []
+function selectNav() {
+    $('img').mapster('unbind');
+    hideOverlay();
+    if (navDesc.length == 0) {
+        fetch("/getCampusDesc")
+        .then(res => res.text())
+        .then(function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+            navDesc = data; 
+            // console.log(data[0].description);
+            // showDetailsTransit(data[0].description);
+            showDetailsTransit(navDesc[navIndex].description, true);
+            navIndex = nextIndex(navIndex, navDesc);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    } else {
+        showDetailsTransit(navDesc[navIndex].description, true);
+        navIndex = nextIndex(navIndex, navDesc);
+    }
+}
+
+function navArrow() {
+    showDetailsTransit(navDesc[navIndex].description, true);
+    navIndex = nextIndex(navIndex, navDesc);
+}
+
+
+
+function selectParking(id,stop,key) {
+    
+    console.log("Building: " + stop)
+    $('area').bind('mouseover', function () {
+        $('#'+id).mapster('tooltip');
+    });
+    
+    $('#'+id).mapster({
         initial_opts,
         mapKey: 'data-key',
         strokeWidth:2,
@@ -299,31 +407,31 @@ function selectTransit(key, name, bus) {
     // }
 }
 
-function selectNav(stop, name, bus) {
-    // console.log("Building: " + stop)
-    $('area').bind('mouseover', function () {
-        $('#bus_stops_overlay').mapster('tooltip');
-    });
+// function selectNav(stop, name, bus) {
+//     // console.log("Building: " + stop)
+//     $('area').bind('mouseover', function () {
+//         $('#bus_stops_overlay').mapster('tooltip');
+//     });
     
-    $('#bus_stops_overlay').mapster(initial_opts)
-        .mapster('set', true, stop, { // String goes here
-            fill: true,
-            fillColor: 'FF0000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
+//     $('#bus_stops_overlay').mapster(initial_opts)
+//         .mapster('set', true, stop, { // String goes here
+//             fill: true,
+//             fillColor: 'FF0000'
+//         })
+//         .mapster('snapshot')
+//         .mapster('rebind', basic_opts);
 
-    stop = stop.replace(/,/g, ",#")
-    console.log(stop);
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
+//     stop = stop.replace(/,/g, ",#")
+//     console.log(stop);
+//     $('#' + stop).bind('mouseover', function () { // ID goes here
+//         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
-    });
-    if (bus != null) {
-        bus = bus.replace(",", "\n");
-        showDetailsTemp(stop, name, bus)
-    }
-}
+//     });
+//     if (bus != null) {
+//         bus = bus.replace(",", "\n");
+//         showDetailsTemp(stop, name, bus)
+//     }
+// }
 
 
 function selectParking(id,stop) {
