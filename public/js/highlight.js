@@ -32,75 +32,6 @@ var initial_opts = $.extend({}, basic_opts,
     });
 
 /* group selection functions */
-function selectNE() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'NE09,NE07,NE10,NE12,NE08,NE06,NE28,NE16,NE18,NE24,NE22,NE20', {
-            fill: true,
-            fillColor: 'FFFF00'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#NE09,#NE07,#NE10,#NE12,#NE08,#NE06,#NE28,#NE16,#NE18,#NE24,#NE22,#NE20').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-
-}
-
-function selectSE() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'SE19,SE30,SE40,SE41,SE42,SE50', {
-            fill: true,
-            fillColor: '800000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#SE19,#SE30,#SE40,#SE41,#SE42,#SE50').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-}
-
-function selectSW() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'SW01,SW02,SW03,SW05,SW09,SW10,SW11,SW12,SW13,SW14,SW15,SW16', {
-            fill: true,
-            fillColor: '138C40'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#SW01,#SW02,#SW03,#SW05,#SW09,#SW10,#SW11,#SW12,#SW13,#SW14,#SW15,#SW16').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-}
-
-function selectCARI() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'CARI', {
-            fill: true,
-            fillColor: 'FF0000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#CARI').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-}
-
 function selectSchool(buildings, descriptions) {
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
@@ -131,7 +62,7 @@ function updateSchoolToolTip(buildings, names) {
         document.getElementById(buildings[i]).alt = "<b>" + buildings[i] + "</b><br>" + names[i];
     }
 }
-/* end group selection functions */
+
 
 async function selectKeyPlaces(buildings, names) {
     await hideOverlay();
@@ -602,12 +533,6 @@ function selectPaystation(id,stop,key) {
             fill: true,
             fillColor: 'ffea2e'
         })
-
-    stop = stop.replace(/,/g, ",#")
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
-    });
     showDetailsParking("Pay stations are conveniently located near each of the campus parking lots. Pay stations accept credit cards only, so be sure to have a card on hand or <a href='https://verrus.com/Permits/default.aspx?r='>pre-purchase a parking permit</a> before arriving on campus. Alternatively, students can also <a href='https://www.paybyphone.com/'>pay through the paybyphone app</a>.")
 }
 
