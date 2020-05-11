@@ -317,6 +317,16 @@ function showDetailsTransit(description){
     document.getElementById("details_box").style.overflow= "scroll"
 }
 
+function showDetailsParking(description){
+    document.getElementById("details_box").style.display = "block"
+    // document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_info").innerHTML = description
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
+    document.getElementById("details_box").style.overflow= "scroll"
+}
+
 var transit = false;
 var busData = [];
 function selectTransit() {  
@@ -437,11 +447,7 @@ function selectParking(id,stop,key) {
             fillColor: 'ffea2e'
         })
 
-    stop = stop.replace(/,/g, ",#")
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
-    });
     showDetailsTransit("While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
 }
 
@@ -474,7 +480,7 @@ function togglePaystation(){
     let stops = 'PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10'
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/paystation_overlay.png"
-    selectParking(id,stops,key)
+    selectPaystation(id,stops,key)
 }
 
 function toggleMotorcycle(){
@@ -559,7 +565,7 @@ function selectPaystation(id,stop,key) {
         $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
     });
-    showDetailsTransit("Pay stations are conveniently located near each of the campus parking lots. Pay stations accept credit cards only, so be sure to have a card on hand or <a href='https://verrus.com/Permits/default.aspx?r='>pre-purchase a parking permit</a> before arriving on campus. Alternatively, students can also <a href='https://www.paybyphone.com/'>pay through the paybyphone app</a>.")
+    showDetailsParking("Pay stations are conveniently located near each of the campus parking lots. Pay stations accept credit cards only, so be sure to have a card on hand or <a href='https://verrus.com/Permits/default.aspx?r='>pre-purchase a parking permit</a> before arriving on campus. Alternatively, students can also <a href='https://www.paybyphone.com/'>pay through the paybyphone app</a>.")
 }
 
 
