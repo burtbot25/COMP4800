@@ -325,22 +325,22 @@ function showBasicOverlay(source){
     document.getElementById("image").src = source
 }
 
-
-// function selectNav() {
-//     $('img').mapster('unbind');
-//     hideOverlay();
-//     fetch("/getCampusDesc")
-//     .then(res => res.text())
-//     .then(function (data) {
-//         data = JSON.parse(data);
-//         console.log(data)
-//         console.log(data[0].description);
-//         showDetailsTransit(data[0].description);
-//     })
-//     .catch(function (error) {
-//         console.log(error);
-//     });
-// }
+/*
+function selectNav() {
+    $('img').mapster('unbind');
+    hideOverlay();
+    fetch("/getCampusDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        console.log(data)
+        console.log(data[0].description);
+        showDetailsTransit(data[0].description);
+    })
+    .catch(function (error) {
+        console.log(error);
+    });
+}*/
 
 
 function showBasicOverlay(source){
@@ -368,6 +368,8 @@ function selectNav() {
             navDesc = data; 
             // console.log(data[0].description);
             // showDetailsTransit(data[0].description);
+            console.log(navDesc[navIndex].buildingNumber)
+            //selectNavBuildings('CampusSquare')
             selectNavBuildings(navDesc[navIndex].buildingNumber);
             showDetailsTransit(navDesc[navIndex].description, true);
             navIndex = nextIndex(navIndex, navDesc);
@@ -487,6 +489,7 @@ function toggleAccessibility(){
     selectParking(id,stops,key)
     
 }
+
 
 
 function selectLot() {
