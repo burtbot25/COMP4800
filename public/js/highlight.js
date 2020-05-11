@@ -317,10 +317,12 @@ function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.overflow= "scroll"
 
     if (nav == true) {
-        var icon = document.createElement("i");
-        icon.setAttribute("class", "fa fa-arrow-right");
-        document.getElementById("details_box").appendChild(icon);
-        $(".fa-arrow-right").click(navArrow);
+        if (!$(".fa-arrow-right").length) {
+            var icon = document.createElement("i");
+            icon.setAttribute("class", "fa fa-arrow-right");
+            document.getElementById("details_box").appendChild(icon);
+            $(".fa-arrow-right").click(navArrow);
+        }
     } else {
         $(".fa-arrow-right").remove();
     }
@@ -399,19 +401,6 @@ function showBasicOverlay(source){
 //     });
 // }
 
-function busOverlay() {
-    $('#image').mapster({
-        singleSelect: true,
-        fill: false,
-        mapKey: 'building',
-        fill: false,
-        toolTipClose: ['area-mouseout','image-mouseout'],
-        clickNavigate: true,           
-        showToolTip: true,
-        staticState: true,
-        areas: busData
-    })
-}
 
 function showBasicOverlay(source){
     document.getElementById("image").src = source
@@ -438,27 +427,46 @@ function selectNav() {
             navDesc = data; 
             // console.log(data[0].description);
             // showDetailsTransit(data[0].description);
+            selectNavBuildings(navDesc[navIndex].buildingNumber);
             showDetailsTransit(navDesc[navIndex].description, true);
             navIndex = nextIndex(navIndex, navDesc);
         })
         .catch(function (error) {
             console.log(error);
         });
-    } else {
-        showDetailsTransit(navDesc[navIndex].description, true);
-        navIndex = nextIndex(navIndex, navDesc);
     }
 }
 
 function navArrow() {
+    selectNavBuildings(navDesc[navIndex].buildingNumber);
     showDetailsTransit(navDesc[navIndex].description, true);
     navIndex = nextIndex(navIndex, navDesc);
+    document.getElementById("details_box").scrollTop = 0;
+}
+
+function selectNavBuildings(buildings) {
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
+    });
+
+    $('#image').mapster(initial_opts)
+    .mapster('set', true, buildings, { // String goes here
+        fill: true,
+        fillColor: 'FF0000'
+    })
+    .mapster('snapshot')
+    .mapster('rebind', basic_opts);
+    console.log($('#CampusSquare').length);
+    buildings = buildings.replace(/,/g, ",#")
+    console.log(buildings);
+    $('#' + buildings).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
+    });
 }
 
 
-
 function selectParking(id,stop,key) {
-    
+    console.log(id);
     console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
