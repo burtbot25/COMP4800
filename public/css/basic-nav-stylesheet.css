@@ -189,6 +189,7 @@ area {
   bottom: 0px;
   height: 85px;
   display: none;
+  overflow: scroll;
 }
 
 .mapster_tooltip {
