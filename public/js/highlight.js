@@ -238,7 +238,7 @@ function showDetails1(building, service_name, description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function showDetailsTransit(description){
+function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
     // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
@@ -246,6 +246,15 @@ function showDetailsTransit(description){
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
     document.getElementById("details_box").style.overflow= "scroll"
+
+    if (nav == true) {
+        var icon = document.createElement("i");
+        icon.setAttribute("class", "fa fa-arrow-right");
+        document.getElementById("details_box").appendChild(icon);
+        $(".fa-arrow-right").click(navArrow);
+    } else {
+        $(".fa-arrow-right").remove();
+    }
 }
 
 function showDetailsParking(description){
@@ -315,44 +324,78 @@ function showBasicOverlay(source){
 }
 
 
+// function selectNav() {
+//     $('img').mapster('unbind');
+//     hideOverlay();
+//     fetch("/getCampusDesc")
+//     .then(res => res.text())
+//     .then(function (data) {
+//         data = JSON.parse(data);
+//         console.log(data)
+//         console.log(data[0].description);
+//         showDetailsTransit(data[0].description);
+//     })
+//     .catch(function (error) {
+//         console.log(error);
+//     });
+// }
+
+function busOverlay() {
+    $('#image').mapster({
+        singleSelect: true,
+        fill: false,
+        mapKey: 'building',
+        fill: false,
+        toolTipClose: ['area-mouseout','image-mouseout'],
+        clickNavigate: true,           
+        showToolTip: true,
+        staticState: true,
+        areas: busData
+    })
+}
+
+function showBasicOverlay(source){
+    document.getElementById("image").src = source
+}
+
+function nextIndex(index, arr) {
+    index++;
+    index = index % arr.length;
+    return index;
+}
+
+
+var navIndex = 0;
+var navDesc = []
 function selectNav() {
     $('img').mapster('unbind');
     hideOverlay();
-    fetch("/getCampusDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        console.log(data)
-        console.log(data[0].description);
-        showDetailsTransit(data[0].description);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-    // console.log("Building: " + stop)
-    // $('area').bind('mouseover', function () {
-    //     $('#bus_stops_overlay').mapster('tooltip');
-    // });
-    
-    // $('#bus_stops_overlay').mapster(initial_opts)
-    //     .mapster('set', true, stop, { // String goes here
-    //         fill: true,
-    //         fillColor: 'FF0000'
-    //     })
-    //     .mapster('snapshot')
-    //     .mapster('rebind', basic_opts);
-
-    // stop = stop.replace(/,/g, ",#")
-    // console.log(stop);
-    // $('#' + stop).bind('mouseover', function () { // ID goes here
-    //     $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
-
-    // });
-    // if (bus != null) {
-    //     bus = bus.replace(",", "\n");
-    //     showDetailsTemp(stop, name, bus)
-    // }
+    if (navDesc.length == 0) {
+        fetch("/getCampusDesc")
+        .then(res => res.text())
+        .then(function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+            navDesc = data; 
+            // console.log(data[0].description);
+            // showDetailsTransit(data[0].description);
+            showDetailsTransit(navDesc[navIndex].description, true);
+            navIndex = nextIndex(navIndex, navDesc);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    } else {
+        showDetailsTransit(navDesc[navIndex].description, true);
+        navIndex = nextIndex(navIndex, navDesc);
+    }
 }
+
+function navArrow() {
+    showDetailsTransit(navDesc[navIndex].description, true);
+    navIndex = nextIndex(navIndex, navDesc);
+}
+
 
 
 function selectParking(id,stop,key) {
