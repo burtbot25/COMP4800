@@ -4472,7 +4472,6 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
             ttopts.top = corners[1];
            // ttopts.left = target.coords.split(",")[0] + 10
            // ttopts.top = target.coords.split(",")[1]  - 10
-           console.log(target.coords.split(",")[0])
            if(typeof target.coords !== 'undefined'){
             if(target.coords.split(",")[0] < 50){
                 ttopts.left = target.coords.split(",")[0]*1.4
