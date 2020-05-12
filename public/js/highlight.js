@@ -205,17 +205,34 @@ async function selectMicrowaves(building) {
 
 }
 
-async function selectFoods(building, service_name, description, foodLink) {
+function updateFoodToolTips(building, foodPlaceNames){
+    var buildings = building.split(",")
+    var locations = foodPlaceNames.split(",..,")
+    
+    for (var i = 0; i < locations.length; i++){
+        locations[i] = locations[i].replace(/,/g, ", ")
+    }
+    console.log(buildings)
+    console.log(locations)
+    for (var i = 0; i < buildings.length; i++){
+        document.getElementById(buildings[i]).alt = locations[i]
+    }
+    
+}
+
+async function selectFoods(building, service_name, description, foodLink, foodPlaceNames) {
     console.log("Building: " + building)
     console.log("Service Name: " + service_name)
     console.log("Description: " + description)
     console.log("Food Link: " + foodLink)
+
+    updateFoodToolTips(building, foodPlaceNames)
     showOverlay().then(function(res) {
         $('area').bind('mouseover', function () {
             $('#image').mapster('tooltip');
         });
         
-        foodBuildings = "FI01,FI02,FI03,FI04,FI05,FI06,FI07,FI08,FI09"
+        foodBuildings = building
     
         $('#image').mapster(initial_opts)
             .mapster('set', true, foodBuildings, { // String goes here
@@ -230,7 +247,7 @@ async function selectFoods(building, service_name, description, foodLink) {
         foodBuildings = foodBuildings.join(",#")
     
         $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
-            $('#image').mapster('tooltip', this, $(this).attr('full'));
+            $('#image').mapster('tooltip', this, $(this).attr('alt'));
     
         });
         
