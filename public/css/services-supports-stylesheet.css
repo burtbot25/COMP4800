@@ -330,7 +330,8 @@ area {
 #bike_repair_overlay,
 #car_share_overlay,
 #pay_station_overlay,
-#motorcycle_overlay{
+#motorcycle_overlay,
+#timing_overlay{
   display: none
 }
 
