@@ -486,7 +486,9 @@ function toggleAccessibility(){
     let stops = ''
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
+    
     selectParking(id,stops,key)
+    hideFoodDetails();
     
 }
 
