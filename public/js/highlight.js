@@ -454,7 +454,7 @@ function toggleShareParking(){
     let key = 'share-parking-key'
     let stops = "CS1,CS2,CS3"
     let id = 'image'
-    document.getElementById("image").src = "/media/overlays/car_share_parking.png"
+    document.getElementById("image").src = "/media/overlays/car_share_merged.png"
     selectParking(id,stops,key)
     hideFoodDetails();
 }
@@ -463,7 +463,7 @@ function togglePaystation(){
     let key = 'paystation-key'
     let stops = 'PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10'
     let id = 'image'
-    document.getElementById("image").src = "/media/overlays/paystation_overlay.png"
+    document.getElementById("image").src = "/media/overlays/paystation_merged.png"
     selectPaystation(id,stops,key)
 }
 
@@ -471,7 +471,7 @@ function toggleMotorcycle(){
     let key = 'motorcycle-key'
     let stops = 'MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8'
     let id = 'image'
-    document.getElementById("image").src = "/media/overlays/motorcycle_overlay.png"
+    document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
     selectParking(id,stops,key)
     hideFoodDetails();
 }
