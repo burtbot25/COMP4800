@@ -211,15 +211,11 @@ function selectService(building, name, description, link) {
 }
 
 function showDetails(name, description, link){
-    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = name
-    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
 }
 
 async function showOverlay(){
@@ -242,14 +238,14 @@ function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-function showDetails1(building, service_name, description){
-    document.getElementById("details_title").innerText = service_name
-    document.getElementById("details_title").style.fontWeight = "bold"
-    document.getElementById("details_info").innerText = "(currently blank)" + description
-    document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
-}
+//function showDetails1(building, service_name, description){
+//    document.getElementById("details_title").innerText = service_name
+//    document.getElementById("details_title").style.fontWeight = "bold"
+//    document.getElementById("details_info").innerText = "(currently blank)" + description
+//    document.getElementById("details_link").innerText = "(Link Here)"
+//    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+//    document.getElementById("details_box").style.color = "#003c71"
+//}
 
 function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
