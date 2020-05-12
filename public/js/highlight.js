@@ -408,13 +408,11 @@ function selectNavBuildings(buildings) {
 }
 
 
-function selectParking(id,stop,key) {
-    console.log(id);
-    console.log("Building: " + stop)
+function selectParking(stop,key) {
+    id = 'image'
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
     });
-    
     $('#'+id).mapster({
         initial_opts,
         mapKey: key,
@@ -435,28 +433,43 @@ function selectParking(id,stop,key) {
 function toggleHandicap(){
     let key = 'accessible-key'
     let stops = 'HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26'
-    let id = 'image'
     document.getElementById("image").src = "/media/overlays/handicap_merged.png"
-    selectParking(id,stops,key)
+    selectParking(stops,key)
     hideFoodDetails();
 }
 
 function toggleElectricVehicle(){
     let stops = 'EV1,EV2,EV3,EV4,EV5'
     let key = 'electric-key'
-    let id = 'image'
     document.getElementById("image").src = "/media/overlays/ev_parking.png"
-    selectParking(id,stops,key)
+    selectParking(stops,key)
     hideFoodDetails();
 }
 
 function toggleShareParking(){
     let key = 'share-parking-key'
     let stops = "CS1,CS2,CS3"
-    let id = 'image'
     document.getElementById("image").src = "/media/overlays/car_share_merged.png"
-    selectParking(id,stops,key)
+    selectParking(stops,key)
     hideFoodDetails();
+}
+
+function toggleMotorcycle(){
+    let key = 'motorcycle-key'
+    let stops = 'MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8'
+    document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
+    selectParking(stops,key)
+    hideFoodDetails();
+}
+
+function toggleBikeRepair(){
+    let key = 'bike-key'
+    let stops = 'BR1,BR2,BR3,BR4'
+    let id = 'image'
+    document.getElementById("image").src = "/media/overlays/bike_repair.png"
+    selectParking(stops,key)
+    hideFoodDetails();
+    
 }
 
 function togglePaystation(){
@@ -467,32 +480,13 @@ function togglePaystation(){
     selectPaystation(id,stops,key)
 }
 
-function toggleMotorcycle(){
-    let key = 'motorcycle-key'
-    let stops = 'MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8'
-    let id = 'image'
-    document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
-    selectParking(id,stops,key)
-    hideFoodDetails();
-}
-
-function toggleBikeRepair(){
-    let key = 'bike-key'
-    let stops = 'BR1,BR2,BR3,BR4'
-    let id = 'image'
-    document.getElementById("image").src = "/media/overlays/bike_repair.png"
-    selectParking(id,stops,key)
-    hideFoodDetails();
-    
-}
 
 function toggleAccessibility(){
     let key = ''
     let stops = ''
-    let id = 'image'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
     
-    selectParking(id,stops,key)
+    selectParking(stops,key)
     hideFoodDetails();
     
 }
