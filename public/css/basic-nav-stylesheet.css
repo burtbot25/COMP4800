@@ -211,16 +211,3 @@ area {
   position: absolute;
   right: 10px;
 }
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background: #888;
-}
