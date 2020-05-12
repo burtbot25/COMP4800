@@ -250,7 +250,7 @@ function showDetailsTransit(description, nav){
     if (nav == true) {
         if (!$(".fa-arrow-right").length) {
             var icon = document.createElement("i");
-            icon.setAttribute("class", "fa fa-arrow-right");
+            icon.setAttribute("class", "fa fa-arrow-right fa-2x");
             document.getElementById("details_box").appendChild(icon);
             $(".fa-arrow-right").click(navArrow);
         }
@@ -373,10 +373,17 @@ function selectNav() {
             selectNavBuildings(navDesc[navIndex].buildingNumber);
             showDetailsTransit(navDesc[navIndex].description, true);
             navIndex = nextIndex(navIndex, navDesc);
+
         })
         .catch(function (error) {
             console.log(error);
         });
+
+    } else {
+        navIndex = 0
+        selectNavBuildings(navDesc[navIndex].buildingNumber);
+        showDetailsTransit(navDesc[navIndex].description, true);
+        navIndex = nextIndex(navIndex, navDesc);
     }
 }
 
