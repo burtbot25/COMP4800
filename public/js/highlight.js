@@ -289,6 +289,8 @@ function selectTransit() {
         .then(function (data) {
             data = JSON.parse(data);
             data.forEach(function(item) {
+                item.busRoute = item.busRoute.replace(",", "<br>");
+                console.log(item.busRoute);
                 busData.push({
                     "key": item.id,
                     "toolTip" : item.busRoute
