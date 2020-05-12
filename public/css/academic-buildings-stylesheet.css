@@ -21,7 +21,7 @@ area {
   left: 0px;
 }
 
-area {
+#area {
   position: absolute;
   top: 0px;
   left: 0px;
@@ -50,8 +50,6 @@ area {
 
 #map_area {
   position: relative;
-  display: inline-block; 
-  overflow: auto;    
 }
 
 .mapster_tooltip {
