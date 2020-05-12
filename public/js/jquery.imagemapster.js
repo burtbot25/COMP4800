@@ -4472,6 +4472,7 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
             ttopts.top = corners[1];
            // ttopts.left = target.coords.split(",")[0] + 10
            // ttopts.top = target.coords.split(",")[1]  - 10
+           console.log(target.coords.split(",")[0])
            if(typeof target.coords !== 'undefined'){
             if(target.coords.split(",")[0] < 50){
                 ttopts.left = target.coords.split(",")[0]*1.4
@@ -4480,12 +4481,12 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
                 ttopts.left = target.coords.split(",")[0]*1.2
             }
             else if(target.coords.split(",")[0] < 500){
-                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/50
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/10
             }
             else if(target.coords.split(",")[0] < 700){
-                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/50
-            } else {
                 ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/10
+            } else {
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/6
             }
             if (target.coords.split(",")[1] < 100) {
                 ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 2
@@ -4503,7 +4504,7 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
         }
         //ttopts.left += (options.offsetx || 0);
         //ttopts.top +=(options.offsety || 0);
-
+        console.log(ttopts.left)
         ttopts.css= options.css;
         ttopts.fadeDuration = options.fadeDuration;
 
