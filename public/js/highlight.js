@@ -465,7 +465,6 @@ function toggleMotorcycle(){
 function toggleBikeRepair(){
     let key = 'bike-key'
     let stops = 'BR1,BR2,BR3,BR4'
-    let id = 'image'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
     selectParking(stops,key)
     hideFoodDetails();
@@ -475,9 +474,8 @@ function toggleBikeRepair(){
 function togglePaystation(){
     let key = 'paystation-key'
     let stops = 'PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10'
-    let id = 'image'
     document.getElementById("image").src = "/media/overlays/paystation_merged.png"
-    selectPaystation(id,stops,key)
+    selectPaystation(stops,key)
 }
 
 
@@ -530,8 +528,8 @@ function selectLot() {
 }
 
 
-function selectPaystation(id,stop,key) {
-    
+function selectPaystation(stop,key) {
+    id = 'image'
     console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
