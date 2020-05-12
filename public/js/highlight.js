@@ -136,17 +136,34 @@ async function selectMicrowaves(building) {
 
 }
 
-async function selectFoods(building, service_name, description, foodLink) {
+function updateFoodToolTips(building, foodPlaceNames){
+    var buildings = building.split(",")
+    var locations = foodPlaceNames.split(",..,")
+    
+    for (var i = 0; i < locations.length; i++){
+        locations[i] = locations[i].replace(/,/g, ", ")
+    }
+    console.log(buildings)
+    console.log(locations)
+    for (var i = 0; i < buildings.length; i++){
+        document.getElementById(buildings[i]).alt = locations[i]
+    }
+    
+}
+
+async function selectFoods(building, service_name, description, foodLink, foodPlaceNames) {
     console.log("Building: " + building)
     console.log("Service Name: " + service_name)
     console.log("Description: " + description)
     console.log("Food Link: " + foodLink)
+
+    updateFoodToolTips(building, foodPlaceNames)
     showOverlay().then(function(res) {
         $('area').bind('mouseover', function () {
             $('#image').mapster('tooltip');
         });
         
-        foodBuildings = "FI01,FI02,FI03,FI04,FI05,FI06,FI07,FI08,FI09"
+        foodBuildings = building
     
         $('#image').mapster(initial_opts)
             .mapster('set', true, foodBuildings, { // String goes here
@@ -161,7 +178,7 @@ async function selectFoods(building, service_name, description, foodLink) {
         foodBuildings = foodBuildings.join(",#")
     
         $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
-            $('#image').mapster('tooltip', this, $(this).attr('full'));
+            $('#image').mapster('tooltip', this, $(this).attr('alt'));
     
         });
         
@@ -194,15 +211,11 @@ function selectService(building, name, description, link) {
 }
 
 function showDetails(name, description, link){
-    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = name
-    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
 }
 
 async function showOverlay(){
@@ -214,29 +227,25 @@ async function hideOverlay(){
 }
 
 function showFoodDetails(service_name, description, foodLink){
-    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = service_name
-    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
     document.getElementById("details_link").href = foodLink
     document.getElementById("details_link").target = "_blank"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
 }
 
 function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-function showDetails1(building, service_name, description){
-    document.getElementById("details_title").innerText = service_name
-    document.getElementById("details_title").style.fontWeight = "bold"
-    document.getElementById("details_info").innerText = "(currently blank)" + description
-    document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
-}
+//function showDetails1(building, service_name, description){
+//    document.getElementById("details_title").innerText = service_name
+//    document.getElementById("details_title").style.fontWeight = "bold"
+//    document.getElementById("details_info").innerText = "(currently blank)" + description
+//    document.getElementById("details_link").innerText = "(Link Here)"
+//    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+//    document.getElementById("details_box").style.color = "#003c71"
+//}
 
 function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
@@ -250,7 +259,7 @@ function showDetailsTransit(description, nav){
     if (nav == true) {
         if (!$(".fa-arrow-right").length) {
             var icon = document.createElement("i");
-            icon.setAttribute("class", "fa fa-arrow-right");
+            icon.setAttribute("class", "fa fa-arrow-right fa-2x");
             document.getElementById("details_box").appendChild(icon);
             $(".fa-arrow-right").click(navArrow);
         }
@@ -373,10 +382,17 @@ function selectNav() {
             selectNavBuildings(navDesc[navIndex].buildingNumber);
             showDetailsTransit(navDesc[navIndex].description, true);
             navIndex = nextIndex(navIndex, navDesc);
+
         })
         .catch(function (error) {
             console.log(error);
         });
+
+    } else {
+        navIndex = 0
+        selectNavBuildings(navDesc[navIndex].buildingNumber);
+        showDetailsTransit(navDesc[navIndex].description, true);
+        navIndex = nextIndex(navIndex, navDesc);
     }
 }
 
