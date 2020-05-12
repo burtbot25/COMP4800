@@ -4503,7 +4503,6 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
         }
         //ttopts.left += (options.offsetx || 0);
         //ttopts.top +=(options.offsety || 0);
-        console.log(ttopts.left)
         ttopts.css= options.css;
         ttopts.fadeDuration = options.fadeDuration;
 
