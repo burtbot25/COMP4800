@@ -492,65 +492,80 @@ function toggleAccessibility(){
 
 
 function selectLot() {
-    let key = 'lot-key'
-    let stop = 'LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTO,house'
-    let id = 'image'
-    document.getElementById("image").src = "/media/overlays/parking_merged.png"
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        let key = 'lot-key'
+        let stop = 'LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTO,house'
+        let id = 'image'
+        document.getElementById("image").src = "/media/overlays/parking_merged.png"
 
 
-    console.log("Building: " + stop)
-    $('area').bind('mouseover', function () {
-        $('#'+id).mapster('tooltip');
+        console.log("Building: " + stop)
+        $('area').bind('mouseover', function () {
+            $('#'+id).mapster('tooltip');
+        });
+        
+        $('#'+id).mapster({
+            initial_opts,
+            mapKey: key,
+            strokeWidth:2,
+            strokeColor: 'F88017',
+            mapValue: 'full',
+            showToolTip: true,
+            staticState: true,
+            fill:false
+            }
+            )
+            .mapster('set', true,stop, { // String goes here
+                fill: true,
+                fillColor: 'ffea2e'
+            })
+
+        stop = stop.replace(/,/g, ",#")
+        $('#' + stop).bind('mouseover', function () { // ID goes here
+            $('#'+id).mapster('tooltip', this, $(this).attr('full'));
+
+        });
+        showDetailsTransit(data[1].description)
+    })
+    .catch(function (error) {
+        console.log(error);
     });
-    
-    $('#'+id).mapster({
-        initial_opts,
-        mapKey: key,
-        strokeWidth:2,
-        strokeColor: 'F88017',
-        mapValue: 'full',
-        showToolTip: true,
-        staticState: true,
-        fill:false
-        }
-        )
-        .mapster('set', true,stop, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-
-    stop = stop.replace(/,/g, ",#")
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    showDetailsTransit("While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
 }
 
 
 function selectPaystation(stop,key) {
     id = 'image'
-    console.log("Building: " + stop)
-    $('area').bind('mouseover', function () {
-        $('#'+id).mapster('tooltip');
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        $('area').bind('mouseover', function () {
+            $('#'+id).mapster('tooltip');
+        });
+        
+        $('#'+id).mapster({
+            initial_opts,
+            mapKey: key,
+            strokeWidth:2,
+            strokeColor: 'F88017',
+            mapValue: 'full',
+            showToolTip: true,
+            staticState: true,
+            fill:false
+            }
+            )
+            .mapster('set', true,stop, { // String goes here
+                fill: true,
+                fillColor: 'ffea2e'
+            })
+        showDetailsParking(data[0].description)
+    })    
+    .catch(function (error) {
+        console.log(error);
     });
-    
-    $('#'+id).mapster({
-        initial_opts,
-        mapKey: key,
-        strokeWidth:2,
-        strokeColor: 'F88017',
-        mapValue: 'full',
-        showToolTip: true,
-        staticState: true,
-        fill:false
-        }
-        )
-        .mapster('set', true,stop, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-    showDetailsParking("Pay stations are conveniently located near each of the campus parking lots. Pay stations accept credit cards only, so be sure to have a card on hand or <a href='https://verrus.com/Permits/default.aspx?r='>pre-purchase a parking permit</a> before arriving on campus. Alternatively, students can also <a href='https://www.paybyphone.com/'>pay through the paybyphone app</a>.")
 }
 
 
@@ -579,13 +594,18 @@ function selectCampus(building) {
 }
 
 function selectTiming(){
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
     let key = ''
     let stops = ''
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/timing_merged.png"
     selectParking(id,stops,key)
     
-    showDetailsTransit("Although the Burnaby Campus may seem large on a map, it’s a lot faster to get from one end of campus to the other than you might think. Believe it or not, it takes only 10 minutes to walk from NE01 to SE16 or from Willingdon Avenue to Wayburne Drive. ")
+    showDetailsTransit(data[2].description)
+    })
 }
 
 function toggleDropdown(self) {
