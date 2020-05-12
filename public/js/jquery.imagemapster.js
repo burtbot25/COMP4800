@@ -4485,7 +4485,7 @@ default styling : '<div style="border: 2px solid black; background: #EEEEEE; wid
             else if(target.coords.split(",")[0] < 700){
                 ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/50
             } else {
-                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/25
+                ttopts.left = target.coords.split(",")[0]- target.coords.split(",")[0]/10
             }
             if (target.coords.split(",")[1] < 100) {
                 ttopts.top = target.coords.split(",")[1] - target.coords.split(",")[1] / 2
