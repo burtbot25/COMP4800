@@ -438,6 +438,7 @@ function toggleHandicap(){
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/handicap_merged.png"
     selectParking(id,stops,key)
+    hideFoodDetails();
 }
 
 function toggleElectricVehicle(){
@@ -446,6 +447,7 @@ function toggleElectricVehicle(){
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/ev_parking.png"
     selectParking(id,stops,key)
+    hideFoodDetails();
 }
 
 function toggleShareParking(){
@@ -454,6 +456,7 @@ function toggleShareParking(){
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/car_share_parking.png"
     selectParking(id,stops,key)
+    hideFoodDetails();
 }
 
 function togglePaystation(){
@@ -470,6 +473,7 @@ function toggleMotorcycle(){
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/motorcycle_overlay.png"
     selectParking(id,stops,key)
+    hideFoodDetails();
 }
 
 function toggleBikeRepair(){
@@ -478,6 +482,7 @@ function toggleBikeRepair(){
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
     selectParking(id,stops,key)
+    hideFoodDetails();
     
 }
 
@@ -486,7 +491,9 @@ function toggleAccessibility(){
     let stops = ''
     let id = 'image'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
+    
     selectParking(id,stops,key)
+    hideFoodDetails();
     
 }
 
