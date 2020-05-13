@@ -18,7 +18,13 @@ $( document ).ready(function() {
 /* John's code for highlighting buildings */
 /* Sets what key to use when mapping for mapster*/
 var basic_opts = {
-    mapKey: 'building'
+    mapKey: 'building',
+    staticbuilding: true,
+    fill: false,
+    stroke: false,
+    strokeWidth: 2,
+    strokeColor: 'ffea2e',
+    isSelectable: false
 };
 
 /* starting values for mapster */
@@ -26,9 +32,10 @@ var initial_opts = $.extend({}, basic_opts,
     {
         staticbuilding: true,
         fill: false,
-        stroke: true,
+        stroke: false,
         strokeWidth: 2,
-        strokeColor: 'ffff00',
+        strokeColor: 'ffea2e',
+        isSelectable: false
     });
 
 /* group selection functions */
@@ -39,7 +46,7 @@ function selectSchool(buildings, descriptions) {
     $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, buildings, {
             fill: true,
-            fillColor: 'ffea2e'
+            fillColor: 'ffea2e',
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
