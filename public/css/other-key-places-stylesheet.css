@@ -69,3 +69,5 @@ area {
 .mapster_tooltip {
   pointer-events: none;
 }
+
+.campus-map {display: none}

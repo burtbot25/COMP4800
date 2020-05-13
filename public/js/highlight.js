@@ -143,8 +143,6 @@ function updateFoodToolTips(building, foodPlaceNames){
     for (var i = 0; i < locations.length; i++){
         locations[i] = locations[i].replace(/,/g, ", ")
     }
-    console.log(buildings)
-    console.log(locations)
     for (var i = 0; i < buildings.length; i++){
         document.getElementById(buildings[i]).alt = locations[i]
     }
