@@ -32,6 +32,11 @@ area {
   left: 0px;
 }
 
+.col-sm-2 button:focus {
+    background-color: #003c71;
+    opacity: 0.5;
+}
+
 #bike_overlay,
 #bike_repair_overlay,
 #bus_stops_overlay, 
@@ -63,4 +68,13 @@ area {
 
 .campus-map {
     display: none;
+}
+
+#details_box {
+    background-color: #ffea2e;
+    color: #003c71;
+    font-size: 10px;
+    margin-left: 20px;
+    width: 270px;
+    text-align: center;
 }
