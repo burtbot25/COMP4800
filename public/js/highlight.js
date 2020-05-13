@@ -447,7 +447,7 @@ function selectParking(stop,key) {
             fillColor: 'ffea2e'
         })
 }
-
+/* start of all the toggling on methods for each of the parking images */ 
 function toggleHandicap(){
     let key = 'accessible-key'
         //this is to search in the parkingDescriptions table for the section identifier
@@ -511,6 +511,8 @@ function selectTiming(){
     grabDescAndSelection(database_identifier,key)
 }
 
+//grabs the description and selection ids from the database
+//matching ids will get highlighted on the map
 function grabDescAndSelection(database_identifier,key){
     fetch("/getParkingDesc")
     .then(res => res.text())
@@ -530,7 +532,7 @@ function grabDescAndSelection(database_identifier,key){
     })
 }
 
-
+//selects the student parking lots and enables the tooltip
 function selectLot() {
     database_identifier = 'studentparking'
     let key = 'lot-key'
