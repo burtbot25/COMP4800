@@ -14,8 +14,10 @@ router.get('/basic_nav', basicNavController.getMap);
 router.get('/academic_buildings', academicBuildingsController.getMap);
 router.get('/services_supports', servicesSupportsController.getMap);
 router.get('/other_key_places', otherKeyPlacesController.getMap);
+router.get('/foodData', otherKeyPlacesController.getFoodData);
 router.get('/finish', finishController.getMap);
 router.get('/servicesData', servicesSupportsController.getServicesData);
+router.get('/schoolsData', academicBuildingsController.getSchoolsData);
 
 router.get('/getTransit', basicNavController.getTransit);
 router.get('/getTransitDesc', basicNavController.getTransitDesc);

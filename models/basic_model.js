@@ -17,6 +17,6 @@ exports.getCampusDescription = () => {
 }
 
 exports.getParkingDescription = () => {
-    let sql = `SELECT * FROM parkingDescriptions`;
+    let sql = `SELECT * FROM parkingDescriptions order by id`;
     return db.execute(sql);
 }

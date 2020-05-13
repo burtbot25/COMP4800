@@ -1,6 +1,10 @@
 let other_key_places_model = require("../models/other_key_places_model");
 
-exports.getMap = async (req, res) => {
+exports.getMap = (req, res) => {
+    res.render('other-key-places', { otherKeyPlacesCSS: true });
+};
+
+exports.getFoodData = async (req, res) => {
     var foodInfoData = await other_key_places_model.getFoodInfo();
     // foodInfo is all rows
     var foodInfo = foodInfoData[0];
@@ -53,8 +57,7 @@ exports.getMap = async (req, res) => {
         studyNames.push(row.name)
     });
 
-    res.render('other-key-places', { 
-        otherKeyPlacesCSS: true,
+    res.json({ 
         foodLocations: foodLocations,
         microwavesLocations: microwavesLocations,
         socialBuildings: socialBuildings,
@@ -63,7 +66,7 @@ exports.getMap = async (req, res) => {
         studyNames: studyNames,
         foodDescription: foodDescription,
         foodLink: foodLink,
-        foodPlaceNames: foodPlaceNames
+        foodPlaceNames: foodPlaceNames 
     });
 };
 
@@ -138,3 +141,8 @@ function createFoodPlaceNamesString(foodList, foodNames){
     console.log(placesString)
     return placesString;
 }
+
+/* <button id="Food" onclick="selectFoods('{{foodLocations}}', this.innerText, '{{foodDescription}}', '{{foodLink}}', '{{foodPlaceNames}}')">Food &amp; Coffee</button>
+<button id="Microwaves" onclick="selectMicrowaves('{{microwavesLocations}}')">Microwaves</button>
+<button id="Social" onclick="selectKeyPlaces('{{socialBuildings}}', '{{socialNames}}')">Social</button>
+<button id="Study Areas" onclick="selectKeyPlaces('{{studyBuildings}}', '{{studyNames}}')">Study Areas</button> */
