@@ -268,9 +268,9 @@ function showDetailsTransit(description, nav){
     }
 }
 
+// this one has a .HTML as the client wanted a clickable link inside the description for this one 
 function showDetailsParking(description){
     document.getElementById("details_box").style.display = "block"
-    // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
@@ -453,7 +453,16 @@ function toggleHandicap(){
     let stops = 'HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26'
     document.getElementById("image").src = "/media/overlays/handicap_merged.png"
     selectParking(stops,key)
-    hideFoodDetails();
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        if(data[6].description !== "" && data[6].description !== null){
+            showDetailsTransit(data[6].description)
+        } else {
+            hideFoodDetails();
+        }
+    })
 }
 
 function toggleElectricVehicle(){
@@ -461,7 +470,16 @@ function toggleElectricVehicle(){
     let key = 'electric-key'
     document.getElementById("image").src = "/media/overlays/ev_parking.png"
     selectParking(stops,key)
-    hideFoodDetails();
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        if(data[3].description !== "" && data[3].description !== null){
+            showDetailsTransit(data[3].description)
+        } else {
+            hideFoodDetails();
+        }
+    })
 }
 
 function toggleShareParking(){
@@ -469,7 +487,16 @@ function toggleShareParking(){
     let stops = "CS1,CS2,CS3"
     document.getElementById("image").src = "/media/overlays/car_share_merged.png"
     selectParking(stops,key)
-    hideFoodDetails();
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        if(data[7].description !== "" && data[7].description !== null){
+            showDetailsTransit(data[7].description)
+        } else {
+            hideFoodDetails();
+        }
+    })
 }
 
 function toggleMotorcycle(){
@@ -477,7 +504,16 @@ function toggleMotorcycle(){
     let stops = 'MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8'
     document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
     selectParking(stops,key)
-    hideFoodDetails();
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        if(data[5].description !== "" && data[5].description !== null){
+            showDetailsTransit(data[5].description)
+        } else {
+            hideFoodDetails();
+        }
+    })
 }
 
 function toggleBikeRepair(){
@@ -485,7 +521,16 @@ function toggleBikeRepair(){
     let stops = 'BR1,BR2,BR3,BR4'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
     selectParking(stops,key)
-    hideFoodDetails();
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        if(data[4].description !== "" && data[4].description !== null){
+            showDetailsTransit(data[4].description)
+        } else {
+            hideFoodDetails();
+        }
+    })
     
 }
 
@@ -616,13 +661,13 @@ function selectTiming(){
     .then(res => res.text())
     .then(function (data) {
         data = JSON.parse(data);
-    let key = ''
-    let stops = ''
-    let id = 'image'
-    document.getElementById("image").src = "/media/overlays/timing_merged.png"
-    selectParking(id,stops,key)
-    
-    showDetailsTransit(data[2].description)
+        let key = ''
+        let stops = ''
+        let id = 'image'
+        document.getElementById("image").src = "/media/overlays/timing_merged.png"
+        selectParking(id,stops,key)
+        
+        showDetailsTransit(data[2].description)
     })
 }
 
