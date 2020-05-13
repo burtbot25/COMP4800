@@ -425,7 +425,7 @@ function selectNavBuildings(buildings) {
     });
 }
 
-
+//this has no tooltips enabled, see selectLot for tooltip enabling
 function selectParking(stop,key) {
     id = 'image'
     $('area').bind('mouseover', function () {
@@ -450,187 +450,108 @@ function selectParking(stop,key) {
 
 function toggleHandicap(){
     let key = 'accessible-key'
-    let stops = 'HC01,HC02,HC03,HC04,HC05,HC06,HC07,HC08,HC09,HC10,HC11,HC12,HC13,HC14,HC15,HC16,HC17,HC18,HC19,HC20,HC21,HC22,HC23,HC24,HC25,HC26'
+        //this is to search in the parkingDescriptions table for the section identifier
+    let database_identifier = "accessibleparking"
     document.getElementById("image").src = "/media/overlays/handicap_merged.png"
-    selectParking(stops,key)
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        if(data[6].description !== "" && data[6].description !== null){
-            showDetailsTransit(data[6].description)
-        } else {
-            hideFoodDetails();
-        }
-    })
+    grabDescAndSelection(database_identifier,key)
 }
 
 function toggleElectricVehicle(){
-    let stops = 'EV1,EV2,EV3,EV4,EV5'
     let key = 'electric-key'
+    let database_identifier = "electricvehicle"
+        //this is to search in the parkingDescriptions table for the section identifier
     document.getElementById("image").src = "/media/overlays/ev_parking.png"
-    selectParking(stops,key)
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        if(data[3].description !== "" && data[3].description !== null){
-            showDetailsTransit(data[3].description)
-        } else {
-            hideFoodDetails();
-        }
-    })
+    grabDescAndSelection(database_identifier,key)
 }
 
 function toggleShareParking(){
     let key = 'share-parking-key'
-    let stops = "CS1,CS2,CS3"
+        //this is to search in the parkingDescriptions table for the section identifier
+    let database_identifier = "carshare"
     document.getElementById("image").src = "/media/overlays/car_share_merged.png"
-    selectParking(stops,key)
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        if(data[7].description !== "" && data[7].description !== null){
-            showDetailsTransit(data[7].description)
-        } else {
-            hideFoodDetails();
-        }
-    })
+    grabDescAndSelection(database_identifier,key)
 }
 
 function toggleMotorcycle(){
     let key = 'motorcycle-key'
-    let stops = 'MC1,MC2,MC3,MC4,MC5,MC6,MC7,MC8'
+    //this is to search in the parkingDescriptions table for the section identifier
+    let database_identifier = "motorcycle"
     document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
-    selectParking(stops,key)
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        if(data[5].description !== "" && data[5].description !== null){
-            showDetailsTransit(data[5].description)
-        } else {
-            hideFoodDetails();
-        }
-    })
+    grabDescAndSelection(database_identifier,key)
 }
 
 function toggleBikeRepair(){
     let key = 'bike-key'
-    let stops = 'BR1,BR2,BR3,BR4'
+    let database_identifier = 'bikerepair'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
-    selectParking(stops,key)
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        if(data[4].description !== "" && data[4].description !== null){
-            showDetailsTransit(data[4].description)
-        } else {
-            hideFoodDetails();
-        }
-    })
+    grabDescAndSelection(database_identifier,key)
     
 }
 
 function togglePaystation(){
     let key = 'paystation-key'
-    let stops = 'PS1,PS2,PS3,PS4,PS5,PS6,PS7,PS8,PS9,PS10'
+    let database_identifier = 'paystation'
     document.getElementById("image").src = "/media/overlays/paystation_merged.png"
-    selectPaystation(stops,key)
+    grabDescAndSelection(database_identifier,key)
 }
 
 
 function toggleAccessibility(){
     let key = ''
-    let stops = ''
+    let database_identifier = 'accessibilityroutes'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
-    
-    selectParking(stops,key)
-    hideFoodDetails();
-    
+    grabDescAndSelection(database_identifier,key)
 }
 
 
+function selectTiming(){
+    let key = ''
+    document.getElementById("image").src = "/media/overlays/timing_merged.png"
+    database_identifier = 'timing'
+    grabDescAndSelection(database_identifier,key)
+}
 
-function selectLot() {
+function grabDescAndSelection(database_identifier,key){
     fetch("/getParkingDesc")
     .then(res => res.text())
     .then(function (data) {
         data = JSON.parse(data);
-        let key = 'lot-key'
-        let stop = 'LOTA,LOTB,LOTD,LOTF,LOTE,LOTG,LOTK,LOTL,LOTJ,LOTN,LOTQ,LOTS,LOTS2,LOTM,LOTH,LOTO,house'
-        let id = 'image'
-        document.getElementById("image").src = "/media/overlays/parking_merged.png"
-
-
-        console.log("Building: " + stop)
-        $('area').bind('mouseover', function () {
-            $('#'+id).mapster('tooltip');
-        });
-        
-        $('#'+id).mapster({
-            initial_opts,
-            mapKey: key,
-            strokeWidth:2,
-            strokeColor: 'F88017',
-            mapValue: 'full',
-            showToolTip: true,
-            staticState: true,
-            fill:false
+        for(i = 0; i<data.length;i++){
+            if(data[i].section == database_identifier ){
+                selectParking(data[i].selection,key)
+                if(data[i].description !== "" && data[i].description !== null){
+                    showDetailsParking(data[i].description)
+                } else {
+                    hideFoodDetails();
+                }
+                break;
             }
-            )
-            .mapster('set', true,stop, { // String goes here
-                fill: true,
-                fillColor: 'ffea2e'
-            })
+        }
+    })
+}
 
+
+function selectLot() {
+    database_identifier = 'studentparking'
+    let key = 'lot-key'
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        document.getElementById("image").src = "/media/overlays/parking_merged.png"
+        stop = data[i].selection
+        grabDescAndSelection(database_identifier,key)
+        //tooltip enabling below
         stop = stop.replace(/,/g, ",#")
         $('#' + stop).bind('mouseover', function () { // ID goes here
             $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
         });
-        showDetailsTransit(data[1].description)
     })
     .catch(function (error) {
         console.log(error);
     });
 }
-
-
-function selectPaystation(stop,key) {
-    id = 'image'
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        $('area').bind('mouseover', function () {
-            $('#'+id).mapster('tooltip');
-        });
-        
-        $('#'+id).mapster({
-            initial_opts,
-            mapKey: key,
-            strokeWidth:2,
-            strokeColor: 'F88017',
-            mapValue: 'full',
-            showToolTip: true,
-            staticState: true,
-            fill:false
-            }
-            )
-            .mapster('set', true,stop, { // String goes here
-                fill: true,
-                fillColor: 'ffea2e'
-            })
-        showDetailsParking(data[0].description)
-    })    
-    .catch(function (error) {
-        console.log(error);
-    });
-}
-
 
 function selectCampus(building) {
     // console.log("Building: " + stop)
@@ -656,20 +577,6 @@ function selectCampus(building) {
     showDetailsTemp(stop, name, bus)
 }
 
-function selectTiming(){
-    fetch("/getParkingDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        let key = ''
-        let stops = ''
-        let id = 'image'
-        document.getElementById("image").src = "/media/overlays/timing_merged.png"
-        selectParking(id,stops,key)
-        
-        showDetailsTransit(data[2].description)
-    })
-}
 
 function toggleDropdown(self) {
     console.log(self);  
