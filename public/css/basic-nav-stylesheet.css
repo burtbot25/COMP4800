@@ -96,12 +96,6 @@ body {
   opacity: 0.9;
 }
 
-/* #bus_stops_overlay {
-  position: relative;
-  top: 0px;
-  left: 0px;
-} */
-
 #student_parking_overlay {
   position: relative;
   top: 0px;
@@ -190,6 +184,7 @@ area {
     background-color: #ffea2e;
     color: #003c71;
     font-size: 10px;
+    /* height: 130px; */
 }
 
 #details_title {
@@ -210,4 +205,5 @@ area {
 .fa-arrow-right {
   position: absolute;
   right: 10px;
+  top: 100px;
 }
