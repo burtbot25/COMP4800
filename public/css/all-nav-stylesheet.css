@@ -1,0 +1,142 @@
+body {
+    overflow-x: hidden;
+}
+
+.heading {
+    background-color: white;
+    color: #003c71;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0 0 10px;
+    border-bottom: 1px solid #869cb0;
+}
+
+.campus-map img {
+    margin-left: auto;
+    margin-right: 0;
+    padding-top: 50px;
+    padding-right: 0;
+    display: block;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
+#main-menu-btn {
+    color: white;
+    background-color: #003c71;
+    border: 1px solid #003c71;
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+    float: right;
+    vertical-align: bottom;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+#main-menu-btn:hover {
+    background-color: #003c71;
+    opacity: 0.5;
+}
+
+.col-sm-2 {
+  background-color: white;
+  height: 450px;
+  width: 180px;
+  z-index: 1;
+  left: 0;
+  overflow-x: hidden;
+  padding: 10px 5px 0 5px;
+  position: absolute;
+  border-right: 1px solid #869cb0;    
+}
+
+.col-sm-2 button {
+  color: white;
+  background-color: #003c71;
+  margin-bottom: 5px;
+  padding: 5px;   
+  text-decoration: none;
+  font-size: 10px;
+  display: block;
+  border: none;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+}
+
+.col-sm-2 button:hover {
+    background-color: #003c71;
+    opacity: 0.5;
+}
+
+.col-sm-10 {
+    margin-left: 105px;
+    margin-right: 0;
+    padding: 0;
+}
+
+.sidenav-cont {
+  width: 100%;
+  float: right;
+}
+
+.active {
+    background-color: rgba(0, 60, 113, 0.4);
+    color: white;
+    border-top-left-radius: 40px;
+}
+
+.active::after {
+    color: #003c71;
+    opacity: 0.5;
+    font-weight: 900;
+    display: inline-block;
+    padding-right: 15px;
+    font-size: 180%;
+}
+
+/*
+.dropdown-container {
+    background-color: rgba(0, 60, 113, 0.4);
+    opacity: 0.7;
+}
+*/
+
+
+.active:hover{
+    background-color: rgba(53, 164, 255, 0.6);
+    opacity: 1;
+}
+
+/*
+.dropdown-container button:hover{
+    background-color: rgba(53, 164, 255, 0.6);
+    opacity: 1;
+}
+*/
+
+/*
+#details_box {
+    background-color: #ffea2e;
+    color: #003c71;
+    font-size: 10px;
+}
+
+#details_box::after {
+    position: fixed;
+    display: block;
+    bottom: 0px;
+}
+
+#details_title::after {
+    font-size: 10px;
+    font-weight: bold;
+}*/

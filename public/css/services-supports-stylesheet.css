@@ -169,6 +169,7 @@ html, body {
     height: 100%;
 }
 
+/*
 .heading {
     width: 2500px;
     height: 100px;
@@ -185,11 +186,13 @@ html, body {
     width: 100%;
     padding: 0;
 }
+*/
 
 .campus-map {
   display: none;
 }
 
+/*
 #main-menu-btn {
     width: 130px;
     height: 30px;
@@ -203,7 +206,9 @@ html, body {
     bottom: 0px;
     right: 0px;
 }
+*/
 
+/*
 .col-sm-2 {
   height: 100%;
   width: 176px;
@@ -213,6 +218,8 @@ html, body {
   padding-top: 20px;
   position: absolute;
 }
+*/
+/*
 
 .col-sm-10 {
     margin-left: 200px;
@@ -223,34 +230,26 @@ html, body {
   width: 100%;
   float: right;
 }
-
-.col-sm-2 button, .dropdown-btn {
-  padding: 10px;   
-  text-decoration: none;
-  font-size: 13px;
-  display: block;
-  border: none;
-  background: none;
-  width: 100%;
-  text-align: left;
-  cursor: pointer;
-  outline: none;
-}
+*/
 
 .dropdown-btn {
-  padding: 10px;
+  color: white;
+  background-color: #025cab;
+  margin-bottom: 5px;
+  padding: 5px;   
   text-decoration: none;
-  font-size: 14px;
+  font-size: 10px;
   display: block;
   border: none;
-  background: none;
   width: 100%;
-  text-align: left;
+  text-align: center;
   cursor: pointer;
   outline: none;
 }
 
 .active::after {
+    color: #003c71;
+    opacity: 0.5;
     font-weight: 900;
     display: inline-block;
     padding-right: 15px;
@@ -259,11 +258,12 @@ html, body {
 
 .dropdown-container {
   display: none;
-  border-bottom-left-radius: 40px;
+  border-bottom-left-radius: 40px; 
 }
 
 .dropdown-container button {
-  padding-left: 50px;    
+  padding-left: 10px; 
+  background-color: #2073bd;
 }
 
 .fa-caret-down {
@@ -272,17 +272,18 @@ html, body {
 }
 
 .col-sm-2 button:hover, .dropdown-btn:hover{
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
+  background-color: #025cab;
+  opacity: 0.5;
 }
 
 .active:hover{
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 0;
+  background-color: #025cab;
+  opacity: 0.5;
 }
 
 .dropdown-container button:last-child:hover{
-  border-bottom-left-radius: 40px;
+  background-color: #025cab;
+  opacity: 0.5;
 }
 
 area { 
@@ -345,8 +346,20 @@ area {
 */
 
 #details_box {
-  position: absolute;
-  bottom: 0px;
+    background-color: #ffea2e;
+    color: #003c71;
+    font-size: 10px;
+}
+
+#details_title {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#details_box::after {
+    position: fixed;
+    display: block;
+    bottom: 0px;
 }
 
 .mapster_tooltip {
