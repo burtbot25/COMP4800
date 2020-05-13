@@ -254,7 +254,6 @@ function showDetailsTransit(description, nav){
     document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
-    document.getElementById("details_box").style.overflow= "scroll"
 
     if (nav == true) {
         if (!$(".fa-arrow-right").length) {
@@ -336,23 +335,6 @@ function showBasicOverlay(source){
     document.getElementById("image").src = source
 }
 
-/*
-function selectNav() {
-    $('img').mapster('unbind');
-    hideOverlay();
-    fetch("/getCampusDesc")
-    .then(res => res.text())
-    .then(function (data) {
-        data = JSON.parse(data);
-        console.log(data)
-        console.log(data[0].description);
-        showDetailsTransit(data[0].description);
-    })
-    .catch(function (error) {
-        console.log(error);
-    });
-}*/
-
 
 function showBasicOverlay(source){
     document.getElementById("image").src = source
@@ -377,10 +359,7 @@ function selectNav() {
             data = JSON.parse(data);
             console.log(data)
             navDesc = data; 
-            // console.log(data[0].description);
-            // showDetailsTransit(data[0].description);
             console.log(navDesc[navIndex].buildingNumber)
-            //selectNavBuildings('CampusSquare')
             selectNavBuildings(navDesc[navIndex].buildingNumber);
             showDetailsTransit(navDesc[navIndex].description, true);
             navIndex = nextIndex(navIndex, navDesc);
@@ -413,7 +392,7 @@ function selectNavBuildings(buildings) {
     $('#image').mapster(initial_opts)
     .mapster('set', true, buildings, { // String goes here
         fill: true,
-        fillColor: 'FF0000'
+        fillColor: 'ffea2e'
     })
     .mapster('snapshot')
     .mapster('rebind', basic_opts);
@@ -596,7 +575,7 @@ function selectCampus(building) {
     $('#bus_stops_overlay').mapster(initial_opts)
         .mapster('set', true, stop, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
