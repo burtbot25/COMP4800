@@ -516,22 +516,32 @@ function grabDescAndSelection(database_identifier,key){
     })
 }
 
+
 //selects the student parking lots and enables the tooltip
 function selectLot() {
     database_identifier = 'studentparking'
-    let key = 'lot-key'
+    key = 'lot-key'
+    id = 'image'
+    document.getElementById("image").src = "/media/overlays/parking_merged.png"
     fetch("/getParkingDesc")
     .then(res => res.text())
     .then(function (data) {
         data = JSON.parse(data);
-        document.getElementById("image").src = "/media/overlays/parking_merged.png"
-        stop = data[i].selection
-        grabDescAndSelection(database_identifier,key)
-        //tooltip enabling below
-        stop = stop.replace(/,/g, ",#")
-        $('#' + stop).bind('mouseover', function () { // ID goes here
+        for(i = 0; i<data.length;i++){
+            if(data[i].section == database_identifier ){
+                stops =  data[i].selection
+                if(data[i].description !== "" && data[i].description !== null){
+                    showDetailsParking(data[i].description)
+                } else {
+                    hideFoodDetails();
+                }
+                break;
+            }
+        }
+        selectParking(stops,key)
+        stops = stops.replace(/,/g, ",#")
+        $('#' + stops).bind('mouseover', function () { // ID goes here
             $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
         });
     })
     .catch(function (error) {
@@ -546,16 +556,16 @@ function selectCampus(building) {
     });
     
     $('#bus_stops_overlay').mapster(initial_opts)
-        .mapster('set', true, stop, { // String goes here
+        .mapster('set', true, stops, { // String goes here
             fill: true,
             fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop = stop.replace(/,/g, ",#")
+    stops = stops.replace(/,/g, ",#")
     console.log(stop);
-    $('#' + stop).bind('mouseover', function () { // ID goes here
+    $('#' + stops).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
