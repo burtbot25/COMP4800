@@ -271,7 +271,7 @@ html, body {
   padding-right: 5px;
 }
 
-.col-sm-2 button:hover, .dropdown-btn:hover{
+.sidenav button:hover, .dropdown-btn:hover{
   background-color: #025cab;
   opacity: 0.5;
 }

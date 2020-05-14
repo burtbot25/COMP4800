@@ -71,9 +71,9 @@ function updateSchoolToolTip(buildings, names) {
 }
 
 
-async function selectKeyPlaces(buildings, names) {
-    await hideOverlay();
-    await hideFoodDetails();
+function selectKeyPlaces(buildings, names, type, description, hyperlink) {
+    hideOverlay();
+    hideFoodDetails();
     console.log("selectKeyPlaces")
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -82,7 +82,7 @@ async function selectKeyPlaces(buildings, names) {
     $('#image').mapster(initial_opts)
         .mapster('set', true, buildings, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -95,26 +95,35 @@ async function selectKeyPlaces(buildings, names) {
 
     });
 
-    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
-    foodBuildings.forEach(id => {
-        document.getElementById(id).visibility = "none"
-    });
-
     updateToolTip(buildings, names);
+    if (type == "Bookable Study Areas"){
+        showFoodDetails("Bookable Study Areas", description, hyperlink)
+    }
 }
 
 function updateToolTip(buildings, names) {
+    var seen = []
+
     buildings = buildings.split(",#")
     names = names.split(",")
 
     for (var i = 0; i < buildings.length; i++){
-        document.getElementById(buildings[i]).alt = names[i];
+        var toolTipString = names[i]
+        for (var j = 0; j < seen.length; j++){
+            if (seen[j].includes(buildings[i])){
+                toolTipString = names[i] + "<br>" + seen[j][1];
+            }
+        }
+        document.getElementById(buildings[i]).alt = toolTipString;
+        seen.push([buildings[i], toolTipString])
+
     }
 }
 
-async function selectMicrowaves(building) {
-    await hideOverlay();
-    await hideFoodDetails();
+function selectMicrowaves(building, names) {
+    
+    hideOverlay();
+    hideFoodDetails();
     console.log("Select Microwaves")
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -123,7 +132,7 @@ async function selectMicrowaves(building) {
     $('#image').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -136,10 +145,7 @@ async function selectMicrowaves(building) {
 
     });
 
-    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
-    foodBuildings.forEach(id => {
-        document.getElementById(id).visibility = "none"
-    });
+    updateToolTip(building, names)
 
 }
 
@@ -148,7 +154,7 @@ function updateFoodToolTips(building, foodPlaceNames){
     var locations = foodPlaceNames.split(",..,")
     
     for (var i = 0; i < locations.length; i++){
-        locations[i] = locations[i].replace(/,/g, ", ")
+        locations[i] = locations[i].replace(/,/g, "<br>")
     }
     for (var i = 0; i < buildings.length; i++){
         document.getElementById(buildings[i]).alt = locations[i]
@@ -156,39 +162,40 @@ function updateFoodToolTips(building, foodPlaceNames){
     
 }
 
-async function selectFoods(building, service_name, description, foodLink, foodPlaceNames) {
+function selectFoods(building, service_name, description, foodLink, foodPlaceNames) {
     console.log("Building: " + building)
     console.log("Service Name: " + service_name)
     console.log("Description: " + description)
     console.log("Food Link: " + foodLink)
 
+    showOverlay()
     updateFoodToolTips(building, foodPlaceNames)
-    showOverlay().then(function(res) {
-        $('area').bind('mouseover', function () {
-            $('#image').mapster('tooltip');
-        });
-        
-        foodBuildings = building
     
-        $('#image').mapster(initial_opts)
-            .mapster('set', true, foodBuildings, { // String goes here
-                fill: false,
-                stroke: false,
-                fillColor: 'FF0000'
-            })
-            .mapster('snapshot')
-            .mapster('rebind', basic_opts);
-    
-        foodBuildings = foodBuildings.split(",")
-        foodBuildings = foodBuildings.join(",#")
-    
-        $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
-            $('#image').mapster('tooltip', this, $(this).attr('alt'));
-    
-        });
-        
-        showFoodDetails(service_name, description+"", foodLink+"")
+
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
     });
+    
+    foodBuildings = building
+
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, foodBuildings, { // String goes here
+            fill: false,
+            stroke: false,
+            fillColor: 'ffea2e'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    foodBuildings = foodBuildings.split(",")
+    foodBuildings = foodBuildings.join(",#")
+
+    $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('alt'));
+
+    });
+    
+    showFoodDetails(service_name, description+"", foodLink+"")
     
 }
 
@@ -223,15 +230,17 @@ function showDetails(name, description, link){
     document.getElementById("details_link").target = "_blank"
 }
 
-async function showOverlay(){
+function showOverlay(){
     document.getElementById("image").src = "/media/food_map.png"
 }
 
-async function hideOverlay(){
+
+function hideOverlay(){
     document.getElementById("image").src = "/media/burnaby_campus_map.png"
 }
 
 function showFoodDetails(service_name, description, foodLink){
+    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
@@ -279,14 +288,12 @@ function showDetailsParking(description){
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
-    document.getElementById("details_box").style.overflow= "scroll"
 }
 
 var transit = false;
 var busData = [];
 function selectTransit() {  
     showBasicOverlay("/media/bus_map.png");
-    console.log(transit);
     if (transit == false) {
         fetch("/getTransit")
         .then(res => res.text())
@@ -386,7 +393,6 @@ function navArrow() {
     selectNavBuildings(navDesc[navIndex].buildingNumber);
     showDetailsTransit(navDesc[navIndex].description, true);
     navIndex = nextIndex(navIndex, navDesc);
-    document.getElementById("details_box").scrollTop = 0;
 }
 
 function selectNavBuildings(buildings) {
@@ -516,22 +522,32 @@ function grabDescAndSelection(database_identifier,key){
     })
 }
 
+
 //selects the student parking lots and enables the tooltip
 function selectLot() {
     database_identifier = 'studentparking'
-    let key = 'lot-key'
+    key = 'lot-key'
+    id = 'image'
+    document.getElementById("image").src = "/media/overlays/parking_merged.png"
     fetch("/getParkingDesc")
     .then(res => res.text())
     .then(function (data) {
         data = JSON.parse(data);
-        document.getElementById("image").src = "/media/overlays/parking_merged.png"
-        stop = data[i].selection
-        grabDescAndSelection(database_identifier,key)
-        //tooltip enabling below
-        stop = stop.replace(/,/g, ",#")
-        $('#' + stop).bind('mouseover', function () { // ID goes here
+        for(i = 0; i<data.length;i++){
+            if(data[i].section == database_identifier ){
+                stops =  data[i].selection
+                if(data[i].description !== "" && data[i].description !== null){
+                    showDetailsParking(data[i].description)
+                } else {
+                    hideFoodDetails();
+                }
+                break;
+            }
+        }
+        selectParking(stops,key)
+        stops = stops.replace(/,/g, ",#")
+        $('#' + stops).bind('mouseover', function () { // ID goes here
             $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
         });
     })
     .catch(function (error) {
@@ -546,16 +562,16 @@ function selectCampus(building) {
     });
     
     $('#bus_stops_overlay').mapster(initial_opts)
-        .mapster('set', true, stop, { // String goes here
+        .mapster('set', true, stops, { // String goes here
             fill: true,
             fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    stop = stop.replace(/,/g, ",#")
+    stops = stops.replace(/,/g, ",#")
     console.log(stop);
-    $('#' + stop).bind('mouseover', function () { // ID goes here
+    $('#' + stops).bind('mouseover', function () { // ID goes here
         $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });

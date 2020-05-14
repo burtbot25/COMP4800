@@ -24,6 +24,11 @@ exports.getFoodData = async (req, res) => {
     var foodDescription = await other_key_places_model.getFoodDescription()
     foodDescription = foodDescription[0][0].description
 
+    var studyAreaDescriptionData = await other_key_places_model.getStudyAreaDescription();
+    var studyAreaDescription = studyAreaDescriptionData[0][0].description
+    var studyAreaLinkText = studyAreaDescriptionData[0][0].linkText
+    var studyAreaHyperlink = studyAreaDescriptionData[0][0].hyperlink
+
     // currently only gets the first link in the DB
     var foodLink = await other_key_places_model.getFoodLinks()
     foodLink = foodLink[0][0].link
@@ -31,10 +36,13 @@ exports.getFoodData = async (req, res) => {
     var microwavesInfoData = await other_key_places_model.getMicrowaveInfo();
     var microwavesInfo = microwavesInfoData[0]
     var microwavesLocationList = [];
+    var microwavesNamesList = []
     microwavesInfo.forEach(row => {
         microwavesLocationList.push(row.buildingNumber)
+        microwavesNamesList.push(row.names)
     });
-    var microwavesLocations = microwavesLocationList.join(",")
+    var microwavesLocations = microwavesLocationList.join()
+    var microwavesNames = microwavesNamesList.join()
 
     var socialInfoData = await other_key_places_model.getSocialInfo();
     var socialInfo = socialInfoData[0]
@@ -60,13 +68,17 @@ exports.getFoodData = async (req, res) => {
     res.json({ 
         foodLocations: foodLocations,
         microwavesLocations: microwavesLocations,
+        microwavesNames: microwavesNames,
         socialBuildings: socialBuildings,
         socialNames: socialNames,
         studyBuildings: studyBuildings,
         studyNames: studyNames,
         foodDescription: foodDescription,
         foodLink: foodLink,
-        foodPlaceNames: foodPlaceNames 
+        foodPlaceNames: foodPlaceNames,
+        studyAreaDescription : studyAreaDescription,
+        studyAreaLinkText : studyAreaLinkText,
+        studyAreaHyperlink : studyAreaHyperlink
     });
 };
 
