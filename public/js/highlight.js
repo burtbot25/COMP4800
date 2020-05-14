@@ -82,7 +82,7 @@ async function selectKeyPlaces(buildings, names) {
     $('#image').mapster(initial_opts)
         .mapster('set', true, buildings, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -123,7 +123,7 @@ async function selectMicrowaves(building) {
     $('#image').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -174,7 +174,7 @@ async function selectFoods(building, service_name, description, foodLink, foodPl
             .mapster('set', true, foodBuildings, { // String goes here
                 fill: false,
                 stroke: false,
-                fillColor: 'FF0000'
+                fillColor: 'ffea2e'
             })
             .mapster('snapshot')
             .mapster('rebind', basic_opts);
