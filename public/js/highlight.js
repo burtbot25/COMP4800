@@ -205,14 +205,14 @@ function selectService(building, name, description, link) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building = building.replace(/,/g, ",#")
+    building = building.replace(/, /g, ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + ' - ' + name);
 
     });
     description = description.replace(/,/g, "\n");
-    showDetails(building, name, description, link);
+    showDetails(building + " - " + name, description, link);
 }
 
 function showDetails(name, description, link){
