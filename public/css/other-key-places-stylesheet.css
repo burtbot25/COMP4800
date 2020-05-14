@@ -4,6 +4,11 @@
   left: 0px;
 } */
 
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
 #image {
   position: relative;
   top: 0px;
@@ -69,3 +74,5 @@ area {
 .mapster_tooltip {
   pointer-events: none;
 }
+
+.campus-map {display: none}

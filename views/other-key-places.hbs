@@ -1,18 +1,13 @@
 <div class="heading">
     Other Key Places
 </div>
-<div class="campus-map">
-    <div class="col-sm-2">
-        <div class="sidenav">
-            <div class="sidenav-cont">
-                <button id="Food" onclick="selectFoods('{{foodLocations}}', this.innerText, '{{foodDescription}}', '{{foodLink}}', '{{foodPlaceNames}}')">Food &amp; Coffee</button>
-                <button id="Microwaves" onclick="selectMicrowaves('{{microwavesLocations}}')">Microwaves</button>
-                <button id="Social" onclick="selectKeyPlaces('{{socialBuildings}}', '{{socialNames}}')">Social</button>
-                <button id="Study Areas" onclick="selectKeyPlaces('{{studyBuildings}}', '{{studyNames}}')">Study Areas</button>
-            </div>
+<div id="campus-map" class="campus-map">
+    <div class="sidenav">
+        <div id="sidenav" class="sidenav-cont">
+            {{!-- button here --}}
         </div>
     </div>
-    <div id="map_area" class="col-sm-10">
+    <div id="map_area" class="mapsection">
         {{>overlay}}
         <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
     </div>
@@ -24,5 +19,4 @@
 </div>
 <script src="/panzoom/panzoom.js"></script>
 <script src="js/zoom.js"></script>
-<script src="js/services.js"></script>
-<script src="js/script.js"></script>
+<script src="js/food.js"></script>

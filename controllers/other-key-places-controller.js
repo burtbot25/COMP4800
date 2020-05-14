@@ -1,6 +1,10 @@
 let other_key_places_model = require("../models/other_key_places_model");
 
-exports.getMap = async (req, res) => {
+exports.getMap = (req, res) => {
+    res.render('other-key-places', { otherKeyPlacesCSS: true });
+};
+
+exports.getFoodData = async (req, res) => {
     var foodInfoData = await other_key_places_model.getFoodInfo();
     // foodInfo is all rows
     var foodInfo = foodInfoData[0];
@@ -20,6 +24,11 @@ exports.getMap = async (req, res) => {
     var foodDescription = await other_key_places_model.getFoodDescription()
     foodDescription = foodDescription[0][0].description
 
+    var studyAreaDescriptionData = await other_key_places_model.getStudyAreaDescription();
+    var studyAreaDescription = studyAreaDescriptionData[0][0].description
+    var studyAreaLinkText = studyAreaDescriptionData[0][0].linkText
+    var studyAreaHyperlink = studyAreaDescriptionData[0][0].hyperlink
+
     // currently only gets the first link in the DB
     var foodLink = await other_key_places_model.getFoodLinks()
     foodLink = foodLink[0][0].link
@@ -27,10 +36,13 @@ exports.getMap = async (req, res) => {
     var microwavesInfoData = await other_key_places_model.getMicrowaveInfo();
     var microwavesInfo = microwavesInfoData[0]
     var microwavesLocationList = [];
+    var microwavesNamesList = []
     microwavesInfo.forEach(row => {
         microwavesLocationList.push(row.buildingNumber)
+        microwavesNamesList.push(row.names)
     });
-    var microwavesLocations = microwavesLocationList.join(",")
+    var microwavesLocations = microwavesLocationList.join()
+    var microwavesNames = microwavesNamesList.join()
 
     var socialInfoData = await other_key_places_model.getSocialInfo();
     var socialInfo = socialInfoData[0]
@@ -53,17 +65,20 @@ exports.getMap = async (req, res) => {
         studyNames.push(row.name)
     });
 
-    res.render('other-key-places', { 
-        otherKeyPlacesCSS: true,
+    res.json({ 
         foodLocations: foodLocations,
         microwavesLocations: microwavesLocations,
+        microwavesNames: microwavesNames,
         socialBuildings: socialBuildings,
         socialNames: socialNames,
         studyBuildings: studyBuildings,
         studyNames: studyNames,
         foodDescription: foodDescription,
         foodLink: foodLink,
-        foodPlaceNames: foodPlaceNames
+        foodPlaceNames: foodPlaceNames,
+        studyAreaDescription : studyAreaDescription,
+        studyAreaLinkText : studyAreaLinkText,
+        studyAreaHyperlink : studyAreaHyperlink
     });
 };
 
@@ -138,3 +153,8 @@ function createFoodPlaceNamesString(foodList, foodNames){
     console.log(placesString)
     return placesString;
 }
+
+/* <button id="Food" onclick="selectFoods('{{foodLocations}}', this.innerText, '{{foodDescription}}', '{{foodLink}}', '{{foodPlaceNames}}')">Food &amp; Coffee</button>
+<button id="Microwaves" onclick="selectMicrowaves('{{microwavesLocations}}')">Microwaves</button>
+<button id="Social" onclick="selectKeyPlaces('{{socialBuildings}}', '{{socialNames}}')">Social</button>
+<button id="Study Areas" onclick="selectKeyPlaces('{{studyBuildings}}', '{{studyNames}}')">Study Areas</button> */
