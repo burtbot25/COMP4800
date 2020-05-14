@@ -227,10 +227,10 @@ function showDetails(name, description, link){
     document.getElementById("details_link").target = "_blank"
 }
 
-var foodMap;
 function showOverlay(){
     document.getElementById("image").src = "/media/food_map.png"
 }
+
 
 function hideOverlay(){
     document.getElementById("image").src = "/media/burnaby_campus_map.png"

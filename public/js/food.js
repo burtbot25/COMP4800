@@ -48,10 +48,6 @@ var populateMenu = async () => {
         )
     ;
 
-    console.log("HEYYYY")
-    console.log(data.studyAreaDescription, 
-        data.studyAreaLinkText, data.studyAreaHyperlink)
-
     //Make sure to set height for html and body to 100% in css
     let html = document.querySelector('html');
     let body = document.querySelector('body'); 
