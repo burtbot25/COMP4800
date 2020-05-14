@@ -31,6 +31,12 @@ exports.getFoodDescription = () => {
   return db.execute(sql);
 }
 
+exports.getStudyAreaDescription = () => {
+  let sql = 'SELECT * FROM studyAreaDescriptions'
+
+  return db.execute(sql);
+}
+
 exports.getFoodLinks = () => {
   let sql = 'SELECT * FROM foodLinks'
 
