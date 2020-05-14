@@ -8,8 +8,8 @@ var createFoodButton = (building, service_name, description, foodLink, foodPlace
     return `<button onclick="selectFoods('${building}', '${service_name}', '${description}', '${foodLink}', '${foodPlaceNames}')"> ${service_name} </button>`;
 };
 
-var createMicrowavesButton = (building) => {
-    return `<button onclick="selectMicrowaves('${building}')"> Microwaves </button>`;
+var createMicrowavesButton = (building, names) => {
+    return `<button onclick="selectMicrowaves('${building}', '${names}')"> Microwaves </button>`;
 };
 
 var createOtherKeyPlacesButton = (buildings, names, buttonName, description, link) => {
@@ -39,7 +39,8 @@ var populateMenu = async () => {
     //If you don't need to create dropdowns, then just loop through everything and modify createButton() as needed
     
     nav.insertAdjacentHTML('beforeend', createFoodButton(data.foodLocations, "Food &amp; Coffee", data.foodDescription, data.foodLink, data.foodPlaceNames));
-    nav.insertAdjacentHTML('beforeend', createMicrowavesButton(data.microwavesLocations));
+    // nav.insertAdjacentHTML('beforeend', createMicrowavesButton(data.microwavesLocations,));
+    nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.microwavesLocations,  data.microwavesNames, "Microwaves", null, null));
     nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.socialBuildings, data.socialNames, "Social", null, null));
     nav.insertAdjacentHTML('beforeend', 
         createOtherKeyPlacesButton(

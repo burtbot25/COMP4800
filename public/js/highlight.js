@@ -103,7 +103,7 @@ function selectKeyPlaces(buildings, names, type, description, hyperlink) {
 
 function updateToolTip(buildings, names) {
     var seen = []
-    
+
     buildings = buildings.split(",#")
     names = names.split(",")
 
@@ -120,7 +120,8 @@ function updateToolTip(buildings, names) {
     }
 }
 
-function selectMicrowaves(building) {
+function selectMicrowaves(building, names) {
+    
     hideOverlay();
     hideFoodDetails();
     console.log("Select Microwaves")
@@ -143,6 +144,8 @@ function selectMicrowaves(building) {
         $('#image').mapster('tooltip', this, $(this).attr('full'));
 
     });
+
+    updateToolTip(building, names)
 
 }
 

@@ -36,10 +36,13 @@ exports.getFoodData = async (req, res) => {
     var microwavesInfoData = await other_key_places_model.getMicrowaveInfo();
     var microwavesInfo = microwavesInfoData[0]
     var microwavesLocationList = [];
+    var microwavesNamesList = []
     microwavesInfo.forEach(row => {
         microwavesLocationList.push(row.buildingNumber)
+        microwavesNamesList.push(row.names)
     });
-    var microwavesLocations = microwavesLocationList.join(",")
+    var microwavesLocations = microwavesLocationList.join()
+    var microwavesNames = microwavesNamesList.join()
 
     var socialInfoData = await other_key_places_model.getSocialInfo();
     var socialInfo = socialInfoData[0]
@@ -65,6 +68,7 @@ exports.getFoodData = async (req, res) => {
     res.json({ 
         foodLocations: foodLocations,
         microwavesLocations: microwavesLocations,
+        microwavesNames: microwavesNames,
         socialBuildings: socialBuildings,
         socialNames: socialNames,
         studyBuildings: studyBuildings,
