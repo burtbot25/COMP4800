@@ -5,7 +5,13 @@ var createDropdown = (name, id) => {
 };
 
 var createButton = (building, name, description, link) => {
-    return `<button onclick="selectService('${building}', '${name} - ${building}', '${description}', '${link}')"> ${name} </button>`;
+    description = description
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&apos;');
+    return `<button onclick="selectService('${building}', '${name}', '${description}', '${link}')"> ${name} </button>`;
 };
 
 var getData = async () => {
@@ -27,17 +33,17 @@ var populateMenu = async () => {
     let nav = document.getElementById('sidenav');
 
     // If you need to create dopdowns, the way I did it was to have the dropdown options in a separate table in the database.
-    // An entry in the table "serviceGroups" will correspond to a dropdown. An entry in the table "services" will correspond to a button that highlights or swaps overlays. 
-    // Each entry in "services" will take contain id of the dropdown that it falls under as a foreign key. 
+    // An entry in the table "serviceGroups" will correspond to a dropdown. An entry in the table "services" will correspond to a button that highlights or swaps overlays.
+    // Each entry in "services" will take contain id of the dropdown that it falls under as a foreign key.
 
     //If you don't need to create dropdowns, then just loop through everything and modify createButton() as needed
-    serviceGroups.forEach((element) => { 
+    serviceGroups.forEach((element) => {
         nav.insertAdjacentHTML('beforeend', createDropdown(element.name, element.id));
     });
 
     //Make sure to set height for html and body to 100% in css
     let html = document.querySelector('html');
-    let body = document.querySelector('body'); 
+    let body = document.querySelector('body');
     html.style.height = '';
     body.style.height = '';
 
