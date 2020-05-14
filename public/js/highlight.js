@@ -215,10 +215,10 @@ function selectService(building, name, description, link) {
     building = building.replace(/, /g, ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + ' - ' + name);
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + '<br>' + name);
 
     });
-    description = description.replace(/,/g, "\n");
+    
     showDetails(building + " - " + name, description, link);
 }
 
