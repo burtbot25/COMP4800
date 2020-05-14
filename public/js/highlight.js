@@ -211,7 +211,7 @@ function selectService(building, name, description, link) {
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
 
     });
-    description = description.replace(/,/g, "\n");
+//    description = description.replace(/,/g, "\n");
     showDetails(building, name, description, link);
 }
 
