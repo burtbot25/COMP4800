@@ -184,7 +184,9 @@ area {
     background-color: #ffea2e;
     color: #003c71;
     font-size: 10px;
+    margin-bottom: 100px;
     /* height: 130px; */
+    /* top: 10px; */
 }
 
 #details_title {
@@ -205,5 +207,5 @@ area {
 .fa-arrow-right {
   position: absolute;
   right: 10px;
-  top: 100px;
+  top: 60px;
 }
