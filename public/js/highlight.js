@@ -279,7 +279,6 @@ function showDetailsParking(description){
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
-    document.getElementById("details_box").style.overflow= "scroll"
 }
 
 function loading() {
@@ -395,7 +394,6 @@ function navArrow() {
     selectNavBuildings(navDesc[navIndex].buildingNumber);
     showDetailsTransit(navDesc[navIndex].description, true);
     navIndex = nextIndex(navIndex, navDesc);
-    document.getElementById("details_box").scrollTop = 0;
 }
 
 function selectNavBuildings(buildings) {
