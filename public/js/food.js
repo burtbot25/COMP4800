@@ -12,8 +12,8 @@ var createMicrowavesButton = (building) => {
     return `<button onclick="selectMicrowaves('${building}')"> Microwaves </button>`;
 };
 
-var createOtherKeyPlacesButton = (buildings, names, buttonName) => {
-    return `<button onclick="selectKeyPlaces('${buildings}', '${names}')"> ${buttonName} </button>`;
+var createOtherKeyPlacesButton = (buildings, names, buttonName, description, link) => {
+    return `<button onclick="selectKeyPlaces('${buildings}', '${names}', '${buttonName}', '${description}', '${link}')"> ${buttonName} </button>`;
 };
 
 var getData = async () => {
@@ -40,8 +40,17 @@ var populateMenu = async () => {
     
     nav.insertAdjacentHTML('beforeend', createFoodButton(data.foodLocations, "Food &amp; Coffee", data.foodDescription, data.foodLink, data.foodPlaceNames));
     nav.insertAdjacentHTML('beforeend', createMicrowavesButton(data.microwavesLocations));
-    nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.socialBuildings, data.socialNames, "Social"));
-    nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.studyBuildings, data.studyNames, "Study Areas"));
+    nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.socialBuildings, data.socialNames, "Social", null, null));
+    nav.insertAdjacentHTML('beforeend', 
+        createOtherKeyPlacesButton(
+            data.studyBuildings, data.studyNames, 
+            "Bookable Study Areas", data.studyAreaDescription, data.studyAreaHyperlink)
+        )
+    ;
+
+    console.log("HEYYYY")
+    console.log(data.studyAreaDescription, 
+        data.studyAreaLinkText, data.studyAreaHyperlink)
 
     //Make sure to set height for html and body to 100% in css
     let html = document.querySelector('html');

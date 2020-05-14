@@ -71,9 +71,9 @@ function updateSchoolToolTip(buildings, names) {
 }
 
 
-async function selectKeyPlaces(buildings, names) {
-    await hideOverlay();
-    await hideFoodDetails();
+function selectKeyPlaces(buildings, names, type, description, hyperlink) {
+    hideOverlay();
+    hideFoodDetails();
     console.log("selectKeyPlaces")
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -82,7 +82,7 @@ async function selectKeyPlaces(buildings, names) {
     $('#image').mapster(initial_opts)
         .mapster('set', true, buildings, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -95,26 +95,34 @@ async function selectKeyPlaces(buildings, names) {
 
     });
 
-    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
-    foodBuildings.forEach(id => {
-        document.getElementById(id).visibility = "none"
-    });
-
     updateToolTip(buildings, names);
+    if (type == "Bookable Study Areas"){
+        showFoodDetails("Bookable Study Areas", description, hyperlink)
+    }
 }
 
 function updateToolTip(buildings, names) {
+    var seen = []
+    
     buildings = buildings.split(",#")
     names = names.split(",")
 
     for (var i = 0; i < buildings.length; i++){
-        document.getElementById(buildings[i]).alt = names[i];
+        var toolTipString = names[i]
+        for (var j = 0; j < seen.length; j++){
+            if (seen[j].includes(buildings[i])){
+                toolTipString = names[i] + "<br>" + seen[j][1];
+            }
+        }
+        document.getElementById(buildings[i]).alt = toolTipString;
+        seen.push([buildings[i], toolTipString])
+
     }
 }
 
-async function selectMicrowaves(building) {
-    await hideOverlay();
-    await hideFoodDetails();
+function selectMicrowaves(building) {
+    hideOverlay();
+    hideFoodDetails();
     console.log("Select Microwaves")
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -123,7 +131,7 @@ async function selectMicrowaves(building) {
     $('#image').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
-            fillColor: 'FF0000'
+            fillColor: 'ffea2e'
         })
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
@@ -136,11 +144,6 @@ async function selectMicrowaves(building) {
 
     });
 
-    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
-    foodBuildings.forEach(id => {
-        document.getElementById(id).visibility = "none"
-    });
-
 }
 
 function updateFoodToolTips(building, foodPlaceNames){
@@ -148,7 +151,7 @@ function updateFoodToolTips(building, foodPlaceNames){
     var locations = foodPlaceNames.split(",..,")
     
     for (var i = 0; i < locations.length; i++){
-        locations[i] = locations[i].replace(/,/g, ", ")
+        locations[i] = locations[i].replace(/,/g, "<br>")
     }
     for (var i = 0; i < buildings.length; i++){
         document.getElementById(buildings[i]).alt = locations[i]
@@ -156,39 +159,40 @@ function updateFoodToolTips(building, foodPlaceNames){
     
 }
 
-async function selectFoods(building, service_name, description, foodLink, foodPlaceNames) {
+function selectFoods(building, service_name, description, foodLink, foodPlaceNames) {
     console.log("Building: " + building)
     console.log("Service Name: " + service_name)
     console.log("Description: " + description)
     console.log("Food Link: " + foodLink)
 
+    showOverlay()
     updateFoodToolTips(building, foodPlaceNames)
-    showOverlay().then(function(res) {
-        $('area').bind('mouseover', function () {
-            $('#image').mapster('tooltip');
-        });
-        
-        foodBuildings = building
     
-        $('#image').mapster(initial_opts)
-            .mapster('set', true, foodBuildings, { // String goes here
-                fill: false,
-                stroke: false,
-                fillColor: 'FF0000'
-            })
-            .mapster('snapshot')
-            .mapster('rebind', basic_opts);
-    
-        foodBuildings = foodBuildings.split(",")
-        foodBuildings = foodBuildings.join(",#")
-    
-        $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
-            $('#image').mapster('tooltip', this, $(this).attr('alt'));
-    
-        });
-        
-        showFoodDetails(service_name, description+"", foodLink+"")
+
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
     });
+    
+    foodBuildings = building
+
+    $('#image').mapster(initial_opts)
+        .mapster('set', true, foodBuildings, { // String goes here
+            fill: false,
+            stroke: false,
+            fillColor: 'ffea2e'
+        })
+        .mapster('snapshot')
+        .mapster('rebind', basic_opts);
+
+    foodBuildings = foodBuildings.split(",")
+    foodBuildings = foodBuildings.join(",#")
+
+    $("#" + foodBuildings).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('alt'));
+
+    });
+    
+    showFoodDetails(service_name, description+"", foodLink+"")
     
 }
 
@@ -223,15 +227,17 @@ function showDetails(name, description, link){
     document.getElementById("details_link").target = "_blank"
 }
 
-async function showOverlay(){
+var foodMap;
+function showOverlay(){
     document.getElementById("image").src = "/media/food_map.png"
 }
 
-async function hideOverlay(){
+function hideOverlay(){
     document.getElementById("image").src = "/media/burnaby_campus_map.png"
 }
 
 function showFoodDetails(service_name, description, foodLink){
+    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink

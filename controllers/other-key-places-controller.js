@@ -24,6 +24,11 @@ exports.getFoodData = async (req, res) => {
     var foodDescription = await other_key_places_model.getFoodDescription()
     foodDescription = foodDescription[0][0].description
 
+    var studyAreaDescriptionData = await other_key_places_model.getStudyAreaDescription();
+    var studyAreaDescription = studyAreaDescriptionData[0][0].description
+    var studyAreaLinkText = studyAreaDescriptionData[0][0].linkText
+    var studyAreaHyperlink = studyAreaDescriptionData[0][0].hyperlink
+
     // currently only gets the first link in the DB
     var foodLink = await other_key_places_model.getFoodLinks()
     foodLink = foodLink[0][0].link
@@ -66,7 +71,10 @@ exports.getFoodData = async (req, res) => {
         studyNames: studyNames,
         foodDescription: foodDescription,
         foodLink: foodLink,
-        foodPlaceNames: foodPlaceNames 
+        foodPlaceNames: foodPlaceNames,
+        studyAreaDescription : studyAreaDescription,
+        studyAreaLinkText : studyAreaLinkText,
+        studyAreaHyperlink : studyAreaHyperlink
     });
 };
 
