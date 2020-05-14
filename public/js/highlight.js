@@ -288,6 +288,7 @@ function showDetailsParking(description){
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
+    $(".fa-arrow-right").remove();
 }
 
 var transit = false;
@@ -439,7 +440,8 @@ function selectParking(stop,key) {
 }
 /* start of all the toggling on methods for each of the parking images */ 
 function toggleHandicap(){
-    let key = 'accessible-key'
+    //let key = 'accessible-key'
+    let key = 'building'
         //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "accessibleparking"
     document.getElementById("image").src = "/media/overlays/handicap_merged.png"
@@ -447,7 +449,8 @@ function toggleHandicap(){
 }
 
 function toggleElectricVehicle(){
-    let key = 'electric-key'
+    //let key = 'electric-key'
+    let key = 'building'
     let database_identifier = "electricvehicle"
         //this is to search in the parkingDescriptions table for the section identifier
     document.getElementById("image").src = "/media/overlays/ev_parking.png"
@@ -455,15 +458,17 @@ function toggleElectricVehicle(){
 }
 
 function toggleShareParking(){
-    let key = 'share-parking-key'
-        //this is to search in the parkingDescriptions table for the section identifier
+    //let key = 'share-parking-key'
+    let key = 'building'
+    //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "carshare"
     document.getElementById("image").src = "/media/overlays/car_share_merged.png"
     grabDescAndSelection(database_identifier,key)
 }
 
 function toggleMotorcycle(){
-    let key = 'motorcycle-key'
+    //let key = 'motorcycle-key'
+    let key = 'building'
     //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "motorcycle"
     document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
@@ -471,7 +476,8 @@ function toggleMotorcycle(){
 }
 
 function toggleBikeRepair(){
-    let key = 'bike-key'
+    //let key = 'bike-key'
+    let key = 'building'
     let database_identifier = 'bikerepair'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
     grabDescAndSelection(database_identifier,key)
@@ -479,7 +485,8 @@ function toggleBikeRepair(){
 }
 
 function togglePaystation(){
-    let key = 'paystation-key'
+    //let key = 'paystation-key'
+    let key = 'building'
     let database_identifier = 'paystation'
     document.getElementById("image").src = "/media/overlays/paystation_merged.png"
     grabDescAndSelection(database_identifier,key)
@@ -487,7 +494,8 @@ function togglePaystation(){
 
 
 function toggleAccessibility(){
-    let key = ''
+    //let key = ''
+    let key = 'building'
     let database_identifier = 'accessibilityroutes'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
     grabDescAndSelection(database_identifier,key)
@@ -495,7 +503,8 @@ function toggleAccessibility(){
 
 
 function selectTiming(){
-    let key = ''
+    //let key = ''
+    let key = 'building'
     document.getElementById("image").src = "/media/overlays/timing_merged.png"
     database_identifier = 'timing'
     grabDescAndSelection(database_identifier,key)
@@ -526,7 +535,7 @@ function grabDescAndSelection(database_identifier,key){
 //selects the student parking lots and enables the tooltip
 function selectLot() {
     database_identifier = 'studentparking'
-    key = 'lot-key'
+    key = 'building'
     id = 'image'
     document.getElementById("image").src = "/media/overlays/parking_merged.png"
     fetch("/getParkingDesc")
