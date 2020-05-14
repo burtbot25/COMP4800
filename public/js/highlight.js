@@ -281,18 +281,11 @@ function showDetailsParking(description){
     document.getElementById("details_box").style.color = "#003c71"
 }
 
-function loading() {
-    return '<div id="loading" class="d-flex justify-content-center align-items-center" style="height: 100%">'
-     + '<div class="spinner-border" style="width: 6rem; height: 6rem;" role="status">'
-    +  '<span class="sr-only">Loading...</span></div></div>';
-}
-
 var transit = false;
 var busData = [];
 function selectTransit() {  
     showBasicOverlay("/media/bus_map.png");
     if (transit == false) {
-        $(loading()).insertAfter(".campus-map");
         fetch("/getTransit")
         .then(res => res.text())
         .then(function (data) {
@@ -307,7 +300,6 @@ function selectTransit() {
             })
             busOverlay();
             transit = true;
-            $("#loading").remove()
         })
         .catch(function (error) {
             console.log(error);
@@ -315,7 +307,6 @@ function selectTransit() {
     } else {
         busOverlay();
     }
-    $(loading()).insertAfter(".campus-map");
     fetch("/getTransitDesc")
     .then(res => res.text())
     .then(function (data) {
@@ -327,7 +318,6 @@ function selectTransit() {
     .catch(function (error) {
         console.log(error);
     });
-    $("#loading").remove()
 }
 
 function busOverlay() {
