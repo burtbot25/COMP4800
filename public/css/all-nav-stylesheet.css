@@ -98,7 +98,6 @@ html {
 .active {
     background-color: rgba(0, 60, 113, 0.4);
     color: white;
-    border-top-left-radius: 40px;
 }
 
 .active::after {
