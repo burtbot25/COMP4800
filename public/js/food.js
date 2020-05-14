@@ -41,7 +41,7 @@ var populateMenu = async () => {
     nav.insertAdjacentHTML('beforeend', createFoodButton(data.foodLocations, "Food &amp; Coffee", data.foodDescription, data.foodLink, data.foodPlaceNames));
     nav.insertAdjacentHTML('beforeend', createMicrowavesButton(data.microwavesLocations));
     nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.socialBuildings, data.socialNames, "Social"));
-    nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.studyBuildings, data.studyNames, "Study Areas"));
+    nav.insertAdjacentHTML('beforeend', createOtherKeyPlacesButton(data.studyBuildings, data.studyNames, "Bookable Study Areas"));
 
     //Make sure to set height for html and body to 100% in css
     let html = document.querySelector('html');

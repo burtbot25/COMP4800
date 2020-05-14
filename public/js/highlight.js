@@ -104,11 +104,21 @@ async function selectKeyPlaces(buildings, names) {
 }
 
 function updateToolTip(buildings, names) {
+    var seen = []
+    
     buildings = buildings.split(",#")
     names = names.split(",")
 
     for (var i = 0; i < buildings.length; i++){
-        document.getElementById(buildings[i]).alt = names[i];
+        var toolTipString = names[i]
+        for (var j = 0; j < seen.length; j++){
+            if (seen[j].includes(buildings[i])){
+                toolTipString = names[i] + "<br>" + seen[j][1];
+            }
+        }
+        document.getElementById(buildings[i]).alt = toolTipString;
+        seen.push([buildings[i], toolTipString])
+
     }
 }
 
