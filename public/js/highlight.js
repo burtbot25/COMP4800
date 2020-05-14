@@ -95,11 +95,6 @@ function selectKeyPlaces(buildings, names, type, description, hyperlink) {
 
     });
 
-    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
-    foodBuildings.forEach(id => {
-        document.getElementById(id).visibility = "none"
-    });
-
     updateToolTip(buildings, names);
     if (type == "Bookable Study Areas"){
         showFoodDetails("Bookable Study Areas", description, hyperlink)
@@ -149,11 +144,6 @@ function selectMicrowaves(building) {
 
     });
 
-    foodBuildings = ["FI01","FI02","FI03","FI04","FI05","FI06","FI07","FI08","FI09"]
-    foodBuildings.forEach(id => {
-        document.getElementById(id).visibility = "none"
-    });
-
 }
 
 function updateFoodToolTips(building, foodPlaceNames){
@@ -175,8 +165,9 @@ function selectFoods(building, service_name, description, foodLink, foodPlaceNam
     console.log("Description: " + description)
     console.log("Food Link: " + foodLink)
 
-    updateFoodToolTips(building, foodPlaceNames)
     showOverlay()
+    updateFoodToolTips(building, foodPlaceNames)
+    
 
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
@@ -236,6 +227,7 @@ function showDetails(name, description, link){
     document.getElementById("details_link").target = "_blank"
 }
 
+var foodMap;
 function showOverlay(){
     document.getElementById("image").src = "/media/food_map.png"
 }
