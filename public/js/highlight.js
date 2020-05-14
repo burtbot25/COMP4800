@@ -148,7 +148,7 @@ function updateFoodToolTips(building, foodPlaceNames){
     var locations = foodPlaceNames.split(",..,")
     
     for (var i = 0; i < locations.length; i++){
-        locations[i] = locations[i].replace(/,/g, ", ")
+        locations[i] = locations[i].replace(/,/g, "<br>")
     }
     for (var i = 0; i < buildings.length; i++){
         document.getElementById(buildings[i]).alt = locations[i]
