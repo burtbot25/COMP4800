@@ -32,7 +32,7 @@ area {
   left: 0px;
 }
 
-.col-sm-2 button:focus {
+.sidenav button:focus {
     background-color: #003c71;
     opacity: 0.5;
 }

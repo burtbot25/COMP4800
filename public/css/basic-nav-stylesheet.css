@@ -30,21 +30,6 @@ body {
     margin-right: 30px;
 }
 
-.col-sm-2 {
-  height: 100%;
-  width: 176px;
-  z-index: 1;
-  left: 0;
-  overflow-x: hidden;
-  padding-top: 20px; 
-  position: absolute;
-}
-
-.col-sm-10 {
-    margin-left: 200px;
-    padding-right: 0;
-}
-
 .sidenav-cont {
   width: 100%;
   float: right;
@@ -81,7 +66,7 @@ body {
   padding-right: 5px;
 }
 
-.col-sm-2 button:hover, .dropdown-btn:hover{
+.sidenav button:hover, .dropdown-btn:hover{
   background-color: #003c71;
   opacity: 0.5;
 }
