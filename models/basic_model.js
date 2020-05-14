@@ -19,3 +19,8 @@ exports.getCampusDescription = () => {
     let sql = `SELECT * FROM navCampusDescriptions`;
     return db.execute(sql);
 }
+
+exports.getParkingDescription = () => {
+    let sql = `SELECT * FROM parkingDescriptions order by id`;
+    return db.execute(sql);
+}

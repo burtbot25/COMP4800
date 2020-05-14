@@ -32,75 +32,6 @@ var initial_opts = $.extend({}, basic_opts,
     });
 
 /* group selection functions */
-function selectNE() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'NE09,NE07,NE10,NE12,NE08,NE06,NE28,NE16,NE18,NE24,NE22,NE20', {
-            fill: true,
-            fillColor: 'FFFF00'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#NE09,#NE07,#NE10,#NE12,#NE08,#NE06,#NE28,#NE16,#NE18,#NE24,#NE22,#NE20').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-
-}
-
-function selectSE() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'SE19,SE30,SE40,SE41,SE42,SE50', {
-            fill: true,
-            fillColor: '800000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#SE19,#SE30,#SE40,#SE41,#SE42,#SE50').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-}
-
-function selectSW() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'SW01,SW02,SW03,SW05,SW09,SW10,SW11,SW12,SW13,SW14,SW15,SW16', {
-            fill: true,
-            fillColor: '138C40'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#SW01,#SW02,#SW03,#SW05,#SW09,#SW10,#SW11,#SW12,#SW13,#SW14,#SW15,#SW16').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-}
-
-function selectCARI() {
-    $('area').bind('mouseover', function () {
-        $('img').mapster('tooltip');
-    });
-    $('img').mapster(initial_opts)
-        .mapster('set', true, 'CARI', {
-            fill: true,
-            fillColor: 'FF0000'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-    $('#CARI').bind('mouseover', function () {
-        $('img').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-}
-
 function selectSchool(buildings, descriptions) {
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
@@ -131,7 +62,7 @@ function updateSchoolToolTip(buildings, names) {
         document.getElementById(buildings[i]).alt = "<b>" + buildings[i] + "</b><br>" + names[i];
     }
 }
-/* end group selection functions */
+
 
 async function selectKeyPlaces(buildings, names) {
     await hideOverlay();
@@ -278,15 +209,11 @@ function selectService(building, name, description, link) {
 }
 
 function showDetails(name, description, link){
-    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = name
-    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
 }
 
 async function showOverlay(){
@@ -298,35 +225,52 @@ async function hideOverlay(){
 }
 
 function showFoodDetails(service_name, description, foodLink){
-    document.getElementById("details_box").style.display = "block"
     document.getElementById("details_title").innerText = service_name
-    document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
     document.getElementById("details_link").href = foodLink
     document.getElementById("details_link").target = "_blank"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
 }
 
 function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-function showDetails1(building, service_name, description){
-    document.getElementById("details_title").innerText = service_name
-    document.getElementById("details_title").style.fontWeight = "bold"
-    document.getElementById("details_info").innerText = "(currently blank)" + description
-    document.getElementById("details_link").innerText = "(Link Here)"
-    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-    document.getElementById("details_box").style.color = "#003c71"
-}
+//function showDetails1(building, service_name, description){
+//    document.getElementById("details_title").innerText = service_name
+//    document.getElementById("details_title").style.fontWeight = "bold"
+//    document.getElementById("details_info").innerText = "(currently blank)" + description
+//    document.getElementById("details_link").innerText = "(Link Here)"
+//    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+//    document.getElementById("details_box").style.color = "#003c71"
+//}
 
-function showDetailsTransit(description){
+function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
     // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
+    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
+    document.getElementById("details_box").style.color = "#003c71"
+    document.getElementById("details_box").style.overflow= "scroll"
+
+    if (nav == true) {
+        if (!$(".fa-arrow-right").length) {
+            var icon = document.createElement("i");
+            icon.setAttribute("class", "fa fa-arrow-right fa-2x");
+            document.getElementById("details_box").appendChild(icon);
+            $(".fa-arrow-right").click(navArrow);
+        }
+    } else {
+        $(".fa-arrow-right").remove();
+    }
+}
+
+// this one has a .HTML as the client wanted a clickable link inside the description for this one 
+function showDetailsParking(description){
+    document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
     document.getElementById("details_box").style.overflow= "scroll"
@@ -343,6 +287,8 @@ function selectTransit() {
         .then(function (data) {
             data = JSON.parse(data);
             data.forEach(function(item) {
+                item.busRoute = item.busRoute.replace(",", "<br>");
+                console.log(item.busRoute);
                 busData.push({
                     "key": item.id,
                     "toolTip" : item.busRoute
@@ -388,7 +334,7 @@ function showBasicOverlay(source){
     document.getElementById("image").src = source
 }
 
-
+/*
 function selectNav() {
     $('img').mapster('unbind');
     hideOverlay();
@@ -403,39 +349,86 @@ function selectNav() {
     .catch(function (error) {
         console.log(error);
     });
-    // console.log("Building: " + stop)
-    // $('area').bind('mouseover', function () {
-    //     $('#bus_stops_overlay').mapster('tooltip');
-    // });
-    
-    // $('#bus_stops_overlay').mapster(initial_opts)
-    //     .mapster('set', true, stop, { // String goes here
-    //         fill: true,
-    //         fillColor: 'FF0000'
-    //     })
-    //     .mapster('snapshot')
-    //     .mapster('rebind', basic_opts);
+}*/
 
-    // stop = stop.replace(/,/g, ",#")
-    // console.log(stop);
-    // $('#' + stop).bind('mouseover', function () { // ID goes here
-    //     $('#bus_stops_overlay').mapster('tooltip', this, $(this).attr('full'));
 
-    // });
-    // if (bus != null) {
-    //     bus = bus.replace(",", "\n");
-    //     showDetailsTemp(stop, name, bus)
-    // }
+function showBasicOverlay(source){
+    document.getElementById("image").src = source
+}
+
+function nextIndex(index, arr) {
+    index++;
+    index = index % arr.length;
+    return index;
 }
 
 
-function selectParking(id,stop,key) {
-    
-    console.log("Building: " + stop)
+var navIndex = 0;
+var navDesc = []
+function selectNav() {
+    $('img').mapster('unbind');
+    hideOverlay();
+    if (navDesc.length == 0) {
+        fetch("/getCampusDesc")
+        .then(res => res.text())
+        .then(function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+            navDesc = data; 
+            // console.log(data[0].description);
+            // showDetailsTransit(data[0].description);
+            console.log(navDesc[navIndex].buildingNumber)
+            //selectNavBuildings('CampusSquare')
+            selectNavBuildings(navDesc[navIndex].buildingNumber);
+            showDetailsTransit(navDesc[navIndex].description, true);
+            navIndex = nextIndex(navIndex, navDesc);
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+
+    } else {
+        navIndex = 0
+        selectNavBuildings(navDesc[navIndex].buildingNumber);
+        showDetailsTransit(navDesc[navIndex].description, true);
+        navIndex = nextIndex(navIndex, navDesc);
+    }
+}
+
+function navArrow() {
+    selectNavBuildings(navDesc[navIndex].buildingNumber);
+    showDetailsTransit(navDesc[navIndex].description, true);
+    navIndex = nextIndex(navIndex, navDesc);
+    document.getElementById("details_box").scrollTop = 0;
+}
+
+function selectNavBuildings(buildings) {
+    $('area').bind('mouseover', function () {
+        $('#image').mapster('tooltip');
+    });
+
+    $('#image').mapster(initial_opts)
+    .mapster('set', true, buildings, { // String goes here
+        fill: true,
+        fillColor: 'FF0000'
+    })
+    .mapster('snapshot')
+    .mapster('rebind', basic_opts);
+    console.log($('#CampusSquare').length);
+    buildings = buildings.replace(/,/g, ",#")
+    console.log(buildings);
+    $('#' + buildings).bind('mouseover', function () { // ID goes here
+        $('#image').mapster('tooltip', this, $(this).attr('full'));
+    });
+}
+
+//this has no tooltips enabled, see selectLot for tooltip enabling
+function selectParking(stop,key) {
+    id = 'image'
     $('area').bind('mouseover', function () {
         $('#'+id).mapster('tooltip');
     });
-    
     $('#'+id).mapster({
         initial_opts,
         mapKey: key,
@@ -451,78 +444,114 @@ function selectParking(id,stop,key) {
             fill: true,
             fillColor: 'ffea2e'
         })
-
-    stop = stop.replace(/,/g, ",#")
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    showDetailsTransit("While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
+}
+/* start of all the toggling on methods for each of the parking images */ 
+function toggleHandicap(){
+    let key = 'accessible-key'
+        //this is to search in the parkingDescriptions table for the section identifier
+    let database_identifier = "accessibleparking"
+    document.getElementById("image").src = "/media/overlays/handicap_merged.png"
+    grabDescAndSelection(database_identifier,key)
 }
 
-function selectLot(id,stop,key) {
+function toggleElectricVehicle(){
+    let key = 'electric-key'
+    let database_identifier = "electricvehicle"
+        //this is to search in the parkingDescriptions table for the section identifier
+    document.getElementById("image").src = "/media/overlays/ev_parking.png"
+    grabDescAndSelection(database_identifier,key)
+}
+
+function toggleShareParking(){
+    let key = 'share-parking-key'
+        //this is to search in the parkingDescriptions table for the section identifier
+    let database_identifier = "carshare"
+    document.getElementById("image").src = "/media/overlays/car_share_merged.png"
+    grabDescAndSelection(database_identifier,key)
+}
+
+function toggleMotorcycle(){
+    let key = 'motorcycle-key'
+    //this is to search in the parkingDescriptions table for the section identifier
+    let database_identifier = "motorcycle"
+    document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
+    grabDescAndSelection(database_identifier,key)
+}
+
+function toggleBikeRepair(){
+    let key = 'bike-key'
+    let database_identifier = 'bikerepair'
+    document.getElementById("image").src = "/media/overlays/bike_repair.png"
+    grabDescAndSelection(database_identifier,key)
     
-    console.log("Building: " + stop)
-    $('area').bind('mouseover', function () {
-        $('#'+id).mapster('tooltip');
-    });
-    
-    $('#'+id).mapster({
-        initial_opts,
-        mapKey: key,
-        strokeWidth:2,
-        strokeColor: 'F88017',
-        mapValue: 'full',
-        showToolTip: true,
-        staticState: true,
-        fill:false
+}
+
+function togglePaystation(){
+    let key = 'paystation-key'
+    let database_identifier = 'paystation'
+    document.getElementById("image").src = "/media/overlays/paystation_merged.png"
+    grabDescAndSelection(database_identifier,key)
+}
+
+
+function toggleAccessibility(){
+    let key = ''
+    let database_identifier = 'accessibilityroutes'
+    document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
+    grabDescAndSelection(database_identifier,key)
+}
+
+
+function selectTiming(){
+    let key = ''
+    document.getElementById("image").src = "/media/overlays/timing_merged.png"
+    database_identifier = 'timing'
+    grabDescAndSelection(database_identifier,key)
+}
+
+//grabs the description and selection ids from the database
+//matching ids will get highlighted on the map
+function grabDescAndSelection(database_identifier,key){
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        for(i = 0; i<data.length;i++){
+            if(data[i].section == database_identifier ){
+                selectParking(data[i].selection,key)
+                if(data[i].description !== "" && data[i].description !== null){
+                    showDetailsParking(data[i].description)
+                } else {
+                    hideFoodDetails();
+                }
+                break;
+            }
         }
-        )
-        .mapster('set', true,stop, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-
-    stop = stop.replace(/,/g, ",#")
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    showDetailsTransit("While there are lots of parking spaces available at the Burnaby Campus, you’ll want to make sure that you are aware of which spaces are student parking. Here’s some tips to make sure you have a good parking experience: \n   - Always make sure to read the parking signage to avoid getting a ticket \n   - Bring a credit card to pay for your parking or pre-purchase a parking pass online")
+    })
 }
 
+//selects the student parking lots and enables the tooltip
+function selectLot() {
+    database_identifier = 'studentparking'
+    let key = 'lot-key'
+    fetch("/getParkingDesc")
+    .then(res => res.text())
+    .then(function (data) {
+        data = JSON.parse(data);
+        document.getElementById("image").src = "/media/overlays/parking_merged.png"
+        stop = data[i].selection
+        grabDescAndSelection(database_identifier,key)
+        //tooltip enabling below
+        stop = stop.replace(/,/g, ",#")
+        $('#' + stop).bind('mouseover', function () { // ID goes here
+            $('#'+id).mapster('tooltip', this, $(this).attr('full'));
 
-function selectPaystation(id,stop,key) {
-    
-    console.log("Building: " + stop)
-    $('area').bind('mouseover', function () {
-        $('#'+id).mapster('tooltip');
+        });
+    })
+    .catch(function (error) {
+        console.log(error);
     });
-    
-    $('#'+id).mapster({
-        initial_opts,
-        mapKey: key,
-        strokeWidth:2,
-        strokeColor: 'F88017',
-        mapValue: 'full',
-        showToolTip: true,
-        staticState: true,
-        fill:false
-        }
-        )
-        .mapster('set', true,stop, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-
-    stop = stop.replace(/,/g, ",#")
-    $('#' + stop).bind('mouseover', function () { // ID goes here
-        $('#'+id).mapster('tooltip', this, $(this).attr('full'));
-
-    });
-    showDetailsTransit("Pay stations are conveniently located near each of the campus parking lots. Pay stations accept credit cards only, so be sure to have a card on hand or <a href='https://verrus.com/Permits/default.aspx?r='>pre-purchase a parking permit</a> before arriving on campus. Alternatively, students can also <a href='https://www.paybyphone.com/'>pay through the paybyphone app</a>.")
 }
-
 
 function selectCampus(building) {
     // console.log("Building: " + stop)
@@ -548,9 +577,6 @@ function selectCampus(building) {
     showDetailsTemp(stop, name, bus)
 }
 
-function selectTiming(){
-    showDetailsTemp("Although the Burnaby Campus may seem large on a map, it’s a lot faster to get from one end of campus to the other than you might think. Believe it or not, it takes only 10 minutes to walk from NE01 to SE16 or from Willingdon Avenue to Wayburne Drive. ")
-}
 
 function toggleDropdown(self) {
     console.log(self);  
