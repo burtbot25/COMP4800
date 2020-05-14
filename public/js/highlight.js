@@ -417,26 +417,28 @@ function selectNavBuildings(buildings) {
 }
 
 //this has no tooltips enabled, see selectLot for tooltip enabling
-function selectParking(stop,key) {
+function selectParking(stop, key, highlight) {
     id = 'image'
     $('area').bind('mouseover', function () {
-        $('#'+id).mapster('tooltip');
+        $('#' + id).mapster('tooltip');
     });
-    $('#'+id).mapster({
+    $('#' + id).mapster({
         initial_opts,
         mapKey: key,
-        strokeWidth:2,
+        strokeWidth: 2,
         strokeColor: 'F88017',
         mapValue: 'full',
         showToolTip: true,
         staticState: true,
-        fill:false
-        }
-        )
-        .mapster('set', true,stop, { // String goes here
+        fill: false
+    }
+    )
+    if (highlight) {
+        $('#' + id).mapster('set', true, stop, { // String goes here
             fill: true,
             fillColor: 'ffea2e'
         })
+    }
 }
 /* start of all the toggling on methods for each of the parking images */ 
 function toggleHandicap(){
@@ -519,7 +521,7 @@ function grabDescAndSelection(database_identifier,key){
         data = JSON.parse(data);
         for(i = 0; i<data.length;i++){
             if(data[i].section == database_identifier ){
-                selectParking(data[i].selection,key)
+                selectParking(data[i].selection,key,false)
                 if(data[i].description !== "" && data[i].description !== null){
                     showDetailsParking(data[i].description)
                 } else {
@@ -553,7 +555,7 @@ function selectLot() {
                 break;
             }
         }
-        selectParking(stops,key)
+        selectParking(stops,key,true)
         stops = stops.replace(/,/g, ",#")
         $('#' + stops).bind('mouseover', function () { // ID goes here
             $('#'+id).mapster('tooltip', this, $(this).attr('full'));
