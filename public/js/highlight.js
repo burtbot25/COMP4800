@@ -199,6 +199,7 @@ function showDetails(name, description, link){
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
+    document.getElementById("details_box").style.height = "150px"
 }
 
 function showOverlay(){
