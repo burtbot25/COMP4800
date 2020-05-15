@@ -34,13 +34,26 @@ img {
 button {
     color: #308fe3;
     background-color: white;
-    width: 180px;
+    width: 150px;
     height: 40px;
     text-align: inherit;
     border: 2px solid #308fe3;
     font-size: 14px;
     font-weight: bold;
-    display: flex;    
-    margin: 20px auto 20px auto;
+    display: flex;   
     justify-content: center;
+}
+
+#restart-btn {
+    margin-top: 300px;
+    margin-left: 160px;
+    float: left;
+    position: absolute;
+}
+
+#finish-btn {
+    margin-top: 300px;
+    margin-left: 380px;
+    float: right;
+    position: absolute;
 }

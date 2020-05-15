@@ -114,39 +114,10 @@ function updateToolTip(buildings, names) {
                 toolTipString = names[i] + "<br>" + seen[j][1];
             }
         }
-        document.getElementById(buildings[i]).alt = toolTipString;
+        document.getElementById(buildings[i]).alt = "<b>" + buildings[i]  + "</b><br>" + toolTipString;
         seen.push([buildings[i], toolTipString])
 
     }
-}
-
-function selectMicrowaves(building, names) {
-    
-    hideOverlay();
-    hideFoodDetails();
-    console.log("Select Microwaves")
-    $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
-    });
-    
-    $('#image').mapster(initial_opts)
-        .mapster('set', true, building, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-
-    building = building.split(",")
-    building = building.join(",#")
-
-    $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-
-    updateToolTip(building, names)
-
 }
 
 function updateFoodToolTips(building, foodPlaceNames){
@@ -157,7 +128,7 @@ function updateFoodToolTips(building, foodPlaceNames){
         locations[i] = locations[i].replace(/,/g, "<br>")
     }
     for (var i = 0; i < buildings.length; i++){
-        document.getElementById(buildings[i]).alt = locations[i]
+        document.getElementById(buildings[i]).alt = "<b>" + document.getElementById(buildings[i]).alt  + "</b><br>" + locations[i]
     }
     
 }
@@ -200,10 +171,10 @@ function selectFoods(building, service_name, description, foodLink, foodPlaceNam
 }
 
 function selectService(building, name, description, link) {
+    console.log("clicked " + name)
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
     });
-    console.log(building);
     $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
@@ -212,22 +183,23 @@ function selectService(building, name, description, link) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building = building.replace(/, /g, ",#")
-
-    $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + ' - ' + name);
+    mapBuilding = building.replace(/, /g, ",#")
+    $('#' + mapBuilding).bind('mouseover', function () { // ID goes here
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + '<br>' + name);
 
     });
-    description = description.replace(/,/g, "\n");
     showDetails(building + " - " + name, description, link);
 }
 
 function showDetails(name, description, link){
+    document.getElementById("details_box").style.height = "160px"
     document.getElementById("details_title").innerText = name
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
+    document.getElementById("details_box").style.height = "150px"
 }
 
 function showOverlay(){
@@ -241,7 +213,9 @@ function hideOverlay(){
 
 function showFoodDetails(service_name, description, foodLink){
     document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_box").style.height = "160px"
     document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
     document.getElementById("details_link").href = foodLink
@@ -252,19 +226,12 @@ function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-//function showDetails1(building, service_name, description){
-//    document.getElementById("details_title").innerText = service_name
-//    document.getElementById("details_title").style.fontWeight = "bold"
-//    document.getElementById("details_info").innerText = "(currently blank)" + description
-//    document.getElementById("details_link").innerText = "(Link Here)"
-//    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-//    document.getElementById("details_box").style.color = "#003c71"
-//}
-
 function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_box").style.height = "150px"
     // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
@@ -284,13 +251,16 @@ function showDetailsTransit(description, nav){
 // this one has a .HTML as the client wanted a clickable link inside the description for this one 
 function showDetailsParking(description){
     document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_box").style.height = "160px"
     document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
     $(".fa-arrow-right").remove();
 }
 
+/*Loads the bus stops and bus descriptions*/
 var transit = false;
 var busData = [];
 function selectTransit() {  
@@ -302,7 +272,6 @@ function selectTransit() {
             data = JSON.parse(data);
             data.forEach(function(item) {
                 item.busRoute = item.busRoute.replace(",", "<br>");
-                console.log(item.busRoute);
                 busData.push({
                     "key": item.id,
                     "toolTip" : item.busRoute
@@ -321,15 +290,13 @@ function selectTransit() {
     .then(res => res.text())
     .then(function (data) {
         data = JSON.parse(data);
-        console.log(data)
-        console.log(data[0].description);
         showDetailsTransit(data[0].description);
     })
     .catch(function (error) {
         console.log(error);
     });
 }
-
+/*Overlay function for bus highlighting */
 function busOverlay() {
     $('#image').mapster({
         singleSelect: true,
@@ -353,6 +320,7 @@ function showBasicOverlay(source){
     document.getElementById("image").src = source
 }
 
+/*Helper function for next index array*/
 function nextIndex(index, arr) {
     index++;
     index = index % arr.length;
@@ -362,6 +330,7 @@ function nextIndex(index, arr) {
 
 var navIndex = 0;
 var navDesc = []
+/*Loads campus description and buildings*/
 function selectNav() {
     $('img').mapster('unbind');
     hideOverlay();
@@ -389,13 +358,13 @@ function selectNav() {
         navIndex = nextIndex(navIndex, navDesc);
     }
 }
-
+/*Arrow for navigating campus */
 function navArrow() {
     selectNavBuildings(navDesc[navIndex].buildingNumber);
     showDetailsTransit(navDesc[navIndex].description, true);
     navIndex = nextIndex(navIndex, navDesc);
 }
-
+/*Select the Navigating campus buildings */
 function selectNavBuildings(buildings) {
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
