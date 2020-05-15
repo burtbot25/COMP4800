@@ -114,7 +114,7 @@ function updateToolTip(buildings, names) {
                 toolTipString = names[i] + "<br>" + seen[j][1];
             }
         }
-        document.getElementById(buildings[i]).alt = toolTipString;
+        document.getElementById(buildings[i]).alt = "<b>" + buildings[i]  + "</b><br>" + toolTipString;
         seen.push([buildings[i], toolTipString])
 
     }
@@ -128,7 +128,7 @@ function updateFoodToolTips(building, foodPlaceNames){
         locations[i] = locations[i].replace(/,/g, "<br>")
     }
     for (var i = 0; i < buildings.length; i++){
-        document.getElementById(buildings[i]).alt = locations[i]
+        document.getElementById(buildings[i]).alt = "<b>" + document.getElementById(buildings[i]).alt  + "</b><br>" + locations[i]
     }
     
 }
@@ -197,6 +197,7 @@ function showDetails(name, description, link){
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
+    document.getElementById("details_box").style.height = "150px"
 }
 
 function showOverlay(){
@@ -210,6 +211,7 @@ function hideOverlay(){
 
 function showFoodDetails(service_name, description, foodLink){
     document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_box").style.height = "150px"
     document.getElementById("details_title").innerText = service_name
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
@@ -223,6 +225,7 @@ function hideFoodDetails(){
 
 function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_box").style.height = "150px"
     // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerText = description
@@ -244,6 +247,7 @@ function showDetailsTransit(description, nav){
 // this one has a .HTML as the client wanted a clickable link inside the description for this one 
 function showDetailsParking(description){
     document.getElementById("details_box").style.display = "block"
+    document.getElementById("details_box").style.height = "150px"
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
