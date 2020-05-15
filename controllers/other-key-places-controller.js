@@ -150,11 +150,5 @@ function createFoodPlaceNamesString(foodList, foodNames){
                             .concat(SE14).concat("..").concat(SE12).concat("..").concat(SW01).concat("..")
                             .concat(SE40).concat("..").concat(CARI)
     placesString = placesString.join()
-    console.log(placesString)
     return placesString;
 }
-
-/* <button id="Food" onclick="selectFoods('{{foodLocations}}', this.innerText, '{{foodDescription}}', '{{foodLink}}', '{{foodPlaceNames}}')">Food &amp; Coffee</button>
-<button id="Microwaves" onclick="selectMicrowaves('{{microwavesLocations}}')">Microwaves</button>
-<button id="Social" onclick="selectKeyPlaces('{{socialBuildings}}', '{{socialNames}}')">Social</button>
-<button id="Study Areas" onclick="selectKeyPlaces('{{studyBuildings}}', '{{studyNames}}')">Study Areas</button> */
