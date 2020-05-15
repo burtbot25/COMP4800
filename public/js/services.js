@@ -11,6 +11,7 @@ var createButton = (building, name, description, link) => {
         .replace(/>/g, '&gt;')
         .replace(/"/g, '&quot;')
         .replace(/'/g, '&apos;');
+
     return `<button onclick="selectService('${building}', '${name}', '${description}', '${link}')"> ${name} </button>`;
 };
 

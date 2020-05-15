@@ -200,10 +200,10 @@ function selectFoods(building, service_name, description, foodLink, foodPlaceNam
 }
 
 function selectService(building, name, description, link) {
+    console.log("clicked " + name)
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
     });
-    console.log(building);
     $('#campus_entrances_overlay').mapster(initial_opts)
         .mapster('set', true, building, { // String goes here
             fill: true,
@@ -212,13 +212,11 @@ function selectService(building, name, description, link) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building = building.replace(/, /g, ",#")
-
-    $('#' + building).bind('mouseover', function () { // ID goes here
+    mapBuilding = building.replace(/, /g, ",#")
+    $('#' + mapBuilding).bind('mouseover', function () { // ID goes here
         $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + '<br>' + name);
 
     });
-    
     showDetails(building + " - " + name, description, link);
 }
 
