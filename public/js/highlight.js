@@ -114,7 +114,7 @@ function updateToolTip(buildings, names) {
                 toolTipString = names[i] + "<br>" + seen[j][1];
             }
         }
-        document.getElementById(buildings[i]).alt = toolTipString;
+        document.getElementById(buildings[i]).alt = "<b>" + buildings[i]  + "</b><br>" + toolTipString;
         seen.push([buildings[i], toolTipString])
 
     }
@@ -128,7 +128,7 @@ function updateFoodToolTips(building, foodPlaceNames){
         locations[i] = locations[i].replace(/,/g, "<br>")
     }
     for (var i = 0; i < buildings.length; i++){
-        document.getElementById(buildings[i]).alt = locations[i]
+        document.getElementById(buildings[i]).alt = "<b>" + document.getElementById(buildings[i]).alt  + "</b><br>" + locations[i]
     }
     
 }
