@@ -50,21 +50,20 @@ html {
     opacity: 0.5;
 }
 
-.sidenav {
+.col-sm-2 {
   background-color: white;
-  height: 220px;
+  height: 476px;
   width: 180px;
   z-index: 1;
   left: 0;
   overflow-x: hidden;
   overflow-y: scroll;
   padding: 10px 5px 0 5px;
-  margin-top: 300px;
   position: absolute;
   border-right: 1px solid #869cb0;    
 }
 
-.sidenav button {
+.col-sm-2 button {
   color: white;
   background-color: #003c71;
   margin-bottom: 5px;
@@ -79,13 +78,13 @@ html {
   outline: none;
 }
 
-.sidenav button:hover {
+.col-sm-2 button:hover {
     background-color: #003c71;
     opacity: 0.5;
 }
 
-.mapsection {
-    margin-left: 0;
+.col-sm-10 {
+    margin-left: 115px;
     margin-right: 0;
     padding: 0;
 }
@@ -98,7 +97,6 @@ html {
 .active {
     background-color: rgba(0, 60, 113, 0.4);
     color: white;
-    border-top-left-radius: 40px;
 }
 
 .active::after {

@@ -271,7 +271,7 @@ html, body {
   padding-right: 5px;
 }
 
-.col-sm-2 button:hover, .dropdown-btn:hover{
+.sidenav button:hover, .dropdown-btn:hover{
   background-color: #025cab;
   opacity: 0.5;
 }
@@ -331,7 +331,8 @@ area {
 #bike_repair_overlay,
 #car_share_overlay,
 #pay_station_overlay,
-#motorcycle_overlay{
+#motorcycle_overlay,
+#timing_overlay{
   display: none
 }
 

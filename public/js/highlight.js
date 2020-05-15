@@ -212,14 +212,14 @@ function selectService(building, name, description, link) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    building = building.replace(/,/g, ",#")
+    building = building.replace(/, /g, ",#")
 
     $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full'));
+        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + ' - ' + name);
 
     });
-//    description = description.replace(/,/g, "\n");
-    showDetails(building, name, description, link);
+    description = description.replace(/,/g, "\n");
+    showDetails(building + " - " + name, description, link);
 }
 
 function showDetails(name, description, link){
@@ -288,6 +288,7 @@ function showDetailsParking(description){
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
+    $(".fa-arrow-right").remove();
 }
 
 var transit = false;
@@ -416,30 +417,33 @@ function selectNavBuildings(buildings) {
 }
 
 //this has no tooltips enabled, see selectLot for tooltip enabling
-function selectParking(stop,key) {
+function selectParking(stop, key, highlight) {
     id = 'image'
     $('area').bind('mouseover', function () {
-        $('#'+id).mapster('tooltip');
+        $('#' + id).mapster('tooltip');
     });
-    $('#'+id).mapster({
+    $('#' + id).mapster({
         initial_opts,
         mapKey: key,
-        strokeWidth:2,
+        strokeWidth: 2,
         strokeColor: 'F88017',
         mapValue: 'full',
         showToolTip: true,
         staticState: true,
-        fill:false
-        }
-        )
-        .mapster('set', true,stop, { // String goes here
+        fill: false
+    }
+    )
+    if (highlight) {
+        $('#' + id).mapster('set', true, stop, { // String goes here
             fill: true,
             fillColor: 'ffea2e'
         })
+    }
 }
 /* start of all the toggling on methods for each of the parking images */ 
 function toggleHandicap(){
-    let key = 'accessible-key'
+    //let key = 'accessible-key'
+    let key = 'building'
         //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "accessibleparking"
     document.getElementById("image").src = "/media/overlays/handicap_merged.png"
@@ -447,7 +451,8 @@ function toggleHandicap(){
 }
 
 function toggleElectricVehicle(){
-    let key = 'electric-key'
+    //let key = 'electric-key'
+    let key = 'building'
     let database_identifier = "electricvehicle"
         //this is to search in the parkingDescriptions table for the section identifier
     document.getElementById("image").src = "/media/overlays/ev_parking.png"
@@ -455,15 +460,17 @@ function toggleElectricVehicle(){
 }
 
 function toggleShareParking(){
-    let key = 'share-parking-key'
-        //this is to search in the parkingDescriptions table for the section identifier
+    //let key = 'share-parking-key'
+    let key = 'building'
+    //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "carshare"
     document.getElementById("image").src = "/media/overlays/car_share_merged.png"
     grabDescAndSelection(database_identifier,key)
 }
 
 function toggleMotorcycle(){
-    let key = 'motorcycle-key'
+    //let key = 'motorcycle-key'
+    let key = 'building'
     //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "motorcycle"
     document.getElementById("image").src = "/media/overlays/motorcycle_merged.png"
@@ -471,7 +478,8 @@ function toggleMotorcycle(){
 }
 
 function toggleBikeRepair(){
-    let key = 'bike-key'
+    //let key = 'bike-key'
+    let key = 'building'
     let database_identifier = 'bikerepair'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
     grabDescAndSelection(database_identifier,key)
@@ -479,7 +487,8 @@ function toggleBikeRepair(){
 }
 
 function togglePaystation(){
-    let key = 'paystation-key'
+    //let key = 'paystation-key'
+    let key = 'building'
     let database_identifier = 'paystation'
     document.getElementById("image").src = "/media/overlays/paystation_merged.png"
     grabDescAndSelection(database_identifier,key)
@@ -487,7 +496,8 @@ function togglePaystation(){
 
 
 function toggleAccessibility(){
-    let key = ''
+    //let key = ''
+    let key = 'building'
     let database_identifier = 'accessibilityroutes'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
     grabDescAndSelection(database_identifier,key)
@@ -495,7 +505,8 @@ function toggleAccessibility(){
 
 
 function selectTiming(){
-    let key = ''
+    //let key = ''
+    let key = 'building'
     document.getElementById("image").src = "/media/overlays/timing_merged.png"
     database_identifier = 'timing'
     grabDescAndSelection(database_identifier,key)
@@ -510,7 +521,7 @@ function grabDescAndSelection(database_identifier,key){
         data = JSON.parse(data);
         for(i = 0; i<data.length;i++){
             if(data[i].section == database_identifier ){
-                selectParking(data[i].selection,key)
+                selectParking(data[i].selection,key,false)
                 if(data[i].description !== "" && data[i].description !== null){
                     showDetailsParking(data[i].description)
                 } else {
@@ -526,7 +537,7 @@ function grabDescAndSelection(database_identifier,key){
 //selects the student parking lots and enables the tooltip
 function selectLot() {
     database_identifier = 'studentparking'
-    key = 'lot-key'
+    key = 'building'
     id = 'image'
     document.getElementById("image").src = "/media/overlays/parking_merged.png"
     fetch("/getParkingDesc")
@@ -544,7 +555,7 @@ function selectLot() {
                 break;
             }
         }
-        selectParking(stops,key)
+        selectParking(stops,key,true)
         stops = stops.replace(/,/g, ",#")
         $('#' + stops).bind('mouseover', function () { // ID goes here
             $('#'+id).mapster('tooltip', this, $(this).attr('full'));

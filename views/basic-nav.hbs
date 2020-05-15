@@ -2,74 +2,76 @@
     Basic Navigation
 </div>
 <div class="campus-map">
-    <div class="sidenav">
-        <div class="sidenav-cont">
-            <button onclick="selectTiming()">Timing
-            </button>
+    <div class="col-sm-2">
+        <div class="sidenav">
+            <div class="sidenav-cont">
+                <button onclick="selectTiming()">Timing
+                </button>
 
-            <div class="dropdown-container">
-                <button>Student Housing to NE01</button>
-                <button>Willingdon Avenue to Wayburne Drive</button>
-                <button>CARI Building to Wayburne Drive</button>
-            </div>
-            <button onclick="selectTransit()">Transit Information
-            </button>
-            {{!-- <div class="dropdown-container">
-                {{#each transit}}
-                <button onclick="selectNav('{{this.id}}', '{{this.name}}', '{{this.busRoute}}')">{{this.name}}</button>
-                {{/each}}
-                <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
-                <button onclick="selectNav(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>
-                <button onclick="selectNav(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
-                <button onclick="selectNav(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
-                <button onclick="selectNav(this.value)" value="SandersonN">Northbound Willingdon Ave @
-                    Sanderson Way</button>
-                <button onclick="selectNav(this.value)" value="SandersonS">Southbound Willingdon Ave @
-                    Sanderson Way</button>
-                <button onclick="selectNav(this.value)" value="DeerN">Northbound Willingdon Ave @ Deer Lake
-                    Parkway</button>
-                <button onclick="selectNav(this.value)" value="WillingdonEB">Eastbound Canada Way @ Willingdon
-                    Ave</button>
-                <button onclick="selectNav(this.value)" value="WillingdonWB">Westbound Canada Way @ Willingdon
-                    Ave</button>
-                <button onclick="selectNav(this.value)" value="BetaE">Eastbound Canada Way @ Beta Ave</button>
-                <button onclick="selectNav(this.value)" value="BetaW">Westbound Canada Way @ Beta Ave</button>
-                <button onclick="selectNav(this.value)" value="MathissiE">Eastbound Sanderson Way @ Mathissi
-                    Ave</button>
-                <button onclick="selectNav(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @
-                    Willingdon Ave</button>
-                <button onclick="selectNav(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
-                    Waybburne Dr</button>
-            </div> --}}
-            <button onclick="selectNav()">Navigating Campus
-            </button>
-            {{!-- <div class="dropdown-container">
-                <button>Campus Square</button>
-                <button onclick="toggleDisplay(this), selectNav(this.name)" name="CARI" value="bus_stops_overlay">CARI Building</button>
-                <button onclick="toggleDisplay(this), selectNav(this.name)" name="SE06" value="bus_stops_overlay">Telus Theatre</button>
-                <button onclick="toggleDisplay(this), selectNav(this.name)" name="SW10,SW11,SW12,SW13,SW14,SW15,SW16" value="bus_stops_overlay">Student Housing</button>
-                <button onclick="toggleDisplay(this), selectNav(this.name)" name="SE16" value="bus_stops_overlay">Recreation Centre</button>
-                <button>Trades Buildings</button>
-                <button onclick="toggleDisplay(this)" value="bike_overlay">Bicycle Route Information</button>
-            </div> --}}
-            <button onclick="toggleAccessibility()">Accessibility Routes</button>
-            <button class="dropdown-btn" onclick="toggleDropdown(this)">Parking and Biking Information
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container" >
-                <button onclick="selectLot()">Student Parking</button>
-               <!-- <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="eparking" name="LOT7,LOT5,LOT12,LOT26,LOT27,LOT6,LOT62,LOT9,LOT4,LOT15,LOT22,LOT23,LOT21,LOT211,LOT212,LOT213,LOT214,LOT24,LOT25,LOT20,LOT29,LOT28,LOT281,LOT1,LOT10,LOT16,LOT19" value="employee_parking_overlay">Employee Parking</button>
-                <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="vparking" name="LOTV1,LOTV2,LOTV3,LOTV4,LOTV5" value="visitor_parking_overlay">Visitor Parking</button> -->
-                <button onclick="toggleHandicap()">Accessible Parking</button>
-                <button onclick="toggleElectricVehicle()">EV Charging</button>
-                <button onclick="toggleShareParking()">Carshare Parking</button>
-                <button onclick="togglePaystation()">Pay Station</button>
-                <button onclick="toggleMotorcycle()">Motorcycle Area</button>
-                <button onclick="toggleBikeRepair()">Bike Lockers and Repair Stations</button>
+                <div class="dropdown-container">
+                    <button>Student Housing to NE01</button>
+                    <button>Willingdon Avenue to Wayburne Drive</button>
+                    <button>CARI Building to Wayburne Drive</button>
+                </div>
+                <button onclick="selectTransit()">Transit Information
+                </button>
+                {{!-- <div class="dropdown-container">
+                    {{#each transit}}
+                    <button onclick="selectNav('{{this.id}}', '{{this.name}}', '{{this.busRoute}}')">{{this.name}}</button>
+                    {{/each}}
+                    <button onclick="selectNav(this.value)" value="CanadaN">Northbound Willingdon Ave @ Canada Way</button>
+                    <button onclick="selectNav(this.value)" value="CanadaS">Southbound Willingdon Ave @ Canada Way</button>
+                    <button onclick="selectNav(this.value)" value="GoardN">Northbound Willingdon Ave @ Goard Way</button>
+                    <button onclick="selectNav(this.value)" value="GoardS">Southbound Willingdon Ave @ Goard Way</button>
+                    <button onclick="selectNav(this.value)" value="SandersonN">Northbound Willingdon Ave @
+                        Sanderson Way</button>
+                    <button onclick="selectNav(this.value)" value="SandersonS">Southbound Willingdon Ave @
+                        Sanderson Way</button>
+                    <button onclick="selectNav(this.value)" value="DeerN">Northbound Willingdon Ave @ Deer Lake
+                        Parkway</button>
+                    <button onclick="selectNav(this.value)" value="WillingdonEB">Eastbound Canada Way @ Willingdon
+                        Ave</button>
+                    <button onclick="selectNav(this.value)" value="WillingdonWB">Westbound Canada Way @ Willingdon
+                        Ave</button>
+                    <button onclick="selectNav(this.value)" value="BetaE">Eastbound Canada Way @ Beta Ave</button>
+                    <button onclick="selectNav(this.value)" value="BetaW">Westbound Canada Way @ Beta Ave</button>
+                    <button onclick="selectNav(this.value)" value="MathissiE">Eastbound Sanderson Way @ Mathissi
+                        Ave</button>
+                    <button onclick="selectNav(this.value)" value="WillingdonED">Eastbound Deer Lake Parkway @
+                        Willingdon Ave</button>
+                    <button onclick="selectNav(this.value)" value="WayburneWD">Westbound Deer Lake Parkway @
+                        Waybburne Dr</button>
+                </div> --}}
+                <button onclick="selectNav()">Navigating Campus
+                </button>
+                {{!-- <div class="dropdown-container">
+                    <button>Campus Square</button>
+                    <button onclick="toggleDisplay(this), selectNav(this.name)" name="CARI" value="bus_stops_overlay">CARI Building</button>
+                    <button onclick="toggleDisplay(this), selectNav(this.name)" name="SE06" value="bus_stops_overlay">Telus Theatre</button>
+                    <button onclick="toggleDisplay(this), selectNav(this.name)" name="SW10,SW11,SW12,SW13,SW14,SW15,SW16" value="bus_stops_overlay">Student Housing</button>
+                    <button onclick="toggleDisplay(this), selectNav(this.name)" name="SE16" value="bus_stops_overlay">Recreation Centre</button>
+                    <button>Trades Buildings</button>
+                    <button onclick="toggleDisplay(this)" value="bike_overlay">Bicycle Route Information</button>
+                </div> --}}
+                <button onclick="toggleAccessibility()">Accessibility Routes</button>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">Parking and Biking Information
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container" >
+                    <button onclick="selectLot()">Student Parking</button>
+                   <!-- <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="eparking" name="LOT7,LOT5,LOT12,LOT26,LOT27,LOT6,LOT62,LOT9,LOT4,LOT15,LOT22,LOT23,LOT21,LOT211,LOT212,LOT213,LOT214,LOT24,LOT25,LOT20,LOT29,LOT28,LOT281,LOT1,LOT10,LOT16,LOT19" value="employee_parking_overlay">Employee Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="vparking" name="LOTV1,LOTV2,LOTV3,LOTV4,LOTV5" value="visitor_parking_overlay">Visitor Parking</button> -->
+                    <button onclick="toggleHandicap()">Accessible Parking</button>
+                    <button onclick="toggleElectricVehicle()">EV Charging</button>
+                    <button onclick="toggleShareParking()">Carshare Parking</button>
+                    <button onclick="togglePaystation()">Pay Station</button>
+                    <button onclick="toggleMotorcycle()">Motorcycle Area</button>
+                    <button onclick="toggleBikeRepair()">Bike Lockers and Repair Stations</button>
+                </div>
             </div>
         </div>
     </div>
-    <div class="mapsection">
+    <div class="col-sm-10">
         {{>overlay}}
         <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
     </div>
