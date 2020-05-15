@@ -120,35 +120,6 @@ function updateToolTip(buildings, names) {
     }
 }
 
-function selectMicrowaves(building, names) {
-    
-    hideOverlay();
-    hideFoodDetails();
-    console.log("Select Microwaves")
-    $('area').bind('mouseover', function () {
-        $('#image').mapster('tooltip');
-    });
-    
-    $('#image').mapster(initial_opts)
-        .mapster('set', true, building, { // String goes here
-            fill: true,
-            fillColor: 'ffea2e'
-        })
-        .mapster('snapshot')
-        .mapster('rebind', basic_opts);
-
-    building = building.split(",")
-    building = building.join(",#")
-
-    $('#' + building).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
-
-    });
-
-    updateToolTip(building, names)
-
-}
-
 function updateFoodToolTips(building, foodPlaceNames){
     var buildings = building.split(",")
     var locations = foodPlaceNames.split(",..,")
