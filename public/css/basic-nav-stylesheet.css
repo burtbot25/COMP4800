@@ -170,8 +170,6 @@ area {
     color: #003c71;
     font-size: 10px;
     margin-bottom: 100px;
-    /* height: 130px; */
-    /* top: 10px; */
 }
 
 #details_title {
@@ -193,7 +191,7 @@ area {
   position: absolute;
   color: #003c71;
   right: 10px;
-  top: 60px;
+  top: 100px;
 }
 
 .fa-arrow-right:hover {
