@@ -206,6 +206,11 @@ area {
 
 .fa-arrow-right {
   position: absolute;
+  color: #003c71;
   right: 10px;
   top: 60px;
+}
+
+.fa-arrow-right:hover {
+  opacity: 0.5;
 }
