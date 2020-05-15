@@ -5,14 +5,7 @@ var createDropdown = (name, id) => {
 };
 
 var createButton = (building, name, description, link) => {
-    description = description
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&apos;');
-
-    return `<button onclick="selectService('${building}', '${name}', '${description}', '${link}')"> ${name} </button>`;
+    return `<button class="nav-btn" building="${building}" name="${name}" description="${description}" link="${link}"> ${name} </button>`;
 };
 
 var getData = async () => {
@@ -62,3 +55,14 @@ var populateMenu = async () => {
 };
 
 populateMenu();
+
+document.body.addEventListener('click', (e) => {
+    if (e.target.className === 'nav-btn') {
+        selectService(
+            e.target.getAttribute('building'),
+            e.target.getAttribute('name'),
+            e.target.getAttribute('description'),
+            e.target.getAttribute('link')
+        );
+    }
+});
