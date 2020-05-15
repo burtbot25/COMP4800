@@ -221,15 +221,6 @@ function hideFoodDetails(){
     document.getElementById("details_box").style.display = "none"
 }
 
-//function showDetails1(building, service_name, description){
-//    document.getElementById("details_title").innerText = service_name
-//    document.getElementById("details_title").style.fontWeight = "bold"
-//    document.getElementById("details_info").innerText = "(currently blank)" + description
-//    document.getElementById("details_link").innerText = "(Link Here)"
-//    document.getElementById("details_box").style.backgroundColor = "#ffea2e"
-//    document.getElementById("details_box").style.color = "#003c71"
-//}
-
 function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
     // document.getElementById("details_title").innerText = service_name
@@ -260,6 +251,7 @@ function showDetailsParking(description){
     $(".fa-arrow-right").remove();
 }
 
+/*Loads the bus stops and bus descriptions*/
 var transit = false;
 var busData = [];
 function selectTransit() {  
@@ -271,7 +263,6 @@ function selectTransit() {
             data = JSON.parse(data);
             data.forEach(function(item) {
                 item.busRoute = item.busRoute.replace(",", "<br>");
-                console.log(item.busRoute);
                 busData.push({
                     "key": item.id,
                     "toolTip" : item.busRoute
@@ -290,15 +281,13 @@ function selectTransit() {
     .then(res => res.text())
     .then(function (data) {
         data = JSON.parse(data);
-        console.log(data)
-        console.log(data[0].description);
         showDetailsTransit(data[0].description);
     })
     .catch(function (error) {
         console.log(error);
     });
 }
-
+/*Overlay function for bus highlighting */
 function busOverlay() {
     $('#image').mapster({
         singleSelect: true,
@@ -322,6 +311,7 @@ function showBasicOverlay(source){
     document.getElementById("image").src = source
 }
 
+/*Helper function for next index array*/
 function nextIndex(index, arr) {
     index++;
     index = index % arr.length;
@@ -331,6 +321,7 @@ function nextIndex(index, arr) {
 
 var navIndex = 0;
 var navDesc = []
+/*Loads campus description and buildings*/
 function selectNav() {
     $('img').mapster('unbind');
     hideOverlay();
@@ -358,13 +349,13 @@ function selectNav() {
         navIndex = nextIndex(navIndex, navDesc);
     }
 }
-
+/*Arrow for navigating campus */
 function navArrow() {
     selectNavBuildings(navDesc[navIndex].buildingNumber);
     showDetailsTransit(navDesc[navIndex].description, true);
     navIndex = nextIndex(navIndex, navDesc);
 }
-
+/*Select the Navigating campus buildings */
 function selectNavBuildings(buildings) {
     $('area').bind('mouseover', function () {
         $('#image').mapster('tooltip');
