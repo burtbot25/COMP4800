@@ -192,7 +192,9 @@ function selectService(building, name, description, link) {
 }
 
 function showDetails(name, description, link){
+    document.getElementById("details_box").style.height = "160px"
     document.getElementById("details_title").innerText = name
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
@@ -211,8 +213,9 @@ function hideOverlay(){
 
 function showFoodDetails(service_name, description, foodLink){
     document.getElementById("details_box").style.display = "block"
-    document.getElementById("details_box").style.height = "150px"
+    document.getElementById("details_box").style.height = "160px"
     document.getElementById("details_title").innerText = service_name
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_link").innerText = foodLink
     document.getElementById("details_link").href = foodLink
@@ -228,6 +231,7 @@ function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.height = "150px"
     // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
@@ -247,8 +251,9 @@ function showDetailsTransit(description, nav){
 // this one has a .HTML as the client wanted a clickable link inside the description for this one 
 function showDetailsParking(description){
     document.getElementById("details_box").style.display = "block"
-    document.getElementById("details_box").style.height = "150px"
+    document.getElementById("details_box").style.height = "160px"
     document.getElementById("details_title").style.fontWeight = "bold"
+    document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerHTML = description
     document.getElementById("details_box").style.backgroundColor = "#ffea2e"
     document.getElementById("details_box").style.color = "#003c71"
