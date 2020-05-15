@@ -251,7 +251,7 @@ function showDetailsTransit(description, nav){
 // this one has a .HTML as the client wanted a clickable link inside the description for this one 
 function showDetailsParking(description){
     document.getElementById("details_box").style.display = "block"
-    document.getElementById("details_box").style.height = "160px"
+    document.getElementById("details_box").style.height = "150px"
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerHTML = description
