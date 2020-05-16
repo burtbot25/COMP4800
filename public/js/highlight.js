@@ -1,5 +1,5 @@
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
 $( document ).ready(function() {
-   /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
    var dropdown = document.getElementsByClassName("dropdown-btn");
    var i;
 
@@ -15,7 +15,7 @@ $( document ).ready(function() {
        });
    }
 });
-/* John's code for highlighting buildings */
+
 /* Sets what key to use when mapping for mapster*/
 var basic_opts = {
     mapKey: 'building',
@@ -38,7 +38,7 @@ var initial_opts = $.extend({}, basic_opts,
         isSelectable: false
     });
 
-/* group selection functions */
+/* Highlight groups of buildings for individual schools */
 function selectSchool(buildings, descriptions) {
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
@@ -61,6 +61,7 @@ function selectSchool(buildings, descriptions) {
     updateSchoolToolTip(buildings, descriptions);
 }
 
+/* Append descriptions to tooltip in academic schools */
 function updateSchoolToolTip(buildings, names) {
     buildings = buildings.split(",#")
     names = names.split(",")
