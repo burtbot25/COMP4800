@@ -234,7 +234,6 @@ function hideFoodDetails(){
 function showDetailsTransit(description, nav){
     document.getElementById("details_box").style.display = "block"
     document.getElementById("details_box").style.height = "150px"
-    // document.getElementById("details_title").innerText = service_name
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerText = description
@@ -344,9 +343,7 @@ function selectNav() {
         .then(res => res.text())
         .then(function (data) {
             data = JSON.parse(data);
-            console.log(data)
             navDesc = data; 
-            console.log(navDesc[navIndex].buildingNumber)
             selectNavBuildings(navDesc[navIndex].buildingNumber);
             showDetailsTransit(navDesc[navIndex].description, true);
             navIndex = nextIndex(navIndex, navDesc);
@@ -382,9 +379,7 @@ function selectNavBuildings(buildings) {
     })
     .mapster('snapshot')
     .mapster('rebind', basic_opts);
-    console.log($('#CampusSquare').length);
     buildings = buildings.replace(/,/g, ",#")
-    console.log(buildings);
     $('#' + buildings).bind('mouseover', function () { // ID goes here
         $('#image').mapster('tooltip', this, $(this).attr('full'));
     });
@@ -562,7 +557,14 @@ function selectCampus(building) {
 
 
 function toggleDropdown(self) {
-    console.log(self);  
     $(".dropdown-btn").not(self).next(".dropdown-container").css("display","none");
     $(".dropdown-btn").not(self).next(".dropdown-container").removeClass('active');
+}
+
+function toggleDisplay(id){
+    //$('area').css("display","none")
+    $('img').mapster('unbind');
+    $('#image,#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#electrical_vehicle_overlay,#car_share_overlay, #bike_repair_overlay,#pay_station_overlay,#motorcycle_overlay,#timing_overlay').css("display","none")
+    $('#'+id.value).css("display","block");
+
 }
