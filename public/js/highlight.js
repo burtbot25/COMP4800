@@ -171,7 +171,8 @@ function selectFoods(building, service_name, description, foodLink, foodPlaceNam
     
 }
 
-function selectService(building, name, description, link) {
+function selectService(building, name, description, link, overlay) {
+    toggleOverlay('burnaby_campus_map.png');
     console.log("clicked " + name)
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
@@ -184,12 +185,16 @@ function selectService(building, name, description, link) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    mapBuilding = building.replace(/, /g, ",#")
+    mapBuilding = building.replace(/,/g, ",#")
     $('#' + mapBuilding).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + '<br>' + name);
+        $('#campus_entrances_overlay').mapster('tooltip', this, '<b>' + $(this).attr('alt') + '</b>' + '<br>' + name);
 
     });
-    showDetails(building + " - " + name, description, link);
+    let title = building.length ? building + " - " + name : name
+    showDetails(title, description, link); 
+    if (overlay !== 'null') {
+        toggleOverlay(overlay);
+    }
 }
 
 function showDetails(name, description, link){
@@ -479,6 +484,10 @@ function selectTiming(){
     document.getElementById("image").src = "/media/overlays/timing_merged.png"
     database_identifier = 'timing'
     grabDescAndSelection(database_identifier,key)
+}
+
+function toggleOverlay(overlay){
+    document.getElementById("image").src = `/media/${overlay}`
 }
 
 //grabs the description and selection ids from the database
