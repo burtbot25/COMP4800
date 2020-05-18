@@ -4,8 +4,8 @@ var createDropdown = (name, id) => {
     <div id=${id} class="dropdown-container"> </div>`;
 };
 
-var createButton = (building, name, description, link) => {
-    return `<button class="nav-btn" building="${building}" name="${name}" description="${description}" link="${link}"> ${name} </button>`;
+var createButton = (building, name, description, link, overlay) => {
+    return `<button class="nav-btn" building="${building}" name="${name}" description="${description}" link="${link}" overlay="${overlay}"> ${name} </button>`;
 };
 
 var getData = async () => {
@@ -45,8 +45,18 @@ var populateMenu = async () => {
 
     //You only need this section if you have dropdowns, if you did it the same way as I did with foreign keys, then "e.group" will be whatever your foreign key is called
     services.forEach((e) => {
-        let el = document.getElementById(e.group);
-        el.insertAdjacentHTML('beforeend', createButton(e.buildingNumber, e.serviceName, e.description, e.link));
+        if (!e.group) {
+            nav.insertAdjacentHTML(
+                'beforeend',
+                createButton(e.buildingNumber, e.serviceName, e.description, e.link, e.overlay)
+            );
+            return;
+        }
+        let dropdownContainer = document.getElementById(e.group);
+        dropdownContainer.insertAdjacentHTML(
+            'beforeend',
+            createButton(e.buildingNumber, e.serviceName, e.description, e.link, e.overlay)
+        );
     });
 
     let script = document.createElement('script');
@@ -56,13 +66,16 @@ var populateMenu = async () => {
 
 populateMenu();
 
-document.body.addEventListener('click', (e) => {
+document.getElementById('sidenav').addEventListener('click', (e) => {
+    if (e.target.getAttribute('overlay') !== 'null') {
+    }
     if (e.target.className === 'nav-btn') {
         selectService(
             e.target.getAttribute('building'),
             e.target.getAttribute('name'),
             e.target.getAttribute('description'),
-            e.target.getAttribute('link')
+            e.target.getAttribute('link'),
+            e.target.getAttribute('overlay')
         );
     }
 });
