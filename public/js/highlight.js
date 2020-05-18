@@ -416,7 +416,6 @@ function selectParking(stop, key, highlight) {
 }
 /* start of all the toggling on methods for each of the parking images */ 
 function toggleHandicap(){
-    //let key = 'accessible-key'
     let key = 'building'
         //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "accessibleparking"
@@ -425,7 +424,6 @@ function toggleHandicap(){
 }
 
 function toggleElectricVehicle(){
-    //let key = 'electric-key'
     let key = 'building'
     let database_identifier = "electricvehicle"
         //this is to search in the parkingDescriptions table for the section identifier
@@ -434,7 +432,6 @@ function toggleElectricVehicle(){
 }
 
 function toggleShareParking(){
-    //let key = 'share-parking-key'
     let key = 'building'
     //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "carshare"
@@ -443,7 +440,6 @@ function toggleShareParking(){
 }
 
 function toggleMotorcycle(){
-    //let key = 'motorcycle-key'
     let key = 'building'
     //this is to search in the parkingDescriptions table for the section identifier
     let database_identifier = "motorcycle"
@@ -452,7 +448,6 @@ function toggleMotorcycle(){
 }
 
 function toggleBikeRepair(){
-    //let key = 'bike-key'
     let key = 'building'
     let database_identifier = 'bikerepair'
     document.getElementById("image").src = "/media/overlays/bike_repair.png"
@@ -461,7 +456,6 @@ function toggleBikeRepair(){
 }
 
 function togglePaystation(){
-    //let key = 'paystation-key'
     let key = 'building'
     let database_identifier = 'paystation'
     document.getElementById("image").src = "/media/overlays/paystation_merged.png"
@@ -470,7 +464,6 @@ function togglePaystation(){
 
 
 function toggleAccessibility(){
-    //let key = ''
     let key = 'building'
     let database_identifier = 'accessibilityroutes'
     document.getElementById("image").src = "/media/overlays/accessibility_routes.png"
@@ -545,7 +538,6 @@ function selectLot() {
 }
 
 function selectCampus(building) {
-    // console.log("Building: " + stop)
     $('area').bind('mouseover', function () {
         $('#bus_stops_overlay').mapster('tooltip');
     });
@@ -573,12 +565,4 @@ function toggleDropdown(self) {
     console.log(self);  
     $(".dropdown-btn").not(self).next(".dropdown-container").css("display","none");
     $(".dropdown-btn").not(self).next(".dropdown-container").removeClass('active');
-}
-function toggleDisplay(id){
-    console.log(id);
-    //$('area').css("display","none")
-    $('img').mapster('unbind');
-    $('#image,#bus_stops_overlay,#campus_entrances_overlay, #employee_parking_overlay, #first_aid_overlay, #handicap_overlay,#security_overlay,#student_parking_overlay,#visitor_parking_overlay,#food_services_overlay,#bike_overlay,#electrical_vehicle_overlay,#car_share_overlay, #bike_repair_overlay,#pay_station_overlay,#motorcycle_overlay,#timing_overlay').css("display","none")
-    $('#'+id.value).css("display","block");
-
 }
