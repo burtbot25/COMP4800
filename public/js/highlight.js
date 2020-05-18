@@ -1,5 +1,5 @@
+/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
 $( document ).ready(function() {
-   /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
    var dropdown = document.getElementsByClassName("dropdown-btn");
    var i;
 
@@ -15,7 +15,7 @@ $( document ).ready(function() {
        });
    }
 });
-/* John's code for highlighting buildings */
+
 /* Sets what key to use when mapping for mapster*/
 var basic_opts = {
     mapKey: 'building',
@@ -38,7 +38,7 @@ var initial_opts = $.extend({}, basic_opts,
         isSelectable: false
     });
 
-/* group selection functions */
+/* Highlight groups of buildings for individual schools */
 function selectSchool(buildings, descriptions) {
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
@@ -61,6 +61,7 @@ function selectSchool(buildings, descriptions) {
     updateSchoolToolTip(buildings, descriptions);
 }
 
+/* Append descriptions to tooltip in academic schools */
 function updateSchoolToolTip(buildings, names) {
     buildings = buildings.split(",#")
     names = names.split(",")
@@ -170,7 +171,8 @@ function selectFoods(building, service_name, description, foodLink, foodPlaceNam
     
 }
 
-function selectService(building, name, description, link) {
+function selectService(building, name, description, link, overlay) {
+    toggleOverlay('burnaby_campus_map.png');
     console.log("clicked " + name)
     $('area').bind('mouseover', function () {
         $('#campus_entrances_overlay').mapster('tooltip');
@@ -183,12 +185,16 @@ function selectService(building, name, description, link) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    mapBuilding = building.replace(/, /g, ",#")
+    mapBuilding = building.replace(/,/g, ",#")
     $('#' + mapBuilding).bind('mouseover', function () { // ID goes here
-        $('#campus_entrances_overlay').mapster('tooltip', this, $(this).attr('full') + '<br>' + name);
+        $('#campus_entrances_overlay').mapster('tooltip', this, '<b>' + $(this).attr('alt') + '</b>' + '<br>' + name);
 
     });
-    showDetails(building + " - " + name, description, link);
+    let title = building.length ? building + " - " + name : name
+    showDetails(title, description, link); 
+    if (overlay !== 'null') {
+        toggleOverlay(overlay);
+    }
 }
 
 function showDetails(name, description, link){
@@ -199,7 +205,6 @@ function showDetails(name, description, link){
     document.getElementById("details_link").innerText = link
     document.getElementById("details_link").href = link
     document.getElementById("details_link").target = "_blank"
-    document.getElementById("details_box").style.height = "150px"
 }
 
 function showOverlay(){
@@ -251,7 +256,7 @@ function showDetailsTransit(description, nav){
 // this one has a .HTML as the client wanted a clickable link inside the description for this one 
 function showDetailsParking(description){
     document.getElementById("details_box").style.display = "block"
-    document.getElementById("details_box").style.height = "160px"
+    document.getElementById("details_box").style.height = "150px"
     document.getElementById("details_title").style.fontWeight = "bold"
     document.getElementById("details_title").style.paddingTop = "12px"
     document.getElementById("details_info").innerHTML = description
@@ -479,6 +484,10 @@ function selectTiming(){
     document.getElementById("image").src = "/media/overlays/timing_merged.png"
     database_identifier = 'timing'
     grabDescAndSelection(database_identifier,key)
+}
+
+function toggleOverlay(overlay){
+    document.getElementById("image").src = `/media/${overlay}`
 }
 
 //grabs the description and selection ids from the database
