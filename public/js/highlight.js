@@ -184,7 +184,7 @@ function selectService(building, name, description, link, overlay) {
         .mapster('snapshot')
         .mapster('rebind', basic_opts);
 
-    mapBuilding = building.replace(/, /g, ",#")
+    mapBuilding = building.replace(/,/g, ",#")
     $('#' + mapBuilding).bind('mouseover', function () { // ID goes here
         $('#campus_entrances_overlay').mapster('tooltip', this, '<b>' + $(this).attr('alt') + '</b>' + '<br>' + name);
 

@@ -20,9 +20,9 @@ var populateMenu = async () => {
     document.getElementById('loading').remove();
     let campusMap = document.getElementById('campus-map');
     campusMap.setAttribute('style', 'display: block');
-    //everything up to here can stay the same, add .campus-map {display: none} to your css
+    
 
-    let serviceGroups = data.serviceGroups[0]; //this will look different for everybody depending on how you serve your data.
+    let serviceGroups = data.serviceGroups[0]; 
 
     let nav = document.getElementById('sidenav');
 
@@ -35,13 +35,12 @@ var populateMenu = async () => {
         nav.insertAdjacentHTML('beforeend', createDropdown(element.name, element.id));
     });
 
-    //Make sure to set height for html and body to 100% in css
     let html = document.querySelector('html');
     let body = document.querySelector('body');
     html.style.height = '';
     body.style.height = '';
 
-    let services = data.services[0]; //this will look different for everybody depending on how you serve your data.
+    let services = data.services[0];
 
     //You only need this section if you have dropdowns, if you did it the same way as I did with foreign keys, then "e.group" will be whatever your foreign key is called
     services.forEach((e) => {
