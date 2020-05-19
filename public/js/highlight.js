@@ -386,7 +386,7 @@ function selectNavBuildings(buildings) {
     buildings = buildings.replace(/,/g, ",#")
     console.log(buildings);
     $('#' + buildings).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#image').mapster('tooltip', this, '<b>' + $(this).attr('full') + '</b>');
     });
 }
 
