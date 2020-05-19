@@ -1,0 +1,78 @@
+/* #food_services_overlay {
+  position: relative;
+  top: 0px;
+  left: 0px;
+} */
+
+html, body {
+  overflow-x: hidden;
+  height: 100%;
+}
+
+#image {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#area {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+area { 
+  display:none;
+}
+
+#food_services_overlay,
+#bus_stops_overlay, 
+#campus_entrances_overlay, 
+#employee_parking_overlay, 
+#first_aid_overlay, 
+#handicap_overlay,
+#security_overlay,
+#student_parking_overlay,
+#visitor_parking_overlay,
+#bike_overlay,
+#electrical_vehicle_overlay,
+#car_share_overlay,
+#bike_repair_overlay,
+#pay_station_overlay,
+#motorcycle_overlay,
+#timing_overlay{
+  display: none
+}
+
+#map_area {
+  position: relative;
+}
+
+#details_box {
+    background-color: #ffea2e;
+    color: #003c71;
+    font-size: 10px;
+}
+
+#details_title {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+#details_box::after {
+    position: fixed;
+    display: block;
+    bottom: 0px;
+}
+
+.mapster_tooltip {
+  pointer-events: none;
+}
+
+.campus-map {display: none}

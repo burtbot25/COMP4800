@@ -1,0 +1,70 @@
+<div class="heading">
+    Basic Navigation
+</div>
+<div class="campus-map">
+    <div class="col-sm-2">
+        <div class="sidenav">
+            <div class="sidenav-cont">
+                <button onclick="selectTiming()">Timing
+                </button>
+
+                <div class="dropdown-container">
+                    <button>Student Housing to NE01</button>
+                    <button>Willingdon Avenue to Wayburne Drive</button>
+                    <button>CARI Building to Wayburne Drive</button>
+                </div>
+                <button onclick="selectTransit()">Transit Information
+                </button>
+                
+                <button onclick="selectNav()">Navigating Campus
+                </button>
+
+                <button onclick="toggleAccessibility()">Accessibility Routes</button>
+                <button class="dropdown-btn" onclick="toggleDropdown(this)">Parking and Biking Information
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-container" >
+                    <button onclick="selectLot()">Student Parking</button>
+                   <!-- <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="eparking" name="LOT7,LOT5,LOT12,LOT26,LOT27,LOT6,LOT62,LOT9,LOT4,LOT15,LOT22,LOT23,LOT21,LOT211,LOT212,LOT213,LOT214,LOT24,LOT25,LOT20,LOT29,LOT28,LOT281,LOT1,LOT10,LOT16,LOT19" value="employee_parking_overlay">Employee Parking</button>
+                    <button onclick="toggleDisplay(this),selectParking(this.value,this.name)" category="vparking" name="LOTV1,LOTV2,LOTV3,LOTV4,LOTV5" value="visitor_parking_overlay">Visitor Parking</button> -->
+                    <button onclick="toggleHandicap()">Accessible Parking</button>
+                    <button onclick="toggleElectricVehicle()">EV Charging</button>
+                    <button onclick="toggleShareParking()">Carshare Parking</button>
+                    <button onclick="togglePaystation()">Pay Station</button>
+                    <button onclick="toggleMotorcycle()">Motorcycle Area</button>
+                    <button onclick="toggleBikeRepair()">Bike Lockers and Repair Stations</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        {{>overlay}}
+        <button name="mainMenu" onclick="main_menu()" id="main-menu-btn">Main Menu</button>
+    </div>
+</div>
+<div id="loading" class="d-flex justify-content-center align-items-center" style="height: 100%">
+    <div class="spinner-border" style="width: 6rem; height: 6rem;" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+
+<script src="/panzoom/panzoom.js"></script>
+<script src="js/zoom.js"></script>
+<script src="js/basic.js"></script>
+
+<script>
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>

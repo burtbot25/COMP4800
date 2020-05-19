@@ -1,0 +1,34 @@
+body {
+    overflow-x: hidden;
+}
+
+.heading {
+    background-color: white;
+    color: #003c71;
+    width: 100%;
+    height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px 0 0 10px;
+    border-bottom: 1px solid #869cb0;
+}
+
+.main-menu-nav {
+    padding-top: 80px;
+}
+
+.main-menu-nav button {
+    width: 150px;
+    height: 30px;
+    color: white;
+    background-color: #003c71;
+    border: 2px solid #003c71;
+    font-size: 12px;
+    margin: 20px 0 0 30px;
+}
+
+.col-sm-7 {
+    font-size: 12px;
+    padding-top: 80px;
+    margin: 20px 0 0 0;
+}

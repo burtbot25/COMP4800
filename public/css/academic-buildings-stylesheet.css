@@ -1,0 +1,84 @@
+html, body {
+    overflow-x: hidden;
+    height: 100%;
+}
+
+area { 
+  display: none;
+}
+
+#campus_entrances_overlay {
+  position: relative;
+  top: 0px;
+  left: 0px;    
+}
+
+#image {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}    
+
+#image_map {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+#area {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.col-sm-2 button:focus {
+    background-color: #003c71;
+    opacity: 0.5;
+}
+
+#bike_overlay,
+#bike_repair_overlay,
+#bus_stops_overlay, 
+#car_share_overlay,
+#employee_parking_overlay, 
+#electrical_vehicle_overlay,
+#evcsbr_parking_overlay,
+#first_aid_overlay, 
+#food_services_overlay,
+#handicap_merged,
+#handicap_overlay,
+#motorcycle_overlay,
+#pay_station_overlay,
+#security_overlay,
+#student_parking_merged,
+#student_parking_overlay,
+#visitor_parking_overlay,
+#timing_overlay {
+  display: none
+}
+
+#map_area {
+  position: relative;
+}
+
+.mapster_tooltip {
+  pointer-events: none;
+}
+
+.campus-map {
+    display: none;
+}
+
+#details_box {
+    background-color: #ffea2e;
+    color: #003c71;
+    font-size: 10px;
+    width: 585px;
+    text-align: left;
+    padding: 10px 0 0 10px;
+    position: absolute; 
+    top: 0;
+    height: 150px;
+    margin-top: 250px;
+}
