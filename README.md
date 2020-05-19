@@ -18,8 +18,7 @@ jQuery 3.5.0
 
 
 # Architecture
-		The architectural design of the app is based on the Model-View-Controller (MVC)  
-pattern. 
+The architectural design of the app is based on the Model-View-Controller (MVC) pattern. 
 
 ## Model
 The model component is used for transferring data between the MySQL database and the app.
