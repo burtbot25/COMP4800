@@ -381,7 +381,7 @@ function selectNavBuildings(buildings) {
     .mapster('rebind', basic_opts);
     buildings = buildings.replace(/,/g, ",#")
     $('#' + buildings).bind('mouseover', function () { // ID goes here
-        $('#image').mapster('tooltip', this, $(this).attr('full'));
+        $('#image').mapster('tooltip', this, '<b>' + $(this).attr('full') + '</b>');
     });
 }
 
@@ -524,7 +524,7 @@ function selectLot() {
         selectParking(stops,key,true)
         stops = stops.replace(/,/g, ",#")
         $('#' + stops).bind('mouseover', function () { // ID goes here
-            $('#'+id).mapster('tooltip', this, $(this).attr('full'));
+            $('#'+id).mapster('tooltip', this, '<b>' + $(this).attr('full') + '</b>');
         });
     })
     .catch(function (error) {
