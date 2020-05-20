@@ -54,12 +54,17 @@ npm install
 ```
 
 To run the app on localhost do either
+
 ```bash
 node index.js
 ```
 or
 ```bash
 nodemon index.js
+```
+or
+```bash
+npm start
 ```
 
 This should open it up in Localhost on port 5000 so if you open it in your browser with Localhost:5000 as the url then it should open up the app (not in an iframe)
