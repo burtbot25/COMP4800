@@ -48,7 +48,7 @@ We used Heroku to deploy this since it supports Node.js
 ## How to get up and running locally
 First install node.js to run the app locally, open command line and go to the directory where you copied the files to 
 The list of npm commands we used were 
-
+```bash
 npm install --save express
 
 npm install --save body-parser
@@ -60,7 +60,7 @@ npm install panzoom --save
 npm install express-handlebars --save
 
 npm install --save mysql2
-
+```
 To run the app on localhost do either
 "node index.js"
 or
