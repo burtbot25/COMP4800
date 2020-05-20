@@ -46,25 +46,26 @@ Dynamic rendering of data is used to reduce the amount of wait time from loading
 We used Heroku to deploy this since it supports Node.js
 
 ## How to get up and running locally
-First install node.js to run the app locally, open command line and go to the directory where you copied the files to 
-The list of npm commands we used were 
+First install node.js to run the app locally, open command line and go to the directory where you copied the files to.
 
-npm install --save express
-
-npm install --save body-parser
-
-npm install nodemon –g --save-dev
-
-npm install panzoom --save
-
-npm install express-handlebars --save
-
-npm install --save mysql2
+Use the npm command below to install the npm packages
+```bash
+npm install
+```
 
 To run the app on localhost do either
-"node index.js"
+
+```bash
+node index.js
+```
 or
-"nodemon index.js"
+```bash
+nodemon index.js
+```
+or
+```bash
+npm start
+```
 
 This should open it up in Localhost on port 5000 so if you open it in your browser with Localhost:5000 as the url then it should open up the app (not in an iframe)
 
