@@ -4,9 +4,9 @@ const pool = mysql.createPool({
     host               : 'remotemysql.com',
     waitForConnections : true,
     connectionLimit    : 5,
-    user               : 'JLRgmkCfgJ',
-    database           : 'JLRgmkCfgJ',
-    password           : 'MlR7E18ens'
+    user               : '<insert username>',
+    database           : '<insert database>',
+    password           : '<insert password>'
 });
 
 module.exports = pool.promise();
